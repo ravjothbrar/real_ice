@@ -1,0 +1,26 @@
+id,place,lat,lon,label,rationale,source,verified
+1,North of Ellesmere Island (Last Ice Area core),83.5,-75.0,likely-survives-anyway,Thickest multiyear ice remaining; projected last refuge of summer ice,"Moore, Schweiger, Zhang & Steele (2019) GRL 46, doi:10.1029/2018GL081291",citation-from-memory
+2,North of Greenland,84.5,-40.0,likely-survives-anyway,Part of the Last Ice Area; thick multiyear ice (though Wandel Sea opened anomalously in Aug 2020),"Moore et al. (2019) GRL; Schweiger et al. (2021) Commun. Earth Environ. 2:122",citation-from-memory
+3,Lincoln Sea,83.0,-57.0,likely-survives-anyway,Thick compressed multiyear ice against the coast,"Moore et al. (2019) GRL; Haas et al. (2006) GRL 33 L17501",citation-from-memory
+4,Central Arctic near the North Pole,88.0,0.0,likely-survives-anyway,Ice present every September of the satellite record,"NSIDC Sea Ice Index v3 (Fetterer et al.) September extent; Stroeve & Notz (2018) ERL 13 103001",citation-from-memory
+5,Canada Basin north of 80N,82.0,-130.0,likely-survives-anyway,Inside the September ice pack in all recent minima including 2012,"Parkinson & Comiso (2013) GRL 40 1356; Kwok (2018) ERL 13 105005",citation-from-memory
+6,Queen Elizabeth Islands channels,78.0,-105.0,likely-survives-anyway,Channels retain multiyear ice that is replenished from the Arctic Ocean,"Howell, Duguay & Markus (2009) GRL 36 L10502; Moore et al. (2019) GRL",citation-from-memory
+7,Beaufort Gyre interior,75.0,-145.0,marginal,Multiyear ice replaced by first-year ice since 2004; summer survival varies year to year,"Galley et al. (2016) JGR Oceans 121 1806; Kwok & Cunningham (2010) GRL 37 L20501",citation-from-memory
+8,Chukchi Borderland,77.0,-165.0,marginal,September ice edge oscillates across this region between years,"Stroeve & Notz (2018) ERL; NSIDC Sea Ice Index September extent",citation-from-memory
+9,Outer East Siberian Sea,77.0,160.0,marginal,September ice edge swings over the shelf break between years,"Stroeve & Notz (2018) ERL; Parkinson & Comiso (2013) GRL",citation-from-memory
+10,Northern Laptev Sea / Eurasian Basin edge,81.5,125.0,marginal,Ice edge retreated past this latitude in record years (2012 2020) but not in others,"Parkinson & Comiso (2013) GRL; Krumpen et al. (2019) Sci. Rep. 9 5459",citation-from-memory
+11,Eurasian sector of the Transpolar Drift,83.5,90.0,marginal,Near the 2012 and 2020 minimum edge; ice-covered in most other Septembers,"Parkinson & Comiso (2013) GRL; NSIDC Sea Ice Index",citation-from-memory
+12,Viscount Melville Sound (Northwest Passage),74.5,-108.0,marginal,Multiyear ice inflow from the north makes summer clearance vary between years,"Howell et al. (2013) GRL 40 4993; Haas & Howell (2015) GRL 42 7673",citation-from-memory
+13,Cambridge Bay / Dease Strait,69.05,-105.1,likely-melts-out,Landfast first-year ice that clears every summer; Real Ice field site,"Real Ice et al. (2026) Earth's Future doi:10.1029/2025EF007894; Canadian Ice Service regional ice atlas",citation-from-memory
+14,Norton Sound near Nome,64.3,-165.5,likely-melts-out,Seasonal ice only; ice-free every summer,"Onarheim et al. (2018) J. Climate 31 4917",citation-from-memory
+15,Hudson Bay,60.0,-86.0,likely-melts-out,Seasonal ice cover clears completely each summer,"Gagnon & Gough (2005) Arctic 58 370; Hochheim & Barber (2014) JGR Oceans 119",citation-from-memory
+16,Central Baffin Bay,72.0,-64.0,likely-melts-out,Seasonal ice; essentially ice-free by September,"Tang et al. (2004) Prog. Oceanogr. 63 183",citation-from-memory
+17,Kara Sea,75.0,70.0,likely-melts-out,Largely ice-free in September since the 2000s,"Onarheim et al. (2018) J. Climate; Stroeve & Notz (2018) ERL",citation-from-memory
+18,Northern Barents Sea,77.0,40.0,likely-melts-out,Strongest winter ice loss region; ice-free in late summer,"Onarheim & Arthun (2017) GRL 44 8387; Onarheim et al. (2018) J. Climate",citation-from-memory
+19,Southern Laptev shelf,74.5,125.0,likely-melts-out,Polynya-fed first-year ice; shelf ice-free by September,"Onarheim et al. (2018) J. Climate; Krumpen et al. (2019) Sci. Rep.",citation-from-memory
+20,Chukchi Sea shelf,70.0,-168.0,likely-melts-out,Seasonal ice; open water season lengthening,"Onarheim et al. (2018) J. Climate; Wood et al. (2015) Deep-Sea Res. II 118",citation-from-memory
+21,Bering Sea,60.0,-175.0,likely-melts-out,Seasonal ice only; never summer ice,"Onarheim et al. (2018) J. Climate; Stabeno & Bell (2019) GRL 46 8952",citation-from-memory
+22,Fram Strait,79.0,0.0,export-zone,Main gateway exporting Arctic ice to the North Atlantic (~10% of ice area per year),"Smedsrud et al. (2017) The Cryosphere 11 65; Kwok et al. (2004) JGR 109 C08004",citation-from-memory
+23,East Greenland Sea,74.0,-14.0,export-zone,Exported ice drifting south and melting,"Smedsrud et al. (2017) The Cryosphere",citation-from-memory
+24,Nares Strait,80.0,-68.0,export-zone,Exports Lincoln Sea multiyear ice when ice arches fail,"Kwok (2005) GRL 32 L24502; Moore et al. (2021) Nat. Commun. 12 1",citation-from-memory
+25,Transpolar Drift approach to Fram Strait,84.0,10.0,export-zone,Ice here typically exits through Fram Strait within about a year,"Krumpen et al. (2019) Sci. Rep. 9 5459; Smedsrud et al. (2017) The Cryosphere",citation-from-memory
