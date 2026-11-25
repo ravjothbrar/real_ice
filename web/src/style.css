@@ -52,6 +52,14 @@ button { font: inherit; color: inherit; }
   padding: 28px var(--gut);
   font: 500 13px/1 var(--mono);
 }
+.maker {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  display: inline-flex; align-items: center; height: 32px; padding: 0 16px; border-radius: 999px;
+  background: #F1EAFE; color: #6D28D9; border: 1px solid #CDB8F6; text-decoration: none;
+  font: 500 11px/1 var(--mono); letter-spacing: 0.14em; white-space: nowrap;
+}
+.maker:hover { background: #E7DBFD; color: #5B21B6; }
+.attr a { color: inherit; text-underline-offset: 6px; }
 .topnav .mark { letter-spacing: 0.22em; text-decoration: none; color: var(--pg-text); }
 .navlinks { display: flex; gap: 22px; }
 .navlinks a { text-decoration: none; color: var(--pg-text); letter-spacing: 0.02em; }
@@ -386,7 +394,8 @@ input[type='range']::-moz-range-thumb { width: 12px; height: 12px; background: v
 @media (max-width: 899px) {
   :root { --gut: 20px; }
   body { font-size: 17px; }
-  .topnav { padding: 20px var(--gut); flex-wrap: wrap; }
+  .topnav { padding: 20px var(--gut); flex-direction: column-reverse; align-items: center; gap: 14px; }
+  .maker { position: static; transform: none; height: 30px; padding: 0 12px; font-size: 10px; }
   .navlinks { display: none; }
   .hero { padding: 20px var(--gut) 32px; }
   .statement { font-size: clamp(34px, 10vw, 48px); white-space: normal; }

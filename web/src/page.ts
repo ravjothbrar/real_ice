@@ -14,6 +14,7 @@ export function heroHTML(a: Atlas | null): string {
   return `
   <nav class="topnav" aria-label="Sections">
     <a class="mark" href="#top">SURVIVAL GAP ATLAS</a>
+    <a class="maker" href="https://ravjothbrar.com" target="_blank" rel="noopener">CREATED BY RAVJOTH BRAR ↗</a>
     <div class="navlinks"><a href="#instrument">&gt; instrument</a><a href="#method">&gt; method</a><a href="#evidence">&gt; evidence</a><a href="#limits">&gt; limits</a><a href="#spec">&gt; spec</a></div>
   </nav>
   <section class="hero" id="top">
@@ -150,7 +151,7 @@ export function footerHTML(a: Atlas | null): string {
   const src = a?.manifest.sources ?? [];
   return `
   <footer class="foot">
-    <p class="attr">Independent project built for Real Ice. Not affiliated.</p>
+    <p class="attr">Created by <a href="https://ravjothbrar.com">Ravjoth Brar</a>.</p>
     <div class="credit-hero">
       <div class="label">[Thickness data]</div>
       <p>Daily 25 km ICESat-2 + SMOS/SMAP Gaussian-process sea-ice thickness, 2018–2025, by <b>Petty, Cardinale, Tsamados, Gregory and Cabaj</b>. Zenodo, doi:<a href="https://doi.org/10.5281/zenodo.22147361">10.5281/zenodo.22147361</a> →</p>

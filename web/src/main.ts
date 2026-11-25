@@ -13,7 +13,7 @@ app.innerHTML = `
   <div class="page-top"></div>
   <section class="inst-wrap" aria-label="Instrument">
     <div class="inst" id="instrument"></div>
-    <p class="attr-line">Independent project built for Real Ice. Not affiliated.</p>
+    <p class="attr-line">Exploratory map of public data. Not a siting recommendation.</p>
   </section>
   <div class="page-rest"></div>`;
 const instEl = document.getElementById('instrument')!;

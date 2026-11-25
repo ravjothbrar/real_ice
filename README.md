@@ -4,7 +4,7 @@
 
 An open, explainable map. It fuses satellite thickness (CryoSat-2, ICESat-2/SMOS), OSI SAF ice drift and concentration, and ERA5 weather, then runs a 1,000-draw Monte Carlo on every 25 km cell. Each cell lands in a band between "survives anyway" and "hopeless". Every layer carries a four-line card: meaning, why it matters, what it is not proof of, and one real number.
 
-*Independent project built for Real Ice. Not affiliated.* It is exploratory, never a deployment recommendation, and it does not claim that thickening works or that it doesn't.
+Created by [Ravjoth Brar](https://ravjothbrar.com). It is exploratory, never a deployment recommendation, and it does not claim that thickening works or that it doesn't.
 
 Live: https://ravjothbrar.github.io/real_ice/
 
