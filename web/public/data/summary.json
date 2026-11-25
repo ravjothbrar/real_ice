@@ -3105,7 +3105,7 @@
    "meaning": "Satellite ice thickness in November, averaged across the products available that winter.",
    "why": "Thin start-of-winter ice needs more growth, or help, to reach a thickness that lasts the summer.",
    "not_proof_of": "Exact thickness: radar thickness depends on assumed snow depth and density, and early-winter retrievals are biased.",
-   "example": "November 2024: median 0.85 m in the Beaufort vs 1.96 m north of Greenland (products: cpom, petty)."
+   "example": "November 2025: median 1.30 m in the Beaufort vs 1.85 m north of Greenland (CryoSat-2, CPOM)."
   },
   "disagree": {
    "meaning": "Mean absolute difference between thickness products in the same cell and month.",
@@ -3135,7 +3135,7 @@
    "meaning": "Cells where thickening raises the survival probability by at least the threshold (default 0.2).",
    "why": "This is where thickening could change the outcome, not where ice survives anyway or is hopeless.",
    "not_proof_of": "A place to deploy. No ecology, community consent or logistics are included.",
-   "example": "2024/25: band 11,250 km2 (1% of Real Ice's 1,000,000 km2/yr target)."
+   "example": "2025/26: band 8,750 km2 (1% of Real Ice's 1,000,000 km2/yr target)."
   },
   "sept_freq": {
    "meaning": "Fraction of Septembers 2012-2025 with ice (concentration >= 15%) in the cell (OSI SAF).",
@@ -3147,7 +3147,7 @@
    "meaning": "Cells within 50 km of a settlement or a hand-drawn shipping corridor (approximate, not ASTD).",
    "why": "Operations near people and ships need consent and coordination.",
    "not_proof_of": "Safety elsewhere. Indigenous use areas and ringed seal habitat are not in open data: community consent required.",
-   "example": "988,750 km2 flagged; 2,500 km2 of the 2024/25 band falls inside."
+   "example": "988,750 km2 flagged; 3,750 km2 of the 2025/26 band falls inside."
   },
   "uplift": {
    "meaning": "P(survive with thickening) minus P(survive without), from 1,000 Monte Carlo draws per cell.",
@@ -3159,13 +3159,13 @@
    "meaning": "Probability the cell's ice is thick enough by mid-May to last the summer and stays in the Arctic, with no intervention.",
    "why": "The baseline every thickening scenario is measured against; this is what the hindcast tests.",
    "not_proof_of": "A forecast for one summer: it uses climatological weather, not the coming season's.",
-   "example": "2024/25: median over ice-covered cells 0.24."
+   "example": "2025/26: median over ice-covered cells 0.52."
   },
   "p_with": {
    "meaning": "The same probability with a flooding gain added wherever start ice is at least 0.6 m.",
    "why": "Its gap to P(without) is the uplift that defines the band.",
    "not_proof_of": "That the gain is achievable everywhere: it is extrapolated from one site by how cold each cell is.",
-   "example": "2024/25: median over ice-covered cells 0.28."
+   "example": "2025/26: median over ice-covered cells 0.54."
   },
   "calibration": {
    "meaning": "Two-stage growth model at Cambridge Bay, scaled by one factor alpha to the 2024/25 field result.",
@@ -3189,7 +3189,7 @@
    "meaning": "Band area against Real Ice's scale plan: energy at 8 MWh/km2, fleet from an assumed drone throughput.",
    "why": "Tests whether the plan's 1,000,000 km2/yr fits where thickening matters.",
    "not_proof_of": "Feasibility. Drone throughput is not public: the fleet number is an assumption.",
-   "example": "2024/25 band x 8 MWh/km2 = 0.09 TWh."
+   "example": "2025/26 band x 8 MWh/km2 = 0.07 TWh."
   }
  }
 }

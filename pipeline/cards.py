@@ -3,6 +3,8 @@ Example lines are computed from the exported data, never typed in."""
 import numpy as np
 from . import survival, grid
 
+PNAME = {"cpom": "CryoSat-2, CPOM", "petty": "ICESat-2/SMOS, Petty et al.", "awi": "CS2SMOS, AWI"}
+
 BOX = {  # lat0, lat1, lon0, lon1
     "Beaufort": (72, 77, -150, -130), "Fram Strait": (78, 81, -10, 10),
     "north of Greenland": (83, 87, -100, -60), "Laptev": (73, 78, 110, 135),
@@ -25,7 +27,7 @@ def _fmt(x, nd=2):
 
 
 def build(at, runs, st, summary):
-    w = max(k for k in runs if k <= 2024)
+    w = max(x["w"] for x in summary["winters"] if not x["partial"])  # the winter the map opens on
     lab = f"{w}/{str(w + 1)[-2:]}"
     r = runs[w]
     h0 = r["inputs"]["h0"]
@@ -40,7 +42,7 @@ def build(at, runs, st, summary):
     add("h0", "Satellite ice thickness in November, averaged across the products available that winter.",
         "Thin start-of-winter ice needs more growth, or help, to reach a thickness that lasts the summer.",
         "Exact thickness: radar thickness depends on assumed snow depth and density, and early-winter retrievals are biased.",
-        bh and gh and f"November {w}: median {_fmt(bh)} m in the Beaufort vs {_fmt(gh)} m north of Greenland (products: {', '.join(r['inputs'] and at.thick[w]['products'])}).")
+        bh and gh and f"November {w}: median {_fmt(bh)} m in the Beaufort vs {_fmt(gh)} m north of Greenland ({' + '.join(PNAME.get(x, x) for x in at.thick[w]['products'])}).")
     d = _med(st["disagree"], np.isfinite(st["disagree"]))
     add("disagree", "Mean absolute difference between thickness products in the same cell and month.",
         "Where products disagree, every downstream number is less certain; the spread feeds the ensemble.",
