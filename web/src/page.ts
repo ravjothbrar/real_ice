@@ -24,10 +24,12 @@ export function heroHTML(a: Atlas | null): string {
   </nav>
   <section class="hero" id="top">
     <h1 class="statement">Where thickening changes whether the ice survives.</h1>
+    <div class="hero-row">
     <p class="mono-sub">An open map of Arctic sea ice${a ? ` · ${fmtInt(a.n)} cells of 25 km` : ''}${range ? ` · <span class="nw">winters ${range}</span>` : ''} · every layer shows its weakness</p>
     <div class="hero-actions">
       <a class="pill" href="#instrument">OPEN THE INSTRUMENT ↓</a>
       ${cmdBlock([CLI[0]], 'cmd-hero')}
+    </div>
     </div>
   </section>`;
 }
