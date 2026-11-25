@@ -1,0 +1,9 @@
+data/raw/
+data/interim/*.nc
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+web/dist/
+.DS_Store
