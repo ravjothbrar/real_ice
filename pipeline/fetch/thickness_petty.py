@@ -20,7 +20,8 @@ DOI = "10.5281/zenodo.22147361"
 API = f"https://zenodo.org/api/records/{RECORD}"
 FILE_URL = API + "/files/{name}/content"
 WINTERS = range(2018, 2025)  # W = 2018..2024 (Nov W .. Apr W+1)
-BLOCK = 1 << 20
+BLOCK = 1 << 17  # 128 KB: small enough that strided day reads do not pull the gaps
+DAY_STRIDE = 3  # read days 1, 4, ..., 28 (10 days/month) of each month: keeps total network < ~200 MB
 
 
 class RangeFile(io.RawIOBase):
@@ -35,6 +36,7 @@ class RangeFile(io.RawIOBase):
         self.meta = self.cache.with_suffix(self.cache.suffix + ".blocks.json")
         m = json.loads(self.meta.read_text()) if self.meta.exists() else {}
         self.have = set(m.get("blocks", []))
+        self.block = m.get("block", block)
         self.size = size or m.get("size") or self._head()
         if not self.cache.exists():
             with open(self.cache, "wb") as f:
@@ -155,12 +157,14 @@ def fetch(read_vars, months):
         d = {}
         for v in read_vars:
             ds = h[v]
-            arr = ds[()].astype("float64")
+            days = list(range(0, ds.shape[0], DAY_STRIDE)) if ds.ndim == 3 else None
+            arr = (np.stack([ds[k] for k in days]) if days else ds[()]).astype("float64")
             fv = ds.attrs.get("_FillValue")
             if fv is not None:
                 arr[arr == np.asarray(fv).item()] = np.nan
             d[v] = arr
-        for c in ("x", "y", "lon", "lat", "time", "longitude", "latitude"):
+        d["_days_read"] = days
+        for c in ("x", "y", "time", "longitude", "latitude"):
             if c in h and c not in d:
                 d[c] = h[c][()]
         d["_attrs"] = {v: {k: (a.decode() if isinstance(a, bytes) else a) for k, a in h[v].attrs.items()
@@ -171,7 +175,7 @@ def fetch(read_vars, months):
         z = {x["key"]: x for x in meta["files"]}[name]
         used.append({"name": name, "url": FILE_URL.format(name=name), "bytes": z["size"],
                      "zenodo_checksum": z["checksum"],
-                     "bytes_read_by_range": len(rf.have) * BLOCK,
+                     "bytes_read_by_range": len(rf.have) * rf.block,
                      "sha256": None, "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"})
         h.close(); rf.close()
     m = meta["metadata"]
@@ -188,7 +192,8 @@ def fetch(read_vars, months):
         files=used,
         missing=missing,
         variables_read=list(read_vars),
-        notes="Only the listed variables were read via HTTP Range requests; no full-file downloads.",
+        notes=(f"Only the listed variables were read via HTTP Range requests, every {DAY_STRIDE}rd day of each month "
+               "(days 1,4,...,28); no full-file downloads. Monthly mean = mean of those days."),
     )
     return out, missing, fetched
 
@@ -196,6 +201,6 @@ def fetch(read_vars, months):
 if __name__ == "__main__":
     months = [m for w in WINTERS for m in (f"{w}11", f"{w + 1}04")]
     import sys
-    vs = sys.argv[1:] or ["sea_ice_thickness"]
+    vs = sys.argv[1:] or ["ice_thickness", "ice_thickness_unc"]
     o, miss, n = fetch(vs, months)
     print(len(o), "months; missing", miss, "; fetched", n / 1e6, "MB")

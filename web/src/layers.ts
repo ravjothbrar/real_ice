@@ -101,14 +101,14 @@ export function bandPaint(cls: Int8Array): { groups: PaintGroup[]; legend: Legen
   const n = cls.length;
   const groups: PaintGroup[] = [
     { key: 'low', cells: collect(n, (k) => cls[k] === 4), fill: '#11272c' },
-    { key: 'surv', cells: collect(n, (k) => cls[k] === 1), fill: 'rgba(76,201,240,0.30)' },
+    { key: 'surv', cells: collect(n, (k) => cls[k] === 1), fill: '#1a4555' },
     { key: 'hope', cells: collect(n, (k) => cls[k] === 2), fill: '#0d1517', pattern: 'dots' },
     { key: 'block', cells: collect(n, (k) => cls[k] === 3), fill: '#0a1214', pattern: 'hatch' },
     { key: 'band', cells: collect(n, (k) => cls[k] === 0), fill: MINT, glow: true },
   ];
   const legend: LegendItem[] = [
     { label: 'BAND', fill: MINT },
-    { label: 'SURVIVES ANYWAY', fill: 'rgba(76,201,240,0.45)' },
+    { label: 'SURVIVES ANYWAY', fill: '#1a4555' },
     { label: 'HOPELESS', fill: '#0d1517', pattern: 'dots' },
     { label: 'BLOCKED <0.6 M', fill: '#0a1214', pattern: 'hatch' },
     { label: 'LOW UPLIFT', fill: '#11272c', outline: true },

@@ -5,7 +5,7 @@ import type { Manifest, Summary } from './types';
 //  - dev with ?fixture=1: /dev/fixture-data/ (SYNTHETIC; never part of a production build)
 //  - otherwise: data/ (web/public/data, written by `make export`)
 function baseUrl(): string {
-  if (import.meta.env.DEV && new URLSearchParams(location.search).has('fixture')) return '/dev/fixture-data/';
+  if (import.meta.env.DEV && new URLSearchParams(location.search).has('fixture')) return 'dev/fixture-data/';
   return 'data/';
 }
 const BASE = baseUrl();
