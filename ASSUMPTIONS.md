@@ -52,3 +52,47 @@ Every guess, constant and threshold, with where it came from. Newest at the bott
 - Domain: drift crop +/-3600 km (75 km cells 24..119); particles leaving the +/-3562.5 km centre box are not retained. 7-38 seed cells per winter lie outside it (Hudson/James Bay south, Caspian): R = NaN, R_n = 0 there.
 - R is endpoint-only (brief 5.5): SIC >= 0.15 in the particle's 25 km cell on 15 Sep W+1. With 4 particles moving nearly together, R per cell is close to binary in any one winter; use the multi-winter distribution.
 - Politeness/volume: ~464 MB estimated DAP payload (ledger in data/raw/osisaf/_ledger.json; 103 MB cached compressed). Requests serial with >= 1 s between datasets (each netCDF-C OPeNDAP open issues DDS+DAS+data back to back). UA set through ~/.dodsrc (HTTP.USERAGENT).
+
+## Climate and static layers
+(pipeline/fetch/era5.py, pipeline/fetch/piomas.py, pipeline/fetch/static_layers.py, pipeline/climate.py; 25 Nov 2026)
+
+### ERA5 route and sampling
+- No CDS key. ERA5 read from Google's public ARCO-ERA5 copy (gs://gcp-public-data-arco-era5 via https://storage.googleapis.com). WeatherBench2 stores end on 10 Jan 2023, so they were not used. Every ARCO store holds one hour per chunk over the whole globe (0.25 deg chunk is about 2.3 MB). Reading those chunks directly would have cost tens of GB.
+- Cheap route: the `co/` stores on the native N320 reduced Gaussian grid. Their points run north to south, so the 81,209 points north of 45N are the first 62% of the first 512 KB blosc block. Only the leading part of byte-streams 1-3 is fetched with HTTP Range requests, and the LZ4 prefix is decoded in pure Python. Byte 0, the lowest 8 mantissa bits, is set to its midpoint. Checked against a full decode: max error 0.0033 K for T2m and 3e-8 m for snowfall. One hourly field costs about 120 KB for T2m and about 100 KB for winter snowfall.
+- T2m daily mean = mean of the 00 and 12 UTC analyses (12 h apart, so the first diurnal harmonic cancels) for 1 Nov-15 May. From 16 May to 15 Sep there is ONE analysis per day, alternating 00/12 UTC, to stay inside the budget. Winter 2024 (the paper winter) has both samples all year. This makes melt_days noisier than fdd. Check for Jun-Aug 2025, north of 70N, alternating single sample vs 2-sample mean: mean difference -0.6 days, mean absolute difference 1.8 days, 95th percentile 5 days (out of 92).
+- Snowfall: the co forecast store holds 1-hour accumulations per step (checked: not cumulative). Daily snowfall = 24 x one hourly value. The valid hour rotates through all 24 hours, v = (7 + 5*ordinal) mod 24, so the seasonal sum has no diurnal bias. Check for Nov 2024 against 4 samples/day: domain-mean ratio 0.99-1.01 (unbiased). The per-point monthly ratio IQR is 0.73-1.24, so expect roughly +/-10% per point over a 6-month season.
+- ERA5T (preliminary) is used after 30 Jun 2026. The co t2m store has no chunks for August 2026, although its attrs claim data to 31 Oct 2026. Those 31 hours were read from the 0.25 deg `ar/` store (rows 90-45N) and interpolated bilinearly to the native points. The co store ends 31 Oct 2026. Winter 2026 (partial): FDD from 1 to 17 Nov 2026 only, from the 0.25 deg `ar/` store (rows 90-45N, bilinear). melt_days and snowfall are NaN.
+- Interpolation to the 25 km grid: linear in longitude along the two bracketing Gaussian rows, then linear in latitude. Cells south of the last row held (~45.1N) are NaN. Values are kept over land; mask them with static.land.
+- Definitions: T_f = -1.8 C. fdd = sum of max(T_f - T_daily, 0) over 1 Nov W-15 May W+1. fdd_jan uses 1 Jan-15 May W+1 and fdd_mar uses 1 Jan-31 Mar W+1. melt_days = days with daily-mean T2m > 0 C, 1 May-15 Sep W+1 (max 138). snowfall = m water equivalent, 1 Nov W-30 Apr W+1.
+- Known bias: ERA5 has a warm bias in 2 m temperature over Arctic sea ice in cold, clear conditions, up to several K (Wang et al. 2019, The Cryosphere 13, 1661-1679, doi:10.5194/tc-13-1661-2019; citation from memory, check). ERA5 FDD is therefore probably biased LOW over pack ice. The calibration alpha at Cambridge Bay partly absorbs this locally, but not regionally.
+- The ~31 km ERA5 cells around Cambridge Bay mix land and sea. Over land, summer T2m runs warmer, which inflates melt_days at the coastal site.
+- CARRA2 skipped for v1.
+
+### Cambridge Bay point
+- Hamlet 69.117N, 105.06W. Real Ice reports its site is about 7 km away over water deeper than 20 m. The exact coordinates are NOT public. 69.05N, 105.10W is used as the approximate site; it is an assumption, not a location.
+- GEBCO_2026 at that point: median depth 9 m within 2 km. Only 1-11% of a 5-9 km ring around the hamlet is deeper than 20 m in GEBCO. Either GEBCO is coarse or poorly surveyed here, or the real site lies elsewhere around the bay. Do not use this point for the >20 m criterion.
+
+### PIOMAS
+- PIOMAS v2.1 monthly heff and snow, from pscfiles.apl.uw.edu/zhang/PIOMAS/data/v2.1/ (flat little-endian float32, 12 x 120 x 360 per year), with grid.dat for scalar points. It is MODEL output, not observation.
+- Linear (Delaunay) regrid in EPSG:6931. Cells more than 60 km from any PIOMAS node are NaN.
+- h_nov = Nov W, h_apr = Apr W+1, snow_apr = Apr W+1, for W = 2011-2024. heff.H2026 held only Jan-Feb 2026 when accessed, so W = 2025 is missing.
+- The PSC table labels `snow` "snow depth (water equivalent)", and the values (~0.06 m at the pole in April) fit that label. The units were taken from the table, not verified further.
+
+### Static layers (static.nc)
+- land: Natural Earth 50m land, rasterised at 5 km (25 sub-cells per cell). A cell is land when its land fraction is > 0.5; land_frac is kept as well.
+- depth: only the GEBCO_2026 15-arcsec subset for a Cambridge Bay box (106.5-103.5W, 68.6-69.6N) was fetched, through the GEBCO subsetting app's queue API. Depth = mean ocean depth of the GEBCO points in each cell, and is NaN everywhere else. A full 45-90N subset at 15 arcsec is about 1.9 GB, over the 1 GB rule. IBCAO 5.2 at 400 m is hosted on dap.ceda.ac.uk, which is not on the allowed-host list. Ravjoth needs to decide whether to fetch either.
+- excl_settlement: Natural Earth 10m populated places with latitude > 55N, buffered by 50 km. Distances are taken in EASE2 metres (equal-area, so distance distortion is small).
+- excl_protected: all zeros, "not available". No open, licence-clean pan-Arctic marine protected-area layer was reachable. Zeros do NOT mean there are no protected areas.
+- excl_shipping: hand-curated, approximate centrelines for the Northwest Passage southern route (Bering Strait, Alaska coast, Amundsen Gulf, Dolphin and Union Strait, Coronation Gulf, Cambridge Bay, Queen Maud Gulf, Rae/James Ross Strait, Franklin Strait, Peel Sound, Barrow Strait, Lancaster Sound, Baffin Bay, Davis Strait) and for the Northern Sea Route (Murmansk approach, Kara Gate, Kara Sea, Dikson, Vilkitsky Strait, Laptev, Sannikov, East Siberian Sea, Pevek, Bering Strait). Buffer 50 km. Vertices are in data/hand_curated/shipping_corridors.geojson. Not ASTD.
+- region: lon/lat boxes, applied in the order 3, 6, 7, 2, 1, 4, 5; the first match wins and land cells are 0:
+  - 3 Canadian Archipelago: lon -125..-80, lat 66.5..82; plus Nares lon -80..-60, lat 78..82
+  - 6 Baffin/Hudson/Labrador: lon -100..-45, lat 45..78
+  - 7 Bering/Okhotsk: lon >= 135E or <= -157, lat 40..66.5
+  - 2 Transpolar: lat >= 82 (all longitudes); plus lon 100..180, lat 68..82 (Laptev, East Siberian)
+  - 1 Beaufort (incl. Chukchi): lon -180..-125, lat 66.5..82
+  - 4 Barents-Kara: lon 15..100, lat 68..82; plus White Sea lon 32..45, lat 63..68
+  - 5 Greenland/Fram: lon -45..15, lat 60..82
+  - 0 other (Baltic, Gulf of Alaska, etc.)
+- web/public/data/land.json: Natural Earth 50m land clipped to >= 45N, simplified with a 0.05 deg tolerance (topology preserved), coordinates rounded to 0.001 deg.
+- Transfer: ERA5 about 1.38 GB in total (all runs and checks), single thread, identified UA, about 60k HTTP range requests. PIOMAS about 19 MB, Natural Earth about 3 MB, GEBCO 0.8 MB.
+- Cambridge Bay, winters 2023 and 2024 are the two warmest in 2011-2025 (FDD about 3,850 K day against 4,380-4,740 for the others). The 2024/25 paper winter was therefore a warm winter for this site.
