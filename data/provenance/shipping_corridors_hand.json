@@ -1,0 +1,15 @@
+{
+  "dataset": "Hand-curated approximate shipping corridors (NWP southern route, NSR)",
+  "url": "data/hand_curated/shipping_corridors.geojson",
+  "doi": null,
+  "licence": "Own work (project), CC0",
+  "files": [
+    {
+      "name": "data/hand_curated/shipping_corridors.geojson",
+      "sha256": "8cad045a814dd54e19b6fbac34c7f20175980d5909419eb32a3ad76f2e27e9a8",
+      "bytes": 2778
+    }
+  ],
+  "notes": "hand-curated, approximate, not ASTD; 50 km buffer",
+  "access_date": "2026-11-25"
+}

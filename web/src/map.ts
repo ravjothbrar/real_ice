@@ -1,4 +1,4 @@
-import { geoStereographic, geoPath, geoGraticule, geoCircle, type GeoProjection } from 'd3-geo';
+import { geoStereographic, geoPath, geoGraticule, geoCircle, geoArea, type GeoProjection } from 'd3-geo';
 import { select, type Selection } from 'd3-selection';
 import { zoom, zoomIdentity, type ZoomBehavior, type ZoomTransform } from 'd3-zoom';
 import 'd3-transition';
@@ -14,6 +14,7 @@ export interface Marker {
   kind: 'hero' | 'settlement' | 'site';
   note?: string;
   minZoom?: number;
+  labelZoom?: number; // hide the text label below this zoom (declutter)
 }
 
 export interface Region { id: string; label: string; center?: [number, number]; span?: number }
@@ -84,6 +85,7 @@ export class AtlasMap {
     svgEl.appendChild(this.gWorld);
     svgEl.appendChild(this.gMarkers);
 
+    if (land) this.land = fixWinding(land);
     this.proj = geoStereographic().rotate([45, -90]).clipAngle(CLIP).precision(0.2);
 
     // corner lattice, only for corners used by atlas cells
@@ -130,6 +132,10 @@ export class AtlasMap {
 
     new ResizeObserver(() => this.resize()).observe(el);
     this.resize();
+  }
+
+  private baseRadius(): number {
+    return this.w < 560 ? 25 : BASE_RADIUS;
   }
 
   private pointToLonLat(ev: MouseEvent): [number, number] | null {
@@ -185,7 +191,7 @@ export class AtlasMap {
     this.canvas.style.height = `${h}px`;
     this.svg.attr('width', w).attr('height', h).attr('viewBox', `0 0 ${w} ${h}`);
     const m = Math.min(w, h) < 500 ? 8 : 20;
-    this.proj.fitExtent([[m, m], [w - m, h - m]], geoCircle().center([0, 90]).radius(BASE_RADIUS)());
+    this.proj.fitExtent([[m, m], [w - m, h - m]], geoCircle().center([0, 90]).radius(this.baseRadius())());
     this.zoomer.extent([[0, 0], [w, h]]).translateExtent([[-w * 0.5, -h * 0.5], [w * 1.5, h * 1.5]]);
     const path = geoPath(this.proj);
     this.rimPath.setAttribute('d', path({ type: 'Sphere' }) ?? '');
@@ -398,6 +404,8 @@ export class AtlasMap {
       g.setAttribute('transform', `translate(${x.toFixed(1)},${y.toFixed(1)})`);
       const vis = !m.minZoom || this.t.k >= m.minZoom;
       g.style.display = vis && x > -40 && y > -40 && x < this.w + 40 && y < this.h + 40 ? '' : 'none';
+      const tx = g.querySelector('text');
+      if (tx) tx.style.display = !m.labelZoom || this.t.k >= m.labelZoom ? '' : 'none';
     });
   }
 
@@ -409,7 +417,7 @@ export class AtlasMap {
     let t = zoomIdentity;
     if (r.center && r.span) {
       const p = this.proj(r.center)!;
-      const k = BASE_RADIUS / r.span;
+      const k = this.baseRadius() / r.span;
       t = zoomIdentity.translate(this.w / 2, this.h / 2).scale(k).translate(-p[0], -p[1]);
     }
     this.svg.transition().duration(reduced() ? 0 : 600).call(this.zoomer.transform, t);
@@ -426,4 +434,24 @@ export class AtlasMap {
 
 export function reduced(): boolean {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+/** d3-geo wants clockwise exterior rings (spherical polygons); RFC 7946 GeoJSON is counter-clockwise.
+ *  Reverse any polygon whose area exceeds a hemisphere, so either convention renders as land. */
+function fixWinding(g: GeoJSON.GeoJsonObject): GeoJSON.GeoJsonObject {
+  const fixPoly = (rings: GeoJSON.Position[][]): GeoJSON.Position[][] => {
+    const poly: GeoJSON.Polygon = { type: 'Polygon', coordinates: rings };
+    return geoArea(poly) > 2 * Math.PI ? rings.map((r) => [...r].reverse()) : rings;
+  };
+  const fixGeom = (geom: GeoJSON.Geometry | null): GeoJSON.Geometry | null => {
+    if (!geom) return geom;
+    if (geom.type === 'Polygon') return { ...geom, coordinates: fixPoly(geom.coordinates) };
+    if (geom.type === 'MultiPolygon') return { ...geom, coordinates: geom.coordinates.map(fixPoly) };
+    if (geom.type === 'GeometryCollection') return { ...geom, geometries: geom.geometries.map((x) => fixGeom(x)!) };
+    return geom;
+  };
+  const o = g as GeoJSON.FeatureCollection | GeoJSON.Feature | GeoJSON.Geometry;
+  if (o.type === 'FeatureCollection') return { ...o, features: o.features.map((f) => ({ ...f, geometry: fixGeom(f.geometry)! })) } as GeoJSON.FeatureCollection;
+  if (o.type === 'Feature') return { ...o, geometry: fixGeom(o.geometry)! } as GeoJSON.Feature;
+  return fixGeom(o as GeoJSON.Geometry)!;
 }

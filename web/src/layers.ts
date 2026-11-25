@@ -28,7 +28,7 @@ export interface UILayer {
   isStatic?: boolean;
 }
 
-export const RAMP = ['#0d2329', '#103642', '#155066', '#1d7090', '#2e98bf', '#4cc9f0', '#a8e9fb'];
+export const RAMP = ['#123540', '#164556', '#1a5a71', '#21768f', '#2e98bf', '#4cc9f0', '#a8e9fb'];
 export const MINT = '#64f0c8';
 export const CYAN = '#4cc9f0';
 export const AMBER = '#f2b84b';
@@ -49,17 +49,18 @@ export const UI_LAYERS: UILayer[] = [
 ];
 export const EXCL_LAYER = { id: 'excl', label: 'EXCLUSIONS', chip: 'STATIC' };
 
-export interface Thresholds { survives: number; hopeless: number; uplift: number }
+export interface Thresholds { survives: number; hopeless: number; uplift: number; blockedFrac: number }
 
 export function thresholds(atlas: Atlas, uplift: number): Thresholds {
   const t = atlas.summary.thresholds ?? {};
-  return { survives: t.survives ?? 0.7, hopeless: t.hopeless ?? 0.2, uplift };
+  return { survives: t.survives ?? 0.7, hopeless: t.hopeless ?? 0.2, uplift, blockedFrac: t.blocked_frac ?? 0.5 };
 }
 
 export const BAND_CLASSES = ['BAND', 'SURVIVES', 'HOPELESS', 'BLOCKED', 'LOW UPLIFT'] as const;
 export type BandClass = 0 | 1 | 2 | 3 | 4 | -1;
 
-/** Classify every cell for a winter. -1 = no data. Order: blocked, survives, hopeless, band, low uplift. */
+/** Classify every cell for a winter. -1 = no data. Precedence matches pipeline/survival.py:
+ *  survives anyway > blocked (guard) > band (uplift >= threshold) > hopeless > low uplift. */
 export function classify(atlas: Atlas, w: number, t: Thresholds): Int8Array {
   const n = atlas.n;
   const out = new Int8Array(n).fill(-1);
@@ -75,10 +76,10 @@ export function classify(atlas: Atlas, w: number, t: Thresholds): Int8Array {
     const a = d('p_without', pwo[k]);
     const b = d('p_with', pw[k]);
     const u = up && up[k] !== 255 ? d('uplift', up[k]) : b - a;
-    if (bl && bl[k] !== 255 && bl[k] > 0) out[k] = 3;
-    else if (a >= t.survives) out[k] = 1;
-    else if (b <= t.hopeless) out[k] = 2;
+    if (a >= t.survives) out[k] = 1;
+    else if (bl && bl[k] !== 255 && d('blocked', bl[k]) >= t.blockedFrac) out[k] = 3;
     else if (u >= t.uplift - 1e-9) out[k] = 0;
+    else if (b <= t.hopeless) out[k] = 2;
     else out[k] = 4;
   }
   return out;

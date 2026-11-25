@@ -84,6 +84,16 @@ def build(at, runs, st, summary):
         "Ranks cells by what thickening changes, not by how thin they are.",
         "That thickening works at scale: the gain prior comes from one 1 km site, 2024/25.",
         f"Gain prior: triangular 0 / {survival.GAIN['mode']:.2f} / {survival.GAIN['max']:.2f} m, scaled by cold.")
+    pw = _med(r["p_without"], np.isfinite(r["p_without"]))
+    pf = _med(r["p_with"], np.isfinite(r["p_with"]))
+    add("p_without", "Probability the cell's ice is thick enough by mid-May to last the summer and stays in the Arctic, with no intervention.",
+        "The baseline every thickening scenario is measured against; this is what the hindcast tests.",
+        "A forecast for one summer: it uses climatological weather, not the coming season's.",
+        pw is not None and f"{lab}: median over ice-covered cells {pw:.2f}.")
+    add("p_with", "The same probability with a flooding gain added wherever start ice is at least 0.6 m.",
+        "Its gap to P(without) is the uplift that defines the band.",
+        "That the gain is achievable everywhere: it is extrapolated from one site by how cold each cell is.",
+        pf is not None and f"{lab}: median over ice-covered cells {pf:.2f}.")
     cal = summary.get("calibration")
     if cal:
         add("calibration", "Two-stage growth model at Cambridge Bay, scaled by one factor alpha to the 2024/25 field result.",

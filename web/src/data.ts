@@ -1,4 +1,5 @@
 import type { Manifest, Summary } from './types';
+import { normalizeManifest, normalizeSummary, sourcesFrom } from './normalize';
 
 // Where data comes from:
 //  - single-file build: window.__ATLAS_DATA__ (inlined by scripts/inline-single.mjs)
@@ -122,12 +123,14 @@ export class Atlas {
 }
 
 export async function loadAtlas(): Promise<{ atlas: Atlas; land: GeoJSON.GeoJsonObject | null }> {
-  const manifest = await getJSON<Manifest>('manifest.json');
-  const [summary, cells, stat, land] = await Promise.all([
-    getJSON<Summary>('summary.json').catch(() => ({}) as Summary),
+  const manifest = normalizeManifest(await getJSON<Manifest>('manifest.json'));
+  const [rawSummary, cells, stat, land] = await Promise.all([
+    getJSON<Record<string, unknown>>('summary.json').catch(() => ({})),
     getBin('cells.bin'),
     manifest.static_layers?.length ? getBin('static.bin').catch(() => null) : Promise.resolve(null),
     getJSON<GeoJSON.GeoJsonObject>('land.json').catch(() => null),
   ]);
+  manifest.sources = sourcesFrom(manifest, rawSummary);
+  const summary: Summary = normalizeSummary(rawSummary, manifest);
   return { atlas: new Atlas(manifest, summary, cells, stat), land };
 }

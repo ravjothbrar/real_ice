@@ -35,6 +35,28 @@ WINTER_LAYERS = {
 }
 
 
+THICK_SRC = "CPOM CryoSat-2 + Petty et al. IS2/SMOS fusion + AWI CS2SMOS (products vary by winter)"
+LAYER_SOURCE = {  # (source, date) shown on the cell card; {W} = winter start year
+    "sept_freq": ("OSI SAF sea-ice concentration CDR/ICDR", "Septembers 2012-2025"),
+    "fdd": ("ERA5 2 m temperature (ARCO-ERA5), climatology", "1 Nov - 15 May, all winters"),
+    "hs": ("van Dijke et al. (2022) melt regimes x ERA5 melt days", "melt season climatology"),
+    "R": ("OSI SAF sea-ice drift, Lagrangian tracking", "1 Nov -> 15 Sep, all winters"),
+    "R_sd": ("OSI SAF sea-ice drift, Lagrangian tracking", "year-to-year spread"),
+    "disagree": ("Thickness products, pairwise", "November, overlapping winters"),
+    "excluded": ("Natural Earth places + hand-drawn corridors", "static"),
+    "region": ("Atlas regions (hand-drawn)", "static"),
+    "depth": ("GEBCO bathymetry", "static"),
+    "h0": (THICK_SRC, "November {W}"), "h0_sd": (THICK_SRC, "November {W}"), "spread": (THICK_SRC, "November {W}"),
+    "h_end": ("Stefan growth model, calibrated at Cambridge Bay", "mid-May {W1}"),
+    "p_without": ("Atlas Monte Carlo, 1,000 draws", "September {W1}"),
+    "p_with": ("Atlas Monte Carlo, 1,000 draws", "September {W1}"),
+    "uplift": ("Atlas Monte Carlo, 1,000 draws", "September {W1}"),
+    "blocked": ("Atlas Monte Carlo, 0.6 m guard", "November {W}"),
+    "gain": ("Triangular prior from Real Ice field results", "winter {W}"),
+    "sept_obs": ("OSI SAF sea-ice concentration", "September {W1}"),
+}
+
+
 def q(v, s, o):
     v = np.asarray(v, float)
     b = np.rint((v - o) / s)
@@ -113,6 +135,9 @@ def main(n=1000):
                    for k, (s, o, u, tt) in {**STATIC_LAYERS, **WINTER_LAYERS}.items()},
         "classes": survival.CLASS_NAMES,
     }
+    for k, (src, date) in LAYER_SOURCE.items():
+        if k in manifest["layers"]:
+            manifest["layers"][k].update(source=src, date=date)
     summary = {
         "built": manifest["built"],
         "thresholds": {"survives_p_without": survival.THRESHOLDS["survives_p_without"],
@@ -133,7 +158,12 @@ def main(n=1000):
         "winters": winters,
         "cambridge_bay": {"lat": 69.05, "lon": -105.10, "note": "Site approximate: ~7 km from the hamlet; exact coordinates not public."},
         "sources": prov,
+        "ensemble_n": n,
     }
+    full = [x for x in winters if not x["partial"]]
+    if full:
+        summary["scale"]["arctic_ice_area_km2"] = float(np.median([x["ice_km2"] for x in full]))
+        summary["scale"]["arctic_ice_area_note"] = "Median November ice-covered area on the atlas grid (cells with a thickness retrieval)."
     summary["cards"] = cards.build(at, runs, st, summary)
     (WEB / "manifest.json").write_text(json.dumps(manifest, indent=1, default=float))
     (WEB / "summary.json").write_text(json.dumps(summary, indent=1, default=float))

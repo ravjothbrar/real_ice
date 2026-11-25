@@ -1,0 +1,15 @@
+{
+  "dataset": "AWI CryoSat-2/SMOS merged sea ice thickness (CS2SMOS), weekly L4, Northern Hemisphere",
+  "url": "https://spaces.awi.de/display/CS2SMOS",
+  "doi": null,
+  "licence": "Not read: AWI data pages unreachable from this environment. ESA catalogue page (https://earth.esa.int/eogateway/catalog/smos-cryosat-l4-sea-ice-thickness) links the ESA data T&C: https://earth.esa.int/eogateway/documents/20142/1564626/Terms-and-Conditions-for-the-use-of-ESA-Data.pdf",
+  "status": "unavailable",
+  "files": [],
+  "probe_log": [
+    "https://ftp.awi.de/sea_ice/product/cryosat2_smos/: ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+    "https://ftp.awi.de/sea_ice/: ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+    "ftp://ftp.awi.de/sea_ice/product/cryosat2_smos/: skipped (only HTTPS is carried by this environment's proxy)"
+  ],
+  "notes": "No CS2SMOS data fetched. ftp.awi.de serves FTP only (TLS reset on 443); the proxy carries HTTPS only. ESA route needs EO Sign-In (FTPS, smos-diss.eo.esa.int, not allow-listed). thick_awi_W.nc is therefore NOT produced; the 2026/27 current-season thickness is missing.",
+  "access_date": "2026-11-25"
+}

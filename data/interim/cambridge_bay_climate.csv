@@ -1,0 +1,3 @@
+# ERA5 (ARCO-ERA5) at approx. Real Ice site 69.05N 105.1W (~7 km from hamlet 69.117N 105.06W; exact site coordinates not public). fdd K day T_f=-1.8C; snowfall m w.e. Built 2026-11-25
+winter,label,fdd,fdd_jan,fdd_mar,melt_days,snowfall,partial,last_day,fdd_days
+2026,2026/27,169.7,,,,,1,2026-11-17,17

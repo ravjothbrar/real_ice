@@ -1,0 +1,145 @@
+{
+  "dataset": "IS2SMGPSIT-V1: Daily 25 km Arctic sea ice thickness and volume from fused ICESat-2 and SMOS/SMAP observations, 2018\u20132025 (v0.1)",
+  "url": "https://zenodo.org/records/22147361",
+  "doi": "10.5281/zenodo.22147361",
+  "licence": "cc-by-4.0",
+  "licence_source": "Zenodo record metadata 'license' field",
+  "authors": "Alek Petty, Cardinale, Tsamados, Gregory, Cabaj (author list per brief; Zenodo creator: Petty, Alek). ESSD preprint essd-2026-700.",
+  "publication_date": "2026-08-28",
+  "files": [
+    {
+      "name": "GPSat_multivar_201811.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_201811.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:bbd8cdf74c33bc93765d6733ae6532af",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_201904.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_201904.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:5b39d5314662b5415452fef49cb5c171",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_201911.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_201911.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:c06d0602537c53c637bf9ce854525c99",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202004.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202004.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:325f73113a448d4ee22f5002957f5a98",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202011.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202011.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:5b8af269f5d95d80f9a3d12300edd279",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202104.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202104.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:621abb51e05cc3eaf74339f17a9f4afd",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202111.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202111.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:9518301ba8fa5cae8ad40ff1d72b8334",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202204.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202204.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:3c72d1788776d97de98cbc38265de1bf",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202211.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202211.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:9b80a854be6a3a8f7b57485dcae128e6",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202304.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202304.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:c1fd433e21156690e031b7f5c505373a",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202311.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202311.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:7b21f53cf20e34574a776b685907c929",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202404.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202404.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:ca18f1978083a499b606c91a7523759e",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202411.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202411.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:972cf9507c5d87abfe8921e44850febf",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+      "name": "GPSat_multivar_202504.nc",
+      "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202504.nc/content",
+      "bytes": 149034682,
+      "zenodo_checksum": "md5:d7d5f2456d639bd05caa7da9c8efa35f",
+      "bytes_read_by_range": 21757952,
+      "sha256": null,
+      "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    }
+  ],
+  "missing": [],
+  "variables_read": [
+    "ice_thickness",
+    "ice_thickness_unc",
+    "ice_volume_per_grid_cell_area"
+  ],
+  "notes": "Only the listed variables were read via HTTP Range requests, every 3rd day of each month (days 1,4,...,28); no full-file downloads. Monthly mean = mean of those days.",
+  "access_date": "2026-11-25"
+}

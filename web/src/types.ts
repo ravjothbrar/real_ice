@@ -14,6 +14,7 @@ export interface LayerMeta {
 
 export interface Winter {
   w: number;
+  ice_km2?: number; // area of ice-capable cells modelled this winter (used for the 5% line)
   label: string;
   partial?: boolean;
   layers?: string[]; // optional: layers that carry data this winter (others treated as absent)
@@ -35,7 +36,7 @@ export interface Source {
 export interface Manifest {
   fixture?: boolean;
   built: string;
-  grid: { name?: string; res_m?: number; crop?: number; half_m?: number; cell_area_km2?: number };
+  grid: { name?: string; epsg?: number; res?: number; res_m?: number; crop?: number; half?: number; half_m?: number; cell_area_km2?: number };
   n_cells: number;
   winters: Winter[];
   default_winter?: number;
@@ -59,7 +60,7 @@ export interface Summary {
   fixture?: boolean;
   built?: string;
   ensemble_n?: number;
-  thresholds?: { survives?: number; hopeless?: number; uplift?: number; guard_m?: number };
+  thresholds?: { survives?: number; hopeless?: number; uplift?: number; guard_m?: number; blocked_frac?: number };
   scale?: {
     target_km2?: number;
     target_source?: string;
@@ -72,11 +73,14 @@ export interface Summary {
     throughput_default?: number;
     throughput_min?: number;
     throughput_max?: number;
+    share_of_ice_area?: number;
   };
   calibration?: {
     site?: string;
     winter?: number;
+    winter_label?: string;
     modelled_cm: number;
+    uncalibrated_cm?: number;
     paper_cm: number;
     modelled_range_cm?: [number, number];
     alpha?: number;
@@ -84,12 +88,13 @@ export interface Summary {
     date?: string;
     note?: string;
   };
-  hindcast?: { period?: string; source?: string; date?: string; metrics: HindcastMetric[]; verdict?: string };
+  hindcast?: { period?: string; source?: string; date?: string; metrics: HindcastMetric[]; verdict?: string; beats_both?: boolean; beats_label?: string };
   sensitivity?: {
     target?: string;
     unit?: string;
     method?: string;
     winter?: number;
+    base?: number;
     rows: { key?: string; label: string; value?: number; low?: number; high?: number; detail?: string }[];
   };
   cards?: Record<string, Card>;

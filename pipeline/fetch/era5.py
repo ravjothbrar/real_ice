@@ -15,9 +15,11 @@ the LZ4 prefix ourselves. Byte 0 (lowest 8 mantissa bits, <= 0.004 K at 250 K; <
 for snowfall) is replaced by its midpoint 0x80. Transfer ~110 KB per hourly field instead of
 ~2.3 MB for a full 0.25 deg chunk.
 
-Sampling: T2m at 00 and 12 UTC (two samples 12 h apart cancel the first diurnal harmonic at every
-longitude); daily mean = mean of the two. Snowfall: the store holds 1-hour accumulations per forecast step, so the daily total is
-estimated from 4 hourly samples (valid 09, 15, 21, 03 UTC) x 6.
+Sampling (transfer budget < 1.5 GB): T2m daily mean = mean of 00 and 12 UTC for 1 Nov - 15 May (two
+samples 12 h apart cancel the first diurnal harmonic at every longitude); 16 May - 15 Sep one analysis
+per day alternating 00/12 UTC (winter 2024 summer was cached earlier at 2/day). Snowfall: the store holds
+1-hour accumulations per forecast step, so the daily total = 24 x one hourly value whose valid hour
+rotates through all 24 hours over 24 days.
 
 Cache: data/raw/era5/<var>/<YYYYMM>.npz (daily fields on the native points), never re-downloaded.
 """
@@ -170,20 +172,32 @@ def north_index():
 
 
 def t2m_daily(day, n):
+    """Daily-mean T2m estimate. 1 Nov - 15 May: mean of 00 and 12 UTC. 16 May - 31 Oct (melt season,
+    used only for melt_days): ONE analysis per day, alternating 00 / 12 UTC on odd / even days, to stay
+    inside the transfer budget. Returns (values, n_samples)."""
     h = int((dt.datetime(day.year, day.month, day.day) - T0).total_seconds() // 3600)
+    if (day.month, day.day) >= (5, 16) and day.month <= 10:
+        hh = h + (12 if day.toordinal() % 2 == 0 else 0)
+        return read_north(f"{CO_T2M}/{hh}.0", n), 1
     a = read_north(f"{CO_T2M}/{h}.0", n); b = read_north(f"{CO_T2M}/{h + 12}.0", n)
-    return 0.5 * (a + b)
-
-
-SF_STEPS = (3, 9)   # hourly accumulations sampled at +3 h and +9 h of the 06 and 18 UTC runs
+    return 0.5 * (a + b), 2
 
 
 def sf_daily(day, n):
-    """Snowfall (m w.e. per day) estimated from 4 hourly accumulations (valid 09, 15, 21, 03 UTC) x 6.
-    The co forecast store holds 1-hour accumulations per step (checked: steps are not cumulative)."""
-    k = (dt.date(day.year, day.month, day.day) - T0.date()).days * 2   # index of 06 UTC run
-    acc = sum(np.maximum(read_north(f"{CO_SF}/{k + r}.{st}.0", n), 0) for r in (0, 1) for st in SF_STEPS)
-    return acc * (24 / (2 * len(SF_STEPS)))
+    """Daily snowfall (m w.e.) estimated from ONE hourly accumulation x 24. The co forecast store holds
+    1-hour accumulations per step (checked: steps are not cumulative). The sampled valid hour rotates
+    through all 24 hours (v = (7 + 5 * ordinal) mod 24) so the seasonal sum has no diurnal bias.
+    valid hour v in 07..18 -> 06 UTC run of `day`, step v-6; v in 19..23 -> 18 UTC run, step v-18;
+    v in 00..06 -> 18 UTC run of `day`, step v+6 (valid next day; window is 07 UTC day .. 06 UTC day+1)."""
+    k = (dt.date(day.year, day.month, day.day) - T0.date()).days * 2   # index of 06 UTC run of `day`
+    v = (7 + 5 * day.toordinal()) % 24
+    if 7 <= v <= 18:
+        run, step = k, v - 6
+    elif v >= 19:
+        run, step = k + 1, v - 18
+    else:
+        run, step = k + 1, v + 6
+    return np.maximum(read_north(f"{CO_SF}/{run}.{step}.0", n), 0) * 24.0, 1
 
 
 def co_available():
@@ -198,13 +212,14 @@ def month(var, y, m, last_day=None):
         return p
     p.parent.mkdir(parents=True, exist_ok=True)
     lat, lon, n = north_index()
-    d = dt.date(y, m, 1); days, vals = [], []
+    d = dt.date(y, m, 1); days, vals, ns = [], [], []
     while d.month == m and (last_day is None or d <= last_day):
-        vals.append((t2m_daily if var == "t2m" else sf_daily)(d, n).astype(np.float32))
+        v, k = (t2m_daily if var == "t2m" else sf_daily)(d, n)
+        vals.append(v.astype(np.float32)); ns.append(k)
         days.append(d.isoformat()); d += dt.timedelta(days=1)
     partial = last_day is not None and dt.date(y, m, 28) > last_day and len(days) < 28
     out = p if not partial else p.with_name(p.stem + "_partial.npz")
-    np.savez_compressed(out, days=np.array(days), v=np.stack(vals))
+    np.savez_compressed(out, days=np.array(days), v=np.stack(vals), nsamp=np.array(ns))
     return out
 
 
@@ -297,7 +312,7 @@ def fetch(winters=range(2011, 2027), log=print):
                 doi="10.24381/cds.adbb2d47 (ERA5 hourly single levels); Hersbach et al. 2020, QJRMS, 10.1002/qj.3803; ARCO-ERA5: Carver & Merose 2023",
                 licence="Copernicus Climate Change Service (C3S) licence / CC-BY 4.0 (ERA5); contains modified Copernicus Climate Change Service information. ARCO-ERA5 copy by Google Research, distributed under the same terms.",
                 files=[{"name": "data/raw/era5/{t2m,sf}/YYYYMM.npz (daily fields north of 45N, native N320 points)", "sha256": None, "bytes": None}],
-                notes=f"Partial HTTP range reads of blosc block 0 (lat>=45N), low mantissa byte dropped (midpoint). T2m at 00+12 UTC; snowfall = 6 x sum of 1-h accumulations valid 09/15/21/03 UTC (06+18 UTC runs, steps 3 and 9). Transfer {STATS['bytes'] / 1e6:.0f} MB this run in {STATS['requests']} requests. ERA5T (preliminary) after valid_time_stop. Warm bias over sea ice in cold conditions (Wang et al. 2019).")
+                notes=f"Partial HTTP range reads of blosc block 0 (lat>=45N), low mantissa byte dropped (midpoint). T2m daily mean = mean of 00+12 UTC for 1 Nov-15 May, one analysis/day alternating 00/12 UTC for 16 May-15 Sep (winter 2024 Jun-Sep cached earlier at 2/day); snowfall = 24 x one 1-h accumulation per day, valid hour rotating through 24 h (Nov 2024 also at 4/day for a sampling check). Transfer {STATS['bytes'] / 1e6:.0f} MB this run in {STATS['requests']} requests. ERA5T (preliminary) after valid_time_stop. Warm bias over sea ice in cold conditions (Wang et al. 2019).")
 
 
 if __name__ == "__main__":

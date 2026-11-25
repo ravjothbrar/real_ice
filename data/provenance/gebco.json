@@ -1,0 +1,15 @@
+{
+  "dataset": "GEBCO_2026 Grid (15 arc-second), subset via GEBCO subsetting app",
+  "url": "https://download.gebco.net/ (api/queue, grid gebco_2026_global, NetCDF)",
+  "doi": "10.5285/4f68d5c7-45eb-f999-e063-7086abc036fa (GEBCO Compilation Group (2026) GEBCO 2026 Grid)",
+  "licence": "Public domain (file metadata: 'The GEBCO Grid is placed in the public domain and may be used free of charge'); conditions of use at gebco.net ask for acknowledgement and state it is not for navigation.",
+  "files": [
+    {
+      "name": "data/raw/gebco/gebco_2026_cambridge_bay.zip",
+      "sha256": "58f7b96a178ea39e91f23eb73a112f2c4ca2da6a1382a106cd80e2b845a21b92",
+      "bytes": 770844
+    }
+  ],
+  "notes": "GEBCO_2026 15-arcsec subset {'left': -106.5, 'right': -103.5, 'top': 69.6, 'bottom': 68.6}; depth at approx. site 69.05N 105.10W within 2 km: median 9 m (range -2..35 m)",
+  "access_date": "2026-11-25"
+}
