@@ -1,0 +1,461 @@
+{
+ "built": "2026-11-25",
+ "grid": {
+  "epsg": 6931,
+  "res": 25000.0,
+  "crop": 360,
+  "half": 4500000.0,
+  "cell_area_km2": 625.0
+ },
+ "n_cells": 17736,
+ "winters": [
+  {
+   "w": 2011,
+   "label": "2011/12",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7659375.0,
+   "band_km2": 14375.0,
+   "survives_km2": 2916875.0,
+   "hopeless_km2": 2392500.0,
+   "blocked_km2": 658125.0,
+   "below_km2": 1677500.0,
+   "band_excl_km2": 2500.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2012,
+   "label": "2012/13",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7315625.0,
+   "band_km2": 4375.0,
+   "survives_km2": 2917500.0,
+   "hopeless_km2": 2095000.0,
+   "blocked_km2": 592500.0,
+   "below_km2": 1706250.0,
+   "band_excl_km2": 1250.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2013,
+   "label": "2013/14",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7788125.0,
+   "band_km2": 2500.0,
+   "survives_km2": 2961875.0,
+   "hopeless_km2": 2514375.0,
+   "blocked_km2": 395625.0,
+   "below_km2": 1913750.0,
+   "band_excl_km2": 0.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2014,
+   "label": "2014/15",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7856250.0,
+   "band_km2": 5625.0,
+   "survives_km2": 2935000.0,
+   "hopeless_km2": 2627500.0,
+   "blocked_km2": 445625.0,
+   "below_km2": 1842500.0,
+   "band_excl_km2": 625.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2015,
+   "label": "2015/16",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7995000.0,
+   "band_km2": 7500.0,
+   "survives_km2": 3016875.0,
+   "hopeless_km2": 2469375.0,
+   "blocked_km2": 599375.0,
+   "below_km2": 1901875.0,
+   "band_excl_km2": 2500.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2016,
+   "label": "2016/17",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7088125.0,
+   "band_km2": 3750.0,
+   "survives_km2": 3006875.0,
+   "hopeless_km2": 1783750.0,
+   "blocked_km2": 613125.0,
+   "below_km2": 1680625.0,
+   "band_excl_km2": 1250.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2017,
+   "label": "2017/18",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7703125.0,
+   "band_km2": 25000.0,
+   "survives_km2": 3059375.0,
+   "hopeless_km2": 2326250.0,
+   "blocked_km2": 526875.0,
+   "below_km2": 1765625.0,
+   "band_excl_km2": 2500.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2018,
+   "label": "2018/19",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9601250.0,
+   "band_km2": 36250.0,
+   "survives_km2": 3050000.0,
+   "hopeless_km2": 2262500.0,
+   "blocked_km2": 2673125.0,
+   "below_km2": 1579375.0,
+   "band_excl_km2": 20000.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2019,
+   "label": "2019/20",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9144375.0,
+   "band_km2": 31250.0,
+   "survives_km2": 3018125.0,
+   "hopeless_km2": 2388750.0,
+   "blocked_km2": 2127500.0,
+   "below_km2": 1578750.0,
+   "band_excl_km2": 8750.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2020,
+   "label": "2020/21",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 8831875.0,
+   "band_km2": 28125.0,
+   "survives_km2": 2978125.0,
+   "hopeless_km2": 1895625.0,
+   "blocked_km2": 2448125.0,
+   "below_km2": 1481875.0,
+   "band_excl_km2": 11250.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2021,
+   "label": "2021/22",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9772500.0,
+   "band_km2": 27500.0,
+   "survives_km2": 3057500.0,
+   "hopeless_km2": 2677500.0,
+   "blocked_km2": 2223125.0,
+   "below_km2": 1786875.0,
+   "band_excl_km2": 4375.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2022,
+   "label": "2022/23",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9514375.0,
+   "band_km2": 23750.0,
+   "survives_km2": 3109375.0,
+   "hopeless_km2": 2525000.0,
+   "blocked_km2": 2101250.0,
+   "below_km2": 1755000.0,
+   "band_excl_km2": 8125.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2023,
+   "label": "2023/24",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9535000.0,
+   "band_km2": 17500.0,
+   "survives_km2": 3087500.0,
+   "hopeless_km2": 2492500.0,
+   "blocked_km2": 2288125.0,
+   "below_km2": 1649375.0,
+   "band_excl_km2": 6250.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2024,
+   "label": "2024/25",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9011250.0,
+   "band_km2": 11250.0,
+   "survives_km2": 2978125.0,
+   "hopeless_km2": 1922500.0,
+   "blocked_km2": 2669375.0,
+   "below_km2": 1430000.0,
+   "band_excl_km2": 2500.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2025,
+   "label": "2025/26",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7208750.0,
+   "band_km2": 8750.0,
+   "survives_km2": 3018125.0,
+   "hopeless_km2": 1968125.0,
+   "blocked_km2": 315000.0,
+   "below_km2": 1898750.0,
+   "band_excl_km2": 3750.0,
+   "observed_next_sept": false
+  },
+  {
+   "w": 2026,
+   "label": "2026/27",
+   "partial": true,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 5948125.0,
+   "band_km2": 3125.0,
+   "survives_km2": 2688125.0,
+   "hopeless_km2": 1389375.0,
+   "blocked_km2": 565625.0,
+   "below_km2": 1301875.0,
+   "band_excl_km2": 1250.0,
+   "observed_next_sept": false
+  }
+ ],
+ "static_layers": [
+  "sept_freq",
+  "fdd",
+  "hs",
+  "R",
+  "R_sd",
+  "disagree",
+  "excluded",
+  "region",
+  "depth"
+ ],
+ "winter_layers": [
+  "h0",
+  "h0_sd",
+  "spread",
+  "h_end",
+  "p_without",
+  "p_with",
+  "uplift",
+  "blocked",
+  "gain",
+  "sept_obs"
+ ],
+ "layers": {
+  "sept_freq": {
+   "scale": 0.003937007874015748,
+   "offset": 0.0,
+   "unit": "fraction",
+   "title": "September ice presence 2012-2025 (observed)",
+   "source": "OSI SAF sea-ice concentration CDR/ICDR",
+   "date": "Septembers 2012-2025"
+  },
+  "fdd": {
+   "scale": 25.0,
+   "offset": 0.0,
+   "unit": "K day",
+   "title": "Freezing degree days (ERA5 climatology)",
+   "source": "ERA5 2 m temperature (ARCO-ERA5), climatology",
+   "date": "1 Nov - 15 May, all winters"
+  },
+  "hs": {
+   "scale": 0.015,
+   "offset": 0.0,
+   "unit": "m",
+   "title": "Survival thickness",
+   "source": "van Dijke et al. (2022) melt regimes x ERA5 melt days",
+   "date": "melt season climatology"
+  },
+  "R": {
+   "scale": 0.003937007874015748,
+   "offset": 0.0,
+   "unit": "fraction",
+   "title": "Retention to 15 September",
+   "source": "OSI SAF sea-ice drift, Lagrangian tracking",
+   "date": "1 Nov -> 15 Sep, all winters"
+  },
+  "R_sd": {
+   "scale": 0.003937007874015748,
+   "offset": 0.0,
+   "unit": "fraction",
+   "title": "Retention year-to-year spread",
+   "source": "OSI SAF sea-ice drift, Lagrangian tracking",
+   "date": "year-to-year spread"
+  },
+  "disagree": {
+   "scale": 0.01,
+   "offset": 0.0,
+   "unit": "m",
+   "title": "Thickness product disagreement",
+   "source": "Thickness products, pairwise",
+   "date": "November, overlapping winters"
+  },
+  "excluded": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "bits",
+   "title": "Exclusions: 1 settlement, 2 protected, 4 shipping",
+   "source": "Natural Earth places + hand-drawn corridors",
+   "date": "static"
+  },
+  "region": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "code",
+   "title": "Region",
+   "source": "Atlas regions (hand-drawn)",
+   "date": "static"
+  },
+  "depth": {
+   "scale": 5.0,
+   "offset": 0.0,
+   "unit": "m",
+   "title": "Water depth",
+   "source": "GEBCO bathymetry",
+   "date": "static"
+  },
+  "h0": {
+   "scale": 0.025,
+   "offset": 0.0,
+   "unit": "m",
+   "title": "Start-of-winter thickness (November)",
+   "source": "CPOM CryoSat-2 + Petty et al. IS2/SMOS fusion + AWI CS2SMOS (products vary by winter)",
+   "date": "November {W}"
+  },
+  "h0_sd": {
+   "scale": 0.01,
+   "offset": 0.0,
+   "unit": "m",
+   "title": "Start thickness uncertainty",
+   "source": "CPOM CryoSat-2 + Petty et al. IS2/SMOS fusion + AWI CS2SMOS (products vary by winter)",
+   "date": "November {W}"
+  },
+  "spread": {
+   "scale": 0.01,
+   "offset": 0.0,
+   "unit": "m",
+   "title": "Between-product spread",
+   "source": "CPOM CryoSat-2 + Petty et al. IS2/SMOS fusion + AWI CS2SMOS (products vary by winter)",
+   "date": "November {W}"
+  },
+  "h_end": {
+   "scale": 0.025,
+   "offset": 0.0,
+   "unit": "m",
+   "title": "Modelled mid-May thickness",
+   "source": "Stefan growth model, calibrated at Cambridge Bay",
+   "date": "mid-May {W1}"
+  },
+  "p_without": {
+   "scale": 0.003937007874015748,
+   "offset": 0.0,
+   "unit": "probability",
+   "title": "P(survive) without thickening",
+   "source": "Atlas Monte Carlo, 1,000 draws",
+   "date": "September {W1}"
+  },
+  "p_with": {
+   "scale": 0.003937007874015748,
+   "offset": 0.0,
+   "unit": "probability",
+   "title": "P(survive) with thickening",
+   "source": "Atlas Monte Carlo, 1,000 draws",
+   "date": "September {W1}"
+  },
+  "uplift": {
+   "scale": 0.003937007874015748,
+   "offset": 0.0,
+   "unit": "probability",
+   "title": "Uplift",
+   "source": "Atlas Monte Carlo, 1,000 draws",
+   "date": "September {W1}"
+  },
+  "blocked": {
+   "scale": 0.003937007874015748,
+   "offset": 0.0,
+   "unit": "fraction",
+   "title": "Share of draws below the 0.6 m guard",
+   "source": "Atlas Monte Carlo, 0.6 m guard",
+   "date": "November {W}"
+  },
+  "gain": {
+   "scale": 0.005,
+   "offset": 0.0,
+   "unit": "m",
+   "title": "Mean flooding gain applied",
+   "source": "Triangular prior from Real Ice field results",
+   "date": "winter {W}"
+  },
+  "sept_obs": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "0/1",
+   "title": "Ice observed in the following September",
+   "source": "OSI SAF sea-ice concentration",
+   "date": "September {W1}"
+  }
+ },
+ "classes": {
+  "0": "BELOW THRESHOLD",
+  "1": "SURVIVES ANYWAY",
+  "2": "BAND",
+  "3": "HOPELESS",
+  "4": "BLOCKED (<0.6 m)"
+ },
+ "default_winter": 2025
+}

@@ -1,0 +1,9 @@
+{
+ "model": 0.843,
+ "thermo_margin": 0.931,
+ "R_clim": 0.786,
+ "thin": 0.862,
+ "edge": 0.918,
+ "sept_clim_loo": 0.956,
+ "share_thermo_margin_positive": 0.677
+}

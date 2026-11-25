@@ -57,6 +57,21 @@ LAYER_SOURCE = {  # (source, date) shown on the cell card; {W} = winter start ye
 }
 
 
+def clean(o):
+    """Strict JSON: NaN/inf -> null, numpy scalars -> python."""
+    if isinstance(o, dict):
+        return {str(k): clean(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [clean(v) for v in o]
+    if isinstance(o, (np.floating, float)):
+        return None if not np.isfinite(o) else float(o)
+    if isinstance(o, np.integer):
+        return int(o)
+    if isinstance(o, np.bool_):
+        return bool(o)
+    return o
+
+
 def q(v, s, o):
     v = np.asarray(v, float)
     b = np.rint((v - o) / s)
@@ -134,6 +149,7 @@ def main(n=1000):
         "layers": {k: {"scale": s, "offset": o, "unit": u, "title": tt}
                    for k, (s, o, u, tt) in {**STATIC_LAYERS, **WINTER_LAYERS}.items()},
         "classes": survival.CLASS_NAMES,
+        "default_winter": max(x["w"] for x in winters if not x["partial"]),
     }
     for k, (src, date) in LAYER_SOURCE.items():
         if k in manifest["layers"]:
@@ -159,14 +175,24 @@ def main(n=1000):
         "cambridge_bay": {"lat": 69.05, "lon": -105.10, "note": "Site approximate: ~7 km from the hamlet; exact coordinates not public."},
         "sources": prov,
         "ensemble_n": n,
+        "hindcast_diagnosis": json.loads((INTERIM / "diagnose.json").read_text()) if (INTERIM / "diagnose.json").exists() else None,
     }
     full = [x for x in winters if not x["partial"]]
     if full:
         summary["scale"]["arctic_ice_area_km2"] = float(np.median([x["ice_km2"] for x in full]))
         summary["scale"]["arctic_ice_area_note"] = "Median November ice-covered area on the atlas grid (cells with a thickness retrieval)."
+    dg = summary.get("hindcast_diagnosis")
+    if hind and dg:
+        a = hind["auc_cell_year"]
+        summary["hindcast"]["verdict"] = (
+            f"Pre-registered test: model AUC {a['model']:.3f} vs {a['baseline_thin_ice']:.3f} (thin ice) and "
+            f"{a['baseline_edge_distance']:.3f} (ice-edge distance). Post-hoc diagnosis: the growth-only part of the model "
+            f"(mid-May thickness minus survival thickness) scores {dg['thermo_margin']:.3f}, beating both; multiplying by "
+            f"drift retention ({dg['R_clim']:.3f} alone) pulls it down, because retention scores whether a cell's ice stays, "
+            f"not whether the cell has ice. A climatology of past Septembers scores {dg['sept_clim_loo']:.3f}, better than all of them.")
     summary["cards"] = cards.build(at, runs, st, summary)
-    (WEB / "manifest.json").write_text(json.dumps(manifest, indent=1, default=float))
-    (WEB / "summary.json").write_text(json.dumps(summary, indent=1, default=float))
+    (WEB / "manifest.json").write_text(json.dumps(clean(manifest), indent=1, allow_nan=False))
+    (WEB / "summary.json").write_text(json.dumps(clean(summary), indent=1, allow_nan=False))
     lj = INTERIM / "land.json"
     if lj.exists() and not (WEB / "land.json").exists():
         shutil.copy(lj, WEB / "land.json")

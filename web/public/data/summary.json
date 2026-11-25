@@ -1,0 +1,3195 @@
+{
+ "built": "2026-11-25",
+ "thresholds": {
+  "survives_p_without": 0.7,
+  "hopeless_p_with": 0.2,
+  "uplift": 0.2,
+  "blocked_frac": 0.5,
+  "guard_m": 0.6
+ },
+ "gain_prior_m": {
+  "min": 0.0,
+  "mode": 0.32,
+  "max": 0.7
+ },
+ "scale": {
+  "target_km2": 1000000,
+  "mwh_per_km2": 8.0,
+  "window_days": 90,
+  "cost_usd_per_year_at_scale": 6000000000.0,
+  "cost_usd_10yr": 43000000000.0,
+  "share_of_ice_area": 0.05,
+  "source": "Ocean Visions, Arctic sea-ice thickening roadmap page (accessed 2026)",
+  "throughput_default_km2_per_drone_day": 0.1,
+  "throughput_note": "ASSUMPTION: drone throughput is not public.",
+  "arctic_ice_area_km2": 7995000.0,
+  "arctic_ice_area_note": "Median November ice-covered area on the atlas grid (cells with a thickness retrieval)."
+ },
+ "calibration": {
+  "site": "Cambridge Bay, approx. 69.05N 105.10W (exact site not public)",
+  "winter": "2024/25",
+  "fdd_K_day": 3843.5,
+  "fdd_from_jan": 2829.7,
+  "snowfall_m_we": 0.075,
+  "uncalibrated": {
+   "control_m": 1.548050437561927,
+   "flooded_m": 1.806500018602709,
+   "diff_m": 0.25844958104078186
+  },
+  "alpha_scan": {
+   "0.5": {
+    "control_m": 0.9895851831051732,
+    "diff_m": 0.2307379541686836
+   },
+   "0.75": {
+    "control_m": 1.288776761670976,
+    "diff_m": 0.24757907328858875
+   },
+   "1.0": {
+    "control_m": 1.548050437561927,
+    "diff_m": 0.25844958104078186
+   },
+   "1.25": {
+    "control_m": 1.7800823279710714,
+    "diff_m": 0.26621683236289595
+   },
+   "1.5": {
+    "control_m": 1.9919922252041538,
+    "diff_m": 0.2721268116597182
+   },
+   "2.0": {
+    "control_m": 2.371888540768141,
+    "diff_m": 0.28066643853192197
+   },
+   "3.0": {
+    "control_m": 3.016125592904346,
+    "diff_m": 0.291146705153261
+   },
+   "6.0": {
+    "control_m": 4.486851280186716,
+    "diff_m": 0.30532723492618885
+   }
+  },
+  "alpha_for_32cm": null,
+  "alpha_for_16cm": 0.10634652937221586,
+  "alpha": 1.0,
+  "alpha_sd": 0.25,
+  "fit": "not reachable: difference saturates below 32 cm; alpha kept at 1.0",
+  "calibrated": {
+   "control_m": 1.548050437561927,
+   "flooded_m": 1.806500018602709,
+   "diff_m": 0.25844958104078186
+  },
+  "gap_to_paper_m": 0.061550418959218145,
+  "paper_diff_m": 0.32,
+  "paper": "Real Ice et al. (2026) Earth's Future, doi:10.1029/2025EF007894",
+  "piomas_crosscheck": {
+   "h_apr_m": 0.22912099957466125,
+   "radius_km": 25,
+   "note": "PIOMAS does not resolve Dease Strait; nearest cells with ice"
+  },
+  "fdd_ref_cambridge_bay_2024": 3843.5
+ },
+ "hindcast": {
+  "built": "2026-11-25",
+  "command": "python -m eval.hindcast",
+  "n_draws": 400,
+  "winters": [
+   2011,
+   2012,
+   2013,
+   2014,
+   2015,
+   2016,
+   2017,
+   2018,
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024
+  ],
+  "cell_years": 189265,
+  "cells": 13336,
+  "auc_cell_year": {
+   "model": 0.8429799028719505,
+   "baseline_thin_ice": 0.8619309645567015,
+   "baseline_edge_distance": 0.9176327386707938
+  },
+  "auc_diff_ci95_bootstrap_winters": {
+   "model_minus_baseline_thin_ice": [
+    -0.05063120203153375,
+    0.015285918373498426
+   ],
+   "model_minus_baseline_edge_distance": [
+    -0.10535176399292556,
+    -0.0375233203822375
+   ]
+  },
+  "spearman_vs_presence": {
+   "model": 0.7012663317409752,
+   "baseline_thin_ice": 0.8890521458558149,
+   "baseline_edge_distance": 0.9169108381737185
+  },
+  "band_overlap_with_marginal": {
+   "model_band": 0.06666666666666667,
+   "base_rate": 0.2671715656868626,
+   "n_band_cells": 15,
+   "baseline_thin_ice_same_k": 0.8,
+   "baseline_edge_distance_same_k": 0.9333333333333333
+  },
+  "per_winter_auc": {
+   "2011": {
+    "model": 0.782986560429849,
+    "thin": 0.8900008468891263,
+    "edge": 0.9526134287308321
+   },
+   "2012": {
+    "model": 0.8715521381861261,
+    "thin": 0.8099652347599847,
+    "edge": 0.8104128322411634
+   },
+   "2013": {
+    "model": 0.7868418126911316,
+    "thin": 0.8718617366045578,
+    "edge": 0.932608938163784
+   },
+   "2014": {
+    "model": 0.8387363981706646,
+    "thin": 0.8493897988639567,
+    "edge": 0.9224377962054586
+   },
+   "2015": {
+    "model": 0.8654499591189574,
+    "thin": 0.8596612806435542,
+    "edge": 0.9467050194376901
+   },
+   "2016": {
+    "model": 0.8696462273755,
+    "thin": 0.8704949826049371,
+    "edge": 0.9553918892093587
+   },
+   "2017": {
+    "model": 0.7979353949930857,
+    "thin": 0.8646715715032431,
+    "edge": 0.927232842904813
+   },
+   "2018": {
+    "model": 0.8419273952470326,
+    "thin": 0.9097076126913732,
+    "edge": 0.9651275200254525
+   },
+   "2019": {
+    "model": 0.799656186938013,
+    "thin": 0.8945076904427441,
+    "edge": 0.9243298179060984
+   },
+   "2020": {
+    "model": 0.8906666230994608,
+    "thin": 0.8293541417997229,
+    "edge": 0.9002305004184801
+   },
+   "2021": {
+    "model": 0.8594811975866683,
+    "thin": 0.9053861333479459,
+    "edge": 0.8971069451580835
+   },
+   "2022": {
+    "model": 0.8263382795472423,
+    "thin": 0.8902578627026249,
+    "edge": 0.9361235564073106
+   },
+   "2023": {
+    "model": 0.8955609175972352,
+    "thin": 0.8660351733206912,
+    "edge": 0.9305286791269517
+   },
+   "2024": {
+    "model": 0.8883660226385636,
+    "thin": 0.8694459687206667,
+    "edge": 0.9494947073705702
+   }
+  },
+  "beats_both": false,
+  "verdict": "Pre-registered test: model AUC 0.843 vs 0.862 (thin ice) and 0.918 (ice-edge distance). Post-hoc diagnosis: the growth-only part of the model (mid-May thickness minus survival thickness) scores 0.931, beating both; multiplying by drift retention (0.786 alone) pulls it down, because retention scores whether a cell's ice stays, not whether the cell has ice. A climatology of past Septembers scores 0.956, better than all of them."
+ },
+ "labels": {
+  "rows": [
+   {
+    "id": 1,
+    "place": "North of Ellesmere Island (Last Ice Area core)",
+    "label": "likely-survives-anyway",
+    "p_without": 0.8762946428571429,
+    "R": 0.8833333333333333
+   },
+   {
+    "id": 2,
+    "place": "North of Greenland",
+    "label": "likely-survives-anyway",
+    "p_without": 0.8273214285714285,
+    "R": 0.8333333333333334
+   },
+   {
+    "id": 3,
+    "place": "Lincoln Sea",
+    "label": "likely-survives-anyway",
+    "p_without": 0.9310714285714285,
+    "R": 0.9333333333333333
+   },
+   {
+    "id": 4,
+    "place": "Central Arctic near the North Pole",
+    "label": "likely-survives-anyway",
+    "p_without": 0.13714285714285715,
+    "R": 0.13333333333333333
+   },
+   {
+    "id": 5,
+    "place": "Canada Basin north of 80N",
+    "label": "likely-survives-anyway",
+    "p_without": 1.0,
+    "R": 1.0
+   },
+   {
+    "id": 6,
+    "place": "Queen Elizabeth Islands channels",
+    "label": "likely-survives-anyway",
+    "p_without": 0.930625,
+    "R": 0.9666666666666667
+   },
+   {
+    "id": 7,
+    "place": "Beaufort Gyre interior",
+    "label": "marginal",
+    "p_without": 0.5501785714285714,
+    "R": 0.5666666666666667
+   },
+   {
+    "id": 8,
+    "place": "Chukchi Borderland",
+    "label": "marginal",
+    "p_without": 0.8481559065934066,
+    "R": 0.9107142857142857
+   },
+   {
+    "id": 9,
+    "place": "Outer East Siberian Sea",
+    "label": "marginal",
+    "p_without": 0.7182486263736264,
+    "R": 0.8928571428571429
+   },
+   {
+    "id": 10,
+    "place": "Northern Laptev Sea / Eurasian Basin edge",
+    "label": "marginal",
+    "p_without": 0.9408035714285715,
+    "R": 0.9666666666666667
+   },
+   {
+    "id": 11,
+    "place": "Eurasian sector of the Transpolar Drift",
+    "label": "marginal",
+    "p_without": 0.5367857142857143,
+    "R": 0.5666666666666667
+   },
+   {
+    "id": 12,
+    "place": "Viscount Melville Sound (Northwest Passage)",
+    "label": "marginal",
+    "p_without": 0.32705357142857144,
+    "R": 0.5666666666666667
+   },
+   {
+    "id": 13,
+    "place": "Cambridge Bay / Dease Strait",
+    "label": "likely-melts-out",
+    "p_without": 0.2275,
+    "R": 1.0
+   },
+   {
+    "id": 14,
+    "place": "Norton Sound near Nome",
+    "label": "likely-melts-out",
+    "p_without": 0.0,
+    "R": null
+   },
+   {
+    "id": 15,
+    "place": "Hudson Bay",
+    "label": "likely-melts-out",
+    "p_without": 0.0,
+    "R": null
+   },
+   {
+    "id": 16,
+    "place": "Central Baffin Bay",
+    "label": "likely-melts-out",
+    "p_without": 0.0,
+    "R": 0.0
+   },
+   {
+    "id": 17,
+    "place": "Kara Sea",
+    "label": "likely-melts-out",
+    "p_without": 0.0015781249999999999,
+    "R": 0.05
+   },
+   {
+    "id": 18,
+    "place": "Northern Barents Sea",
+    "label": "likely-melts-out",
+    "p_without": 0.0,
+    "R": null
+   },
+   {
+    "id": 19,
+    "place": "Southern Laptev shelf",
+    "label": "likely-melts-out",
+    "p_without": 0.023269230769230768,
+    "R": 0.5166666666666667
+   },
+   {
+    "id": 20,
+    "place": "Chukchi Sea shelf",
+    "label": "likely-melts-out",
+    "p_without": 0.0,
+    "R": null
+   },
+   {
+    "id": 21,
+    "place": "Bering Sea",
+    "label": "likely-melts-out",
+    "p_without": null,
+    "R": null
+   },
+   {
+    "id": 22,
+    "place": "Fram Strait",
+    "label": "export-zone",
+    "p_without": 0.0,
+    "R": 0.0
+   },
+   {
+    "id": 23,
+    "place": "East Greenland Sea",
+    "label": "export-zone",
+    "p_without": 0.0,
+    "R": 0.0
+   },
+   {
+    "id": 24,
+    "place": "Nares Strait",
+    "label": "export-zone",
+    "p_without": 0.8457692307692307,
+    "R": 0.8666666666666667
+   },
+   {
+    "id": 25,
+    "place": "Transpolar Drift approach to Fram Strait",
+    "label": "export-zone",
+    "p_without": 0.06221153846153846,
+    "R": 0.06666666666666667
+   }
+  ],
+  "by_label": {
+   "export-zone": {
+    "p_without": 0.227,
+    "R": 0.233
+   },
+   "likely-melts-out": {
+    "p_without": 0.032,
+    "R": 0.392
+   },
+   "likely-survives-anyway": {
+    "p_without": 0.784,
+    "R": 0.792
+   },
+   "marginal": {
+    "p_without": 0.654,
+    "R": 0.745
+   }
+  }
+ },
+ "sensitivity": {
+  "winter": 2024,
+  "n_draws": 1000,
+  "base_band_km2": 11250.0,
+  "method": "one-at-a-time, common random numbers",
+  "factors": [
+   {
+    "factor": "h0_shift",
+    "label": "Start-of-winter thickness",
+    "low": {
+     "h0_shift": -0.2
+    },
+    "high": {
+     "h0_shift": 0.2
+    },
+    "band_km2_low": 3125.0,
+    "band_km2_high": 70000.0,
+    "swing_km2": 66875.0
+   },
+   {
+    "factor": "gain_scale",
+    "label": "Flooding gain G",
+    "low": {
+     "gain_scale": 0.5
+    },
+    "high": {
+     "gain_scale": 1.5
+    },
+    "band_km2_low": 0.0,
+    "band_km2_high": 48750.0,
+    "swing_km2": 48750.0
+   },
+   {
+    "factor": "threshold",
+    "label": "Uplift threshold",
+    "low": {
+     "threshold": 0.15
+    },
+    "high": {
+     "threshold": 0.25
+    },
+    "band_km2_low": 45625.0,
+    "band_km2_high": 3750.0,
+    "swing_km2": 41875.0
+   },
+   {
+    "factor": "guard",
+    "label": "Thin-ice guard (0.6 m)",
+    "low": {
+     "guard": 0.5
+    },
+    "high": {
+     "guard": 0.7
+    },
+    "band_km2_low": 32500.0,
+    "band_km2_high": 4375.0,
+    "swing_km2": 28125.0
+   },
+   {
+    "factor": "hs_scale",
+    "label": "Survival thickness (melt rate x melt days)",
+    "low": {
+     "hs_scale": 0.8
+    },
+    "high": {
+     "hs_scale": 1.2
+    },
+    "band_km2_low": 5625.0,
+    "band_km2_high": 21250.0,
+    "swing_km2": 15625.0
+   },
+   {
+    "factor": "snow_scale",
+    "label": "Snow insulation",
+    "low": {
+     "snow_scale": 0.5
+    },
+    "high": {
+     "snow_scale": 1.5
+    },
+    "band_km2_low": 7500.0,
+    "band_km2_high": 14375.0,
+    "swing_km2": 6875.0
+   },
+   {
+    "factor": "R_shift",
+    "label": "Retention (drift export)",
+    "low": {
+     "R_shift": -0.15
+    },
+    "high": {
+     "R_shift": 0.15
+    },
+    "band_km2_low": 5625.0,
+    "band_km2_high": 11875.0,
+    "swing_km2": 6250.0
+   },
+   {
+    "factor": "fdd_scale",
+    "label": "Freezing degree days (ERA5)",
+    "low": {
+     "fdd_scale": 0.9
+    },
+    "high": {
+     "fdd_scale": 1.1
+    },
+    "band_km2_low": 8750.0,
+    "band_km2_high": 10625.0,
+    "swing_km2": 1875.0
+   }
+  ]
+ },
+ "winters": [
+  {
+   "w": 2011,
+   "label": "2011/12",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7659375.0,
+   "band_km2": 14375.0,
+   "survives_km2": 2916875.0,
+   "hopeless_km2": 2392500.0,
+   "blocked_km2": 658125.0,
+   "below_km2": 1677500.0,
+   "band_excl_km2": 2500.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2012,
+   "label": "2012/13",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7315625.0,
+   "band_km2": 4375.0,
+   "survives_km2": 2917500.0,
+   "hopeless_km2": 2095000.0,
+   "blocked_km2": 592500.0,
+   "below_km2": 1706250.0,
+   "band_excl_km2": 1250.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2013,
+   "label": "2013/14",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7788125.0,
+   "band_km2": 2500.0,
+   "survives_km2": 2961875.0,
+   "hopeless_km2": 2514375.0,
+   "blocked_km2": 395625.0,
+   "below_km2": 1913750.0,
+   "band_excl_km2": 0.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2014,
+   "label": "2014/15",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7856250.0,
+   "band_km2": 5625.0,
+   "survives_km2": 2935000.0,
+   "hopeless_km2": 2627500.0,
+   "blocked_km2": 445625.0,
+   "below_km2": 1842500.0,
+   "band_excl_km2": 625.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2015,
+   "label": "2015/16",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7995000.0,
+   "band_km2": 7500.0,
+   "survives_km2": 3016875.0,
+   "hopeless_km2": 2469375.0,
+   "blocked_km2": 599375.0,
+   "below_km2": 1901875.0,
+   "band_excl_km2": 2500.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2016,
+   "label": "2016/17",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7088125.0,
+   "band_km2": 3750.0,
+   "survives_km2": 3006875.0,
+   "hopeless_km2": 1783750.0,
+   "blocked_km2": 613125.0,
+   "below_km2": 1680625.0,
+   "band_excl_km2": 1250.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2017,
+   "label": "2017/18",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7703125.0,
+   "band_km2": 25000.0,
+   "survives_km2": 3059375.0,
+   "hopeless_km2": 2326250.0,
+   "blocked_km2": 526875.0,
+   "below_km2": 1765625.0,
+   "band_excl_km2": 2500.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2018,
+   "label": "2018/19",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9601250.0,
+   "band_km2": 36250.0,
+   "survives_km2": 3050000.0,
+   "hopeless_km2": 2262500.0,
+   "blocked_km2": 2673125.0,
+   "below_km2": 1579375.0,
+   "band_excl_km2": 20000.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2019,
+   "label": "2019/20",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9144375.0,
+   "band_km2": 31250.0,
+   "survives_km2": 3018125.0,
+   "hopeless_km2": 2388750.0,
+   "blocked_km2": 2127500.0,
+   "below_km2": 1578750.0,
+   "band_excl_km2": 8750.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2020,
+   "label": "2020/21",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 8831875.0,
+   "band_km2": 28125.0,
+   "survives_km2": 2978125.0,
+   "hopeless_km2": 1895625.0,
+   "blocked_km2": 2448125.0,
+   "below_km2": 1481875.0,
+   "band_excl_km2": 11250.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2021,
+   "label": "2021/22",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9772500.0,
+   "band_km2": 27500.0,
+   "survives_km2": 3057500.0,
+   "hopeless_km2": 2677500.0,
+   "blocked_km2": 2223125.0,
+   "below_km2": 1786875.0,
+   "band_excl_km2": 4375.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2022,
+   "label": "2022/23",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9514375.0,
+   "band_km2": 23750.0,
+   "survives_km2": 3109375.0,
+   "hopeless_km2": 2525000.0,
+   "blocked_km2": 2101250.0,
+   "below_km2": 1755000.0,
+   "band_excl_km2": 8125.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2023,
+   "label": "2023/24",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9535000.0,
+   "band_km2": 17500.0,
+   "survives_km2": 3087500.0,
+   "hopeless_km2": 2492500.0,
+   "blocked_km2": 2288125.0,
+   "below_km2": 1649375.0,
+   "band_excl_km2": 6250.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2024,
+   "label": "2024/25",
+   "partial": false,
+   "products": [
+    "cpom",
+    "petty"
+   ],
+   "ice_km2": 9011250.0,
+   "band_km2": 11250.0,
+   "survives_km2": 2978125.0,
+   "hopeless_km2": 1922500.0,
+   "blocked_km2": 2669375.0,
+   "below_km2": 1430000.0,
+   "band_excl_km2": 2500.0,
+   "observed_next_sept": true
+  },
+  {
+   "w": 2025,
+   "label": "2025/26",
+   "partial": false,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 7208750.0,
+   "band_km2": 8750.0,
+   "survives_km2": 3018125.0,
+   "hopeless_km2": 1968125.0,
+   "blocked_km2": 315000.0,
+   "below_km2": 1898750.0,
+   "band_excl_km2": 3750.0,
+   "observed_next_sept": false
+  },
+  {
+   "w": 2026,
+   "label": "2026/27",
+   "partial": true,
+   "products": [
+    "cpom"
+   ],
+   "ice_km2": 5948125.0,
+   "band_km2": 3125.0,
+   "survives_km2": 2688125.0,
+   "hopeless_km2": 1389375.0,
+   "blocked_km2": 565625.0,
+   "below_km2": 1301875.0,
+   "band_excl_km2": 1250.0,
+   "observed_next_sept": false
+  }
+ ],
+ "cambridge_bay": {
+  "lat": 69.05,
+  "lon": -105.1,
+  "note": "Site approximate: ~7 km from the hamlet; exact coordinates not public."
+ },
+ "sources": {
+  "era5_arco": {
+   "dataset": "ERA5 hourly reanalysis (2 m temperature analysis; snowfall 1-h accumulations from 06/18 UTC forecasts), ARCO-ERA5 copy",
+   "url": "https://storage.googleapis.com/gcp-public-data-arco-era5/co/ (single-level-reanalysis.zarr-v2 t2m, single-level-forecast.zarr-v2 sf); ar/full_37-1h-0p25deg-chunk-1.zarr-v3 for the ERA5T tail",
+   "doi": "10.24381/cds.adbb2d47 (ERA5 hourly single levels); Hersbach et al. 2020, QJRMS, 10.1002/qj.3803; ARCO-ERA5: Carver & Merose 2023",
+   "licence": "Copernicus Climate Change Service (C3S) licence / CC-BY 4.0 (ERA5); contains modified Copernicus Climate Change Service information. ARCO-ERA5 copy by Google Research, distributed under the same terms.",
+   "files": [
+    {
+     "name": "data/raw/era5/ar_t2m/20261101_20261117.npz",
+     "sha256": "ca4495c187228d62ed84ae703ad3fdb8ce08c35ffebcb31e11c39e17f81eac75",
+     "bytes": 10299527
+    },
+    {
+     "name": "data/raw/era5/check_t2m00_2025JJA.npz",
+     "sha256": "d624875eebccbd68509dbf48805c936b3cf4c0771b6bd0d349eb29759f110020",
+     "bytes": 13843513
+    },
+    {
+     "name": "data/raw/era5/co_n320_latlon.npz",
+     "sha256": "2394d61763c9909bf06968720b598fe1e73a8f27fd7a6b9747cf082aa089de6d",
+     "bytes": 8673778
+    },
+    {
+     "name": "data/raw/era5/sf/201111.npz",
+     "sha256": "f676bb101d5a8438a2a75090bb7d5b4481ff8b4f7110c394ffe2fad0982b77c7",
+     "bytes": 2973329
+    },
+    {
+     "name": "data/raw/era5/sf/201112.npz",
+     "sha256": "18c6cb8e409a44faf29fbd7598ffcde641eaef7c64940cddb097bc6bb1a35efd",
+     "bytes": 3507949
+    },
+    {
+     "name": "data/raw/era5/sf/201201.npz",
+     "sha256": "0ae826af4b2fc7b2f90998c1e01fdb67b9f4a72f1b216cad1aa02aba719a3448",
+     "bytes": 3466751
+    },
+    {
+     "name": "data/raw/era5/sf/201202.npz",
+     "sha256": "bb42af50389f4524f68da2ae90253a79600808bfb81c3193af0215b36cad2c8b",
+     "bytes": 3106023
+    },
+    {
+     "name": "data/raw/era5/sf/201203.npz",
+     "sha256": "aa31fbd6ac4d3923d104c29774579b4b8f721e595f6b9987134f9c13ae290857",
+     "bytes": 3225275
+    },
+    {
+     "name": "data/raw/era5/sf/201204.npz",
+     "sha256": "fe4c34e6174ce064298e8ebc840a8d7a9a6746566e23f412ae331457356d07cc",
+     "bytes": 2420005
+    },
+    {
+     "name": "data/raw/era5/sf/201211.npz",
+     "sha256": "c0807f3090486aad0374e1038f8984aa32954c24e245c0e6a50adc8d512a457f",
+     "bytes": 2939800
+    },
+    {
+     "name": "data/raw/era5/sf/201212.npz",
+     "sha256": "20ae06e7b7720d6bd84fe5e337945774312f853d3ac153e4823788f7080b8289",
+     "bytes": 3433533
+    },
+    {
+     "name": "data/raw/era5/sf/201301.npz",
+     "sha256": "bbe3f2ad462f29570c6d8adefdda6bdfa864a70de92d1bd8dfa31da780aede2b",
+     "bytes": 3387055
+    },
+    {
+     "name": "data/raw/era5/sf/201302.npz",
+     "sha256": "cf9e8173f9c19c10584947c056735cab0741c2fa8efee1dc41004c86c04ffc47",
+     "bytes": 3036819
+    },
+    {
+     "name": "data/raw/era5/sf/201303.npz",
+     "sha256": "e57f6a08342b8d554b19de5f3ad6caa470340b9af5e7f5cafcc92e9aeae3fc28",
+     "bytes": 3106394
+    },
+    {
+     "name": "data/raw/era5/sf/201304.npz",
+     "sha256": "9da7255d5d8cc43f38cfa72ca5027142c95882473eda9eb45bd8e93f461229f3",
+     "bytes": 2418329
+    },
+    {
+     "name": "data/raw/era5/sf/201311.npz",
+     "sha256": "b52236f845a05e9ece39d8dcfe7222fcdfc1bde7649e559ff4d3d33268c2bb7d",
+     "bytes": 2886297
+    },
+    {
+     "name": "data/raw/era5/sf/201312.npz",
+     "sha256": "949a093d406b515c87d417ee82b01ca52b5e8243f0afdb539b67d8e350ea82fa",
+     "bytes": 3393490
+    },
+    {
+     "name": "data/raw/era5/sf/201401.npz",
+     "sha256": "a18f9b6aeefb959f2de716cfca01a517f67bb44d066d511eda7672a69b304b3b",
+     "bytes": 3339928
+    },
+    {
+     "name": "data/raw/era5/sf/201402.npz",
+     "sha256": "5081eb25142b676dee686f230b5f58300f473738b494dadfb72f89b0edbd1e68",
+     "bytes": 2882231
+    },
+    {
+     "name": "data/raw/era5/sf/201403.npz",
+     "sha256": "7789f37ed79f40d9e2765285ea45b0babf0f48b072f88b18532d370bf4afa0fa",
+     "bytes": 2945997
+    },
+    {
+     "name": "data/raw/era5/sf/201404.npz",
+     "sha256": "5095094a7dec9bf8bf424ec9d83faa296928f9ebee36b8be75737bc2e2ed63a5",
+     "bytes": 2331449
+    },
+    {
+     "name": "data/raw/era5/sf/201411.npz",
+     "sha256": "f6e0731863e312165e80a044347f99201d0e9c89e5f5b4cb108c3e17dba3a144",
+     "bytes": 2750902
+    },
+    {
+     "name": "data/raw/era5/sf/201412.npz",
+     "sha256": "735e7484ee245dd7ee025016e9f3d94f8444f3d262f1762b576c15b81c4c9628",
+     "bytes": 3394798
+    },
+    {
+     "name": "data/raw/era5/sf/201501.npz",
+     "sha256": "9d996f07e1f49e4e6ce732b9fd228c910b319a6d881c229356186ef54d3bfb1c",
+     "bytes": 3328452
+    },
+    {
+     "name": "data/raw/era5/sf/201502.npz",
+     "sha256": "ed800d4551b018fc5bc0f86e24a51dd649408d3a731f88e15162ec704d096dbf",
+     "bytes": 2892269
+    },
+    {
+     "name": "data/raw/era5/sf/201503.npz",
+     "sha256": "1bdb1acc29becc178522f211718edd305399f976e2ecdcca54f03831a07e41d4",
+     "bytes": 2962251
+    },
+    {
+     "name": "data/raw/era5/sf/201504.npz",
+     "sha256": "7c13e5ba3aeb0ed12b3c315726a1eee4b5526fe2294d2e57269ffd174b3e81d8",
+     "bytes": 2447575
+    },
+    {
+     "name": "data/raw/era5/sf/201511.npz",
+     "sha256": "65adc3bc091493448620eaa53e6dea2c0047dec05c0868865a57d2197b3d6ad4",
+     "bytes": 2980347
+    },
+    {
+     "name": "data/raw/era5/sf/201512.npz",
+     "sha256": "afd74854e4d2439f2949b540a6f24d3bc21ded5f906201c56caa346da415109e",
+     "bytes": 3378094
+    },
+    {
+     "name": "data/raw/era5/sf/201601.npz",
+     "sha256": "7ceafe716b2c2bae390cf88f52af278f1a2f8bf0b38f4eeb1e5cf4e6a3d56ee2",
+     "bytes": 3454197
+    },
+    {
+     "name": "data/raw/era5/sf/201602.npz",
+     "sha256": "d2f033fc478c1979d0a1fa773bffe81b48f2b09df698ffeeae129c94eb5309b7",
+     "bytes": 3048785
+    },
+    {
+     "name": "data/raw/era5/sf/201603.npz",
+     "sha256": "7c18abada1d310050684d6da7dadccc3e7284a078cdf2731f9c8811dd2f13c2b",
+     "bytes": 2864416
+    },
+    {
+     "name": "data/raw/era5/sf/201604.npz",
+     "sha256": "1f063df4630ba3d43fa9812fb2f8c486c8cb365a635ec82df38640f3ca37ac73",
+     "bytes": 2174339
+    },
+    {
+     "name": "data/raw/era5/sf/201611.npz",
+     "sha256": "1ae67bec1bdc4ffa46d1536e77f2e7f5e078935e531ba071aafd90853ee00e3b",
+     "bytes": 2982095
+    },
+    {
+     "name": "data/raw/era5/sf/201612.npz",
+     "sha256": "c1a0a72b6c162f109417e642d823e46696b600e4a9d64b33875512ed5f092d6d",
+     "bytes": 3475817
+    },
+    {
+     "name": "data/raw/era5/sf/201701.npz",
+     "sha256": "282996ffb2a74c61d99d382c4313e528f6b2b3342de4ed4cbc08447cdb5df926",
+     "bytes": 3453837
+    },
+    {
+     "name": "data/raw/era5/sf/201702.npz",
+     "sha256": "3cc5427148856a3d55520b5c4f3c15cbae48c2602445f69548cc401f2c9ef61e",
+     "bytes": 2911274
+    },
+    {
+     "name": "data/raw/era5/sf/201703.npz",
+     "sha256": "14e94abe75c4a2dd0b915a502b97f462732554db90e0c2c015f2fd071f732f42",
+     "bytes": 2874595
+    },
+    {
+     "name": "data/raw/era5/sf/201704.npz",
+     "sha256": "3980b4a01e5b7aac78eb53813234998dec15d7d1ac3ed738b6dbaea87ccff1a8",
+     "bytes": 2372084
+    },
+    {
+     "name": "data/raw/era5/sf/201711.npz",
+     "sha256": "6d0b953067762abb385adc766c091cf300646ea97b39bd3a16e221c15fe76006",
+     "bytes": 2983382
+    },
+    {
+     "name": "data/raw/era5/sf/201712.npz",
+     "sha256": "6e5ed8f36510456fe1efd41049017124a6c96633eb56f3b361efb66505da1d19",
+     "bytes": 3400911
+    },
+    {
+     "name": "data/raw/era5/sf/201801.npz",
+     "sha256": "eeb5603c57d433e6d3a54b1375eb72647b600fb388f4aec3a6877f5a5e3093bd",
+     "bytes": 3310377
+    },
+    {
+     "name": "data/raw/era5/sf/201802.npz",
+     "sha256": "33cb638e46034e3cf14c55034ee574c204fcc4e66bf9c4a295491071facda6d8",
+     "bytes": 3058115
+    },
+    {
+     "name": "data/raw/era5/sf/201803.npz",
+     "sha256": "3f7261c8e92bbb5b69abad2c43f57cf0b4ff2159ec45e2ecc67b79001ba0d801",
+     "bytes": 3026425
+    },
+    {
+     "name": "data/raw/era5/sf/201804.npz",
+     "sha256": "9869682b9d9dc99e577dd4c166e808c9a4c862ddc657a08285400b0a061ee922",
+     "bytes": 2276875
+    },
+    {
+     "name": "data/raw/era5/sf/201811.npz",
+     "sha256": "77c942e64961d822f82b9f1fe44dfa46681cbf5f245a7f5fee6ad1483779efdb",
+     "bytes": 2829485
+    },
+    {
+     "name": "data/raw/era5/sf/201812.npz",
+     "sha256": "573fffda4926c7eb2ecc51347b4236f8aed300241295059ff32db316db514a23",
+     "bytes": 3292888
+    },
+    {
+     "name": "data/raw/era5/sf/201901.npz",
+     "sha256": "3d33652164cc45757bfd8299a7d7c69777f65a5d218725d8ffa5fe15e9c22128",
+     "bytes": 3360123
+    },
+    {
+     "name": "data/raw/era5/sf/201902.npz",
+     "sha256": "c8c712056c122f768a64e7b23f32aaec3995c47f56e427d7dc4710404fc16c03",
+     "bytes": 2886982
+    },
+    {
+     "name": "data/raw/era5/sf/201903.npz",
+     "sha256": "de7a9582a192b39657771e64022deed9770c375dde3879a6f7b49a26ed1411f0",
+     "bytes": 2939005
+    },
+    {
+     "name": "data/raw/era5/sf/201904.npz",
+     "sha256": "701dc7c47925e6e7c579a6a7577a5dfc20ddfe6224ce716c94ec06eed3bf4bb3",
+     "bytes": 2230053
+    },
+    {
+     "name": "data/raw/era5/sf/201911.npz",
+     "sha256": "c3408dc07494cd9652d8c2f46fc046fbc5dceabe5b95fa28cbfc7489320e70e8",
+     "bytes": 2884440
+    },
+    {
+     "name": "data/raw/era5/sf/201912.npz",
+     "sha256": "fbece7f937e99716cfee0161ec9c9354d9afae5273f86f5add6221e662d19702",
+     "bytes": 3329257
+    },
+    {
+     "name": "data/raw/era5/sf/202001.npz",
+     "sha256": "ad79a0e85aa4e890dde912f19b36fe49003a64548e96ec378f88b45c691ee0c2",
+     "bytes": 3566623
+    },
+    {
+     "name": "data/raw/era5/sf/202002.npz",
+     "sha256": "84da20d6608359d84df930bbc525e4e1578574813e5c038bfd00ac7f18d08bdf",
+     "bytes": 3064534
+    },
+    {
+     "name": "data/raw/era5/sf/202003.npz",
+     "sha256": "e97b3b9d5449ce3788238cb4d01fedb3e02251393a7fd89ade1aac41fa7487ca",
+     "bytes": 2833960
+    },
+    {
+     "name": "data/raw/era5/sf/202004.npz",
+     "sha256": "2638a2c4df4cfe0fb14b2c0fa65919b645ab48a59039eae53177effadad062bf",
+     "bytes": 2263557
+    },
+    {
+     "name": "data/raw/era5/sf/202011.npz",
+     "sha256": "6b3afa65e6e89465ded4947c83f4ce8ae94937c389b0e816165895b4936d6e5f",
+     "bytes": 2895780
+    },
+    {
+     "name": "data/raw/era5/sf/202012.npz",
+     "sha256": "7bc07e9eba33e589f56e9ce2d04b3a9a4642c527850311e60027b1da9b8cab6e",
+     "bytes": 3230695
+    },
+    {
+     "name": "data/raw/era5/sf/202101.npz",
+     "sha256": "ec85dd0cf640d2f196e9a3f15ae1d1a44c0d4c42e96d0fe691365ebc4e4a9b19",
+     "bytes": 3356616
+    },
+    {
+     "name": "data/raw/era5/sf/202102.npz",
+     "sha256": "093b9e793ee9c9eb1910ae59bfff2f23c5f6c191bb69702bfc73afa234abb04d",
+     "bytes": 2842945
+    },
+    {
+     "name": "data/raw/era5/sf/202103.npz",
+     "sha256": "a4f7ac778741e7e4aae90fd1d52a1da71cfbb55c7b5d0e8e561300dcf9514a4a",
+     "bytes": 2965047
+    },
+    {
+     "name": "data/raw/era5/sf/202104.npz",
+     "sha256": "11eda9197ea8f52eb34ff7056f5bfb16e43627cee6c97bce975d621bc6543b7b",
+     "bytes": 2219520
+    },
+    {
+     "name": "data/raw/era5/sf/202111.npz",
+     "sha256": "261691b31c66af0936325940a1e364bdb08e9a377309ab4a2fd775232593ac76",
+     "bytes": 2965643
+    },
+    {
+     "name": "data/raw/era5/sf/202112.npz",
+     "sha256": "347d56ca18724b6be7f4150582b677f8eabfd2ffed15719e8aa60b9a2c894f0c",
+     "bytes": 3281934
+    },
+    {
+     "name": "data/raw/era5/sf/202201.npz",
+     "sha256": "f16b9eecf32d6af8b72e9c130dc06fc870c076a2d3976d0913c856ecf1a94ea9",
+     "bytes": 3389095
+    },
+    {
+     "name": "data/raw/era5/sf/202202.npz",
+     "sha256": "96d1f894bb55b6a294019de8fdf07cd97588f25a08957d8e3efbf89a208a9c1d",
+     "bytes": 3025160
+    },
+    {
+     "name": "data/raw/era5/sf/202203.npz",
+     "sha256": "fbc8c6c7f8337790d8c80380558bfa1a81a671d492f17f15c3590dbf4e0367ba",
+     "bytes": 2951740
+    },
+    {
+     "name": "data/raw/era5/sf/202204.npz",
+     "sha256": "e22efd47667ea5324729e55cdd3c06beb4381a97c6166de66777c3eaed1b7290",
+     "bytes": 2291528
+    },
+    {
+     "name": "data/raw/era5/sf/202211.npz",
+     "sha256": "e0f54c55470ee88ebdf37dbf24ffea078a0ae441d4e70e4cc41deb94644a94e2",
+     "bytes": 2937406
+    },
+    {
+     "name": "data/raw/era5/sf/202212.npz",
+     "sha256": "0efff958c06d0f978552ed3d733b357a199c3f956d8798959cea87c4d1316c09",
+     "bytes": 3367434
+    },
+    {
+     "name": "data/raw/era5/sf/202301.npz",
+     "sha256": "3bd0f2ac092f75d0ff161e099b669026b8b7fca74f304ede85c3bd1f930cc66e",
+     "bytes": 3286624
+    },
+    {
+     "name": "data/raw/era5/sf/202302.npz",
+     "sha256": "fa016d90d62a62bb16f918022f14d33bdbcaf5035ec6fab12764162121b407fc",
+     "bytes": 3034185
+    },
+    {
+     "name": "data/raw/era5/sf/202303.npz",
+     "sha256": "7e65899bb971500e400756a98b1c3a9ed4a75e25a730b977407d424332eae39e",
+     "bytes": 2929171
+    },
+    {
+     "name": "data/raw/era5/sf/202304.npz",
+     "sha256": "fc5d99c86d7e625c0da11b581134b4bcf8d4096a70153e119c49885fce49109b",
+     "bytes": 2237234
+    },
+    {
+     "name": "data/raw/era5/sf/202311.npz",
+     "sha256": "94d661acab0810535c081dd11fa9950e4f43df75e274d508706fb5a9f5f94700",
+     "bytes": 2901445
+    },
+    {
+     "name": "data/raw/era5/sf/202312.npz",
+     "sha256": "b4b7f05f3e9f128b45c1223de5e6cdac7e1d9a6b30f3a86effdb3335c13fac64",
+     "bytes": 3345068
+    },
+    {
+     "name": "data/raw/era5/sf/202401.npz",
+     "sha256": "50d31c64f251e09d47c9a6853ac97cae38e0478b0a6d06222931cb55331ce5e8",
+     "bytes": 3378288
+    },
+    {
+     "name": "data/raw/era5/sf/202402.npz",
+     "sha256": "dd769bff1faaa4468676e9f865ae8791e4a470079ad9c3c86b7ba995de816d9e",
+     "bytes": 2971537
+    },
+    {
+     "name": "data/raw/era5/sf/202403.npz",
+     "sha256": "2a8bb32546c28f47e899806e553c1ed9bc6c8e10ac4a6a14618cf97ed7b7506c",
+     "bytes": 2897443
+    },
+    {
+     "name": "data/raw/era5/sf/202404.npz",
+     "sha256": "df32281bcdb834fa71b7d51858b557882459a906e568e589f8e6e4a62ebc5da2",
+     "bytes": 2141449
+    },
+    {
+     "name": "data/raw/era5/sf/202411.npz",
+     "sha256": "31fc7dac53b1f9827572dbf7b530553ed1d7543a78fcb1215b39caba3cd42830",
+     "bytes": 2894936
+    },
+    {
+     "name": "data/raw/era5/sf/202412.npz",
+     "sha256": "4c888777f37b8e883e78a0842fb8a0c3df682d6cabeaeb17c1311813be4ffc7e",
+     "bytes": 3378101
+    },
+    {
+     "name": "data/raw/era5/sf/202501.npz",
+     "sha256": "1acdda75b712ee601eaa149dc17fe4ba57d59c1d021dcf4648571612e9d8174d",
+     "bytes": 3336361
+    },
+    {
+     "name": "data/raw/era5/sf/202502.npz",
+     "sha256": "13fdded1c0da648d5bdbe5be5933eb672f54910532a4f2ed3f513f9c975c87ad",
+     "bytes": 2811720
+    },
+    {
+     "name": "data/raw/era5/sf/202503.npz",
+     "sha256": "df4b76dc3277294af88952f99216b7b1005bf5c95580da881c826cf924a7c975",
+     "bytes": 2814723
+    },
+    {
+     "name": "data/raw/era5/sf/202504.npz",
+     "sha256": "2cecc6f43cd0acd27d49864b076c1e963ba79e7d2106531a62609881ff1dbe6e",
+     "bytes": 2244380
+    },
+    {
+     "name": "data/raw/era5/sf/202511.npz",
+     "sha256": "6fe65c67e3025f61e0de77c3aee0c1d53de40d5e3d936d848fca7218af798c3c",
+     "bytes": 2870098
+    },
+    {
+     "name": "data/raw/era5/sf/202512.npz",
+     "sha256": "3c68b7b1f1ef8507f706c6d41a0e9fc5ed01aa1f95441e2fe99a48cff63e9359",
+     "bytes": 3214499
+    },
+    {
+     "name": "data/raw/era5/sf/202601.npz",
+     "sha256": "6957ed9576cbab2becc0778c774502f10d1c9e3d756fe99f5d744b1498640c3c",
+     "bytes": 3354111
+    },
+    {
+     "name": "data/raw/era5/sf/202602.npz",
+     "sha256": "1d703b3314b061f3b3c3055010d1bd47c99218b80bf80dd6bc117fef2d08466b",
+     "bytes": 2909793
+    },
+    {
+     "name": "data/raw/era5/sf/202603.npz",
+     "sha256": "2bcd6cc8b74aca2bcc19d657e3191dccc18880a720d35afb71d3dad94dd91a2b",
+     "bytes": 3018180
+    },
+    {
+     "name": "data/raw/era5/sf/202604.npz",
+     "sha256": "a7143e2fe5d2d07b47542a7e72b001f88a6d99835ffaff522003fc3814556d38",
+     "bytes": 2288715
+    },
+    {
+     "name": "data/raw/era5/sf_4perday/202411.npz",
+     "sha256": "610f6c48789d96cf708a3100eb33f0fd7406d4a32501cabe69dc94b60095ba1e",
+     "bytes": 5061266
+    },
+    {
+     "name": "data/raw/era5/t2m/201111.npz",
+     "sha256": "774c36b52b51fcb70607bb4db8940496064e34e10b02611eb19f4dd35aef70c0",
+     "bytes": 5453587
+    },
+    {
+     "name": "data/raw/era5/t2m/201112.npz",
+     "sha256": "50e3548e911586a0cfd715c6b071a10d1e4ed94fd9487b089c5dc838a2ed500e",
+     "bytes": 5761610
+    },
+    {
+     "name": "data/raw/era5/t2m/201201.npz",
+     "sha256": "ec23be5c6a887c5aaf3e6f3eecef0baca5de6a3486faec9a35a7fdd11d1d7523",
+     "bytes": 5824747
+    },
+    {
+     "name": "data/raw/era5/t2m/201202.npz",
+     "sha256": "23494549f2f090c5c85546d265be9552eeec88ac51be82570b25489e819c7a5f",
+     "bytes": 5440973
+    },
+    {
+     "name": "data/raw/era5/t2m/201203.npz",
+     "sha256": "4a7aa3cfcba04ed36c699987c4d5dd45f7da4c4577fe41bbd11efb0e0a22f998",
+     "bytes": 5665399
+    },
+    {
+     "name": "data/raw/era5/t2m/201204.npz",
+     "sha256": "06e0fa509863280f5792b93ded2c808fba035bfa3cd89eedcb8c8780518d8708",
+     "bytes": 5203458
+    },
+    {
+     "name": "data/raw/era5/t2m/201205.npz",
+     "sha256": "6162699a919de16c4cf262534f065987c0501d8005de38b5421ab62d4838c4a1",
+     "bytes": 4968548
+    },
+    {
+     "name": "data/raw/era5/t2m/201206.npz",
+     "sha256": "61fc53f6a9cf2a0aa7f2536478d22d95bc76995031c123cdb5b8d7ec8277b658",
+     "bytes": 4536172
+    },
+    {
+     "name": "data/raw/era5/t2m/201207.npz",
+     "sha256": "fff46ffae4a817e80e43f59b8f79370aa58e431cbe1e84860b08bff95d389143",
+     "bytes": 4697507
+    },
+    {
+     "name": "data/raw/era5/t2m/201208.npz",
+     "sha256": "0a2c0f46233b11bcf3856990cae6497c62a34dda6abb8be330170847d10d50cc",
+     "bytes": 4656193
+    },
+    {
+     "name": "data/raw/era5/t2m/201209.npz",
+     "sha256": "054787075ebffb6714025982beb1c93bc23de6329ee1e3de97534b3b8ba75c98",
+     "bytes": 4528408
+    },
+    {
+     "name": "data/raw/era5/t2m/201211.npz",
+     "sha256": "f096ea150430ae68fde25a560434cfec35d190fa055c6cf70f1ae842803fe4a8",
+     "bytes": 5450452
+    },
+    {
+     "name": "data/raw/era5/t2m/201212.npz",
+     "sha256": "2b9113030808c819276db725726ce0b2d1a9932571cc91e1aaf820e3dff967bc",
+     "bytes": 5813507
+    },
+    {
+     "name": "data/raw/era5/t2m/201301.npz",
+     "sha256": "61cd1b6c07ed495ae80c712ca7d09cfb63fad055157a1f7e721afc17875afd64",
+     "bytes": 5831230
+    },
+    {
+     "name": "data/raw/era5/t2m/201302.npz",
+     "sha256": "6a744e0e8ee934a83abf65a6c3697f183f6d9fffa2fe0d7b04ef1b3eea0c3859",
+     "bytes": 5234714
+    },
+    {
+     "name": "data/raw/era5/t2m/201303.npz",
+     "sha256": "351d895d4294491ba8d33e46b757f7c8330d53204c506c38e536dcbee958458c",
+     "bytes": 5636798
+    },
+    {
+     "name": "data/raw/era5/t2m/201304.npz",
+     "sha256": "36596af7f405da678e0e000cd490b55f12ce8d02ca386cdc65f6d199ce01d93f",
+     "bytes": 5223867
+    },
+    {
+     "name": "data/raw/era5/t2m/201305.npz",
+     "sha256": "94746e78d7ac8de2e5b037e1c23652b54fb1b50bd10100b2f5e669c14095ff12",
+     "bytes": 5012902
+    },
+    {
+     "name": "data/raw/era5/t2m/201306.npz",
+     "sha256": "818b2a205a8bd3ba1c12627ca9bd5529a83f7197d66cc2097fb210f8c22fe548",
+     "bytes": 4552073
+    },
+    {
+     "name": "data/raw/era5/t2m/201307.npz",
+     "sha256": "d35e6dee115d3495306174fd233615004c5b7a718376fa8b916e88878145ae9a",
+     "bytes": 4689211
+    },
+    {
+     "name": "data/raw/era5/t2m/201308.npz",
+     "sha256": "2104f9d1136342615ffd42f7f777f9de9565173dd0b08b0c71bb5689d2b541cc",
+     "bytes": 4675593
+    },
+    {
+     "name": "data/raw/era5/t2m/201309.npz",
+     "sha256": "ad537426b08766bad5ba93c44c941c11f0919df79cc018c5f00e1ca31b1923ec",
+     "bytes": 4557464
+    },
+    {
+     "name": "data/raw/era5/t2m/201311.npz",
+     "sha256": "292f085861a939909faf0f581b44e6bd550c4590f5a73924a970fc68f25a93fe",
+     "bytes": 5406838
+    },
+    {
+     "name": "data/raw/era5/t2m/201312.npz",
+     "sha256": "b85b0cf50188df088f04e6e1f9c1673df2aeab1faa408417616591d6ab3844da",
+     "bytes": 5759756
+    },
+    {
+     "name": "data/raw/era5/t2m/201401.npz",
+     "sha256": "f8cabc48240e2e73b497f3706cbee289cd16fe641db51ea6e78e461aff19cfc9",
+     "bytes": 5838387
+    },
+    {
+     "name": "data/raw/era5/t2m/201402.npz",
+     "sha256": "796f589f10f768423cc20e798946ee90d31bf25356f111757217fde4b07d1baa",
+     "bytes": 5245421
+    },
+    {
+     "name": "data/raw/era5/t2m/201403.npz",
+     "sha256": "e24cbadfbe3d5c96965dcfabd669652284eaf245b2cbf32d884303a6db4745de",
+     "bytes": 5637468
+    },
+    {
+     "name": "data/raw/era5/t2m/201404.npz",
+     "sha256": "72cf72b535b7107b17579b9b5328e37f6a2edbd1ec3baf3070c06d011edf0d68",
+     "bytes": 5203449
+    },
+    {
+     "name": "data/raw/era5/t2m/201405.npz",
+     "sha256": "86835b881c9d6fd8bc78692020f9ebdcedabcedcc7c831cff903a1b1b9731d30",
+     "bytes": 4972897
+    },
+    {
+     "name": "data/raw/era5/t2m/201406.npz",
+     "sha256": "567f1716c3296ff4218448c838909ed01502ddf5042590a42598651ba526155e",
+     "bytes": 4535148
+    },
+    {
+     "name": "data/raw/era5/t2m/201407.npz",
+     "sha256": "6444cf1abcafbfc8b1b016a715a75a983b3f545d90cad119849c4ef9cfe0e37e",
+     "bytes": 4683143
+    },
+    {
+     "name": "data/raw/era5/t2m/201408.npz",
+     "sha256": "66e0917ee09553c69fb9ef995d29f0fb3a79f78015715ec05ea89781cc4ed642",
+     "bytes": 4656714
+    },
+    {
+     "name": "data/raw/era5/t2m/201409.npz",
+     "sha256": "b16b63a28d6d89bf5f781d2eb8c153fc9902be30cb11f3bb7c7e7e637b19e47a",
+     "bytes": 4547689
+    },
+    {
+     "name": "data/raw/era5/t2m/201411.npz",
+     "sha256": "ad75cf294ff4d11bd596754b22fa5dac191e744bdebb88e8f969b93e1ca70120",
+     "bytes": 5461812
+    },
+    {
+     "name": "data/raw/era5/t2m/201412.npz",
+     "sha256": "e2c0c771f3e83c1c3b4f48003965af2993ee1291186e4c08684aa69aa358d04b",
+     "bytes": 5759800
+    },
+    {
+     "name": "data/raw/era5/t2m/201501.npz",
+     "sha256": "9fe380065459e87627bfcc9df21143831ba3c6d9d8870a39a05ed05122e8c6d3",
+     "bytes": 5809206
+    },
+    {
+     "name": "data/raw/era5/t2m/201502.npz",
+     "sha256": "902d26bc9972943ae3e77712ef096afdfe9822b82a07808a784c1db2eb8fcbba",
+     "bytes": 5228261
+    },
+    {
+     "name": "data/raw/era5/t2m/201503.npz",
+     "sha256": "1ad73e9fcc00c9e00f48679c770df2e892b4d263007120c9d82c081bd7fb8132",
+     "bytes": 5622396
+    },
+    {
+     "name": "data/raw/era5/t2m/201504.npz",
+     "sha256": "cdc223ae986601b2311763eea57ff5630f386a7317794e233767d4e5af2433de",
+     "bytes": 5206909
+    },
+    {
+     "name": "data/raw/era5/t2m/201505.npz",
+     "sha256": "3cc52a11041c0c43eed5aa6b9840b13a5c221d6d4f3e39e10ff1729f95dd94a3",
+     "bytes": 4988734
+    },
+    {
+     "name": "data/raw/era5/t2m/201506.npz",
+     "sha256": "9fde5b2c3a5a603616b3b9cada7e068787243ab108c6bf14abafc999bd86ba20",
+     "bytes": 4548175
+    },
+    {
+     "name": "data/raw/era5/t2m/201507.npz",
+     "sha256": "4c00030d2ecf2bdf911c23c5501d07f3d917ec035cb66322dc67f56019739fb3",
+     "bytes": 4696875
+    },
+    {
+     "name": "data/raw/era5/t2m/201508.npz",
+     "sha256": "c489e46b7ef1617f9ba30190d500a86406a2fe97f4bb8e1a4f6953cd3f3570ef",
+     "bytes": 4655734
+    },
+    {
+     "name": "data/raw/era5/t2m/201509.npz",
+     "sha256": "a88ce23577c8aa85750c0a90108c6a96bffa0153a1fee761651a5f300602c1df",
+     "bytes": 4547774
+    },
+    {
+     "name": "data/raw/era5/t2m/201511.npz",
+     "sha256": "c174bb5b7ebf59edd6fc5421b954f64cf3f405e8e7c4303aaa6d900747daa744",
+     "bytes": 5437205
+    },
+    {
+     "name": "data/raw/era5/t2m/201512.npz",
+     "sha256": "b2e13c90b9467f4e31d8c36ab2bbc8ff60e6b86c0f9b8d4ff7f1658ff41e8705",
+     "bytes": 5726990
+    },
+    {
+     "name": "data/raw/era5/t2m/201601.npz",
+     "sha256": "248fc84b47fbd819efda87dedc59c98601c6c8a6c5eda555f138ea4ed33f0d05",
+     "bytes": 5800683
+    },
+    {
+     "name": "data/raw/era5/t2m/201602.npz",
+     "sha256": "90438a1a74a23f92bca3862eef43b9758439018378d76cd38e3dc1d7151ac216",
+     "bytes": 5378998
+    },
+    {
+     "name": "data/raw/era5/t2m/201603.npz",
+     "sha256": "ab7c01025791ff8afcfef50355915704fee1b9d55641dbe4a832076d1d3fae51",
+     "bytes": 5582172
+    },
+    {
+     "name": "data/raw/era5/t2m/201604.npz",
+     "sha256": "ee19d1c37fa0b99ef80b21b736e16ee0b7eba043a5ee994d6dec7f841473853e",
+     "bytes": 5201655
+    },
+    {
+     "name": "data/raw/era5/t2m/201605.npz",
+     "sha256": "9720aad4201062469329080f54cd277433d10526e4f7d148379a1ea743536b79",
+     "bytes": 4955865
+    },
+    {
+     "name": "data/raw/era5/t2m/201606.npz",
+     "sha256": "5e7035c3ad8b020c991802772f92384c32d37b1b66ef62ddb68f6cf769c4111e",
+     "bytes": 4539304
+    },
+    {
+     "name": "data/raw/era5/t2m/201607.npz",
+     "sha256": "2a69ca064d6242baf90699ea756299301ac50e89cd3e4a2affcf9e60b7345b5a",
+     "bytes": 4695638
+    },
+    {
+     "name": "data/raw/era5/t2m/201608.npz",
+     "sha256": "1ad0a03570a18452a804ab1581fb5b63ec97da54b478f1b4281f9bb7aad6f7e7",
+     "bytes": 4669229
+    },
+    {
+     "name": "data/raw/era5/t2m/201609.npz",
+     "sha256": "dc130d4e320756e3ba9fc7d49f81ed8bcbde0bf72bfc0b53dbbb174212b1ca7d",
+     "bytes": 4536567
+    },
+    {
+     "name": "data/raw/era5/t2m/201611.npz",
+     "sha256": "fe1563c18367312f4e41bfa0cd498164bf8f645849a368b5844200345c24bec2",
+     "bytes": 5441669
+    },
+    {
+     "name": "data/raw/era5/t2m/201612.npz",
+     "sha256": "00c09e09c69d4634cb67b2ed3c43e49de60ab1bef3c05bb93a36bf42bd195c12",
+     "bytes": 5799501
+    },
+    {
+     "name": "data/raw/era5/t2m/201701.npz",
+     "sha256": "c89f8fabeb0f19e86a91bf45cea779022c0bb50c5db3b19a852a46a2056afaf0",
+     "bytes": 5799744
+    },
+    {
+     "name": "data/raw/era5/t2m/201702.npz",
+     "sha256": "5ad46e155a1f214258748986ae6a598b17802e4e2e25510136060377d455aa5c",
+     "bytes": 5189318
+    },
+    {
+     "name": "data/raw/era5/t2m/201703.npz",
+     "sha256": "04943fdead1d8d6d8288aa4c8024e2d6c2c526d797f41478f0561c50f1f366cc",
+     "bytes": 5592521
+    },
+    {
+     "name": "data/raw/era5/t2m/201704.npz",
+     "sha256": "30ffed7d6e398993e6079ef9c2f490002821a7061ebc40d7c539a22dbe8e6d01",
+     "bytes": 5182508
+    },
+    {
+     "name": "data/raw/era5/t2m/201705.npz",
+     "sha256": "c4fde15597643a92c2407cadf98d1918359044503cf061de87b19459eab8bcc3",
+     "bytes": 4940505
+    },
+    {
+     "name": "data/raw/era5/t2m/201706.npz",
+     "sha256": "ddc675e1d4b16bf2c28b94256679b9ee7acece43a6036f13dcaf1938284c7fce",
+     "bytes": 4531598
+    },
+    {
+     "name": "data/raw/era5/t2m/201707.npz",
+     "sha256": "a0dd782974eccac8d8553c6d05063b95bf0b46c89fca955ea2f9ffd21b989beb",
+     "bytes": 4682941
+    },
+    {
+     "name": "data/raw/era5/t2m/201708.npz",
+     "sha256": "39c08bc0891ab246e00a07bebc0b78c3bc9bc7dfb1f1ccd231ed4c149aa7ce3e",
+     "bytes": 4667536
+    },
+    {
+     "name": "data/raw/era5/t2m/201709.npz",
+     "sha256": "769774f4da2c97a207743226ff76b78be10d0bea8306c4a5efc3b962fe48ca46",
+     "bytes": 4535066
+    },
+    {
+     "name": "data/raw/era5/t2m/201711.npz",
+     "sha256": "401da25776a40d45f774044b090513397a689f20758344fd551b93666a47dc11",
+     "bytes": 5451228
+    },
+    {
+     "name": "data/raw/era5/t2m/201712.npz",
+     "sha256": "73afdfc67814e5fcc3b2e2505a54b23fc40f0ebdccfe0cdbd0760c7f145c8507",
+     "bytes": 5760277
+    },
+    {
+     "name": "data/raw/era5/t2m/201801.npz",
+     "sha256": "760b33cb3e8a64be5892c6c4fd9ccec7511eefcd044b18f4fbeb15895985dcdc",
+     "bytes": 5812358
+    },
+    {
+     "name": "data/raw/era5/t2m/201802.npz",
+     "sha256": "f7c9bd950fa9e755e1a83fcc79c02e0522e3051e39039f164951385c7a5f78bc",
+     "bytes": 5234954
+    },
+    {
+     "name": "data/raw/era5/t2m/201803.npz",
+     "sha256": "f878f31accc1c98b0e423b1969783337903430789340c49232f6f44406a9c8e9",
+     "bytes": 5616178
+    },
+    {
+     "name": "data/raw/era5/t2m/201804.npz",
+     "sha256": "ad9a0cf687ebbbc954d29fcb25a37b4617c335b5bfb9460be96dbfa16f4242cd",
+     "bytes": 5231723
+    },
+    {
+     "name": "data/raw/era5/t2m/201805.npz",
+     "sha256": "238d9bcf32ebdedf630489e928b686cd35cdffbb97f6a7519d108e90e125fce5",
+     "bytes": 5032612
+    },
+    {
+     "name": "data/raw/era5/t2m/201806.npz",
+     "sha256": "31ebb8518a2697d33379b793ef7ed1b05ebda05306aac3221882a1a3c5321507",
+     "bytes": 4560719
+    },
+    {
+     "name": "data/raw/era5/t2m/201807.npz",
+     "sha256": "60bea94efa825b37674fd958f8680908a2aeb899148ba204480c98b3b1242aad",
+     "bytes": 4714228
+    },
+    {
+     "name": "data/raw/era5/t2m/201808.npz",
+     "sha256": "7965de3446c2b790d739d8d0b2abd79e1769ba382b490778ce452a7525d5954a",
+     "bytes": 4662009
+    },
+    {
+     "name": "data/raw/era5/t2m/201809.npz",
+     "sha256": "8616e14cb427307569ca8efed8df45c11c3bfbdd0ae90a9eed6689c73a8cf74c",
+     "bytes": 4561276
+    },
+    {
+     "name": "data/raw/era5/t2m/201811.npz",
+     "sha256": "e53c9ab2739bb461d1ef87b1d13e7ad2866811dafc3a5bd91b13deefc8ecc661",
+     "bytes": 5457857
+    },
+    {
+     "name": "data/raw/era5/t2m/201812.npz",
+     "sha256": "b23228483084810a533e19b4449fd302270405d322a5621b0a6d76236049b5da",
+     "bytes": 5767494
+    },
+    {
+     "name": "data/raw/era5/t2m/201901.npz",
+     "sha256": "82c349255699430ef7c6ce6b4ed8efdbc5ad7bc424a5e8b5156d58eacd19a59f",
+     "bytes": 5811377
+    },
+    {
+     "name": "data/raw/era5/t2m/201902.npz",
+     "sha256": "ef0729541dbf79d499c7b6f0d788513bdad5a0df0efa4586e450988c54edfeb9",
+     "bytes": 5227493
+    },
+    {
+     "name": "data/raw/era5/t2m/201903.npz",
+     "sha256": "e0130b66abfb0579ec7b2abf7d005266846f9321d42ff7330bd613334292dfec",
+     "bytes": 5576985
+    },
+    {
+     "name": "data/raw/era5/t2m/201904.npz",
+     "sha256": "1ff14a9eafd645fbe422555743d2bd5bccb7e006823ec0f6608e2038830aabeb",
+     "bytes": 5186770
+    },
+    {
+     "name": "data/raw/era5/t2m/201905.npz",
+     "sha256": "2a52c5c4341b815c8fb45bc7708b412abe64472bfd7976bc0072a363bc101de8",
+     "bytes": 4936333
+    },
+    {
+     "name": "data/raw/era5/t2m/201906.npz",
+     "sha256": "3ec610786086e7767296b34c44abc50364f36ba8f4741e235a885ec43892fa7e",
+     "bytes": 4547428
+    },
+    {
+     "name": "data/raw/era5/t2m/201907.npz",
+     "sha256": "65e1789ff795e38d1f7fa405e00e6fe19380be6c1b935d2bbfa02de8b454f370",
+     "bytes": 4702604
+    },
+    {
+     "name": "data/raw/era5/t2m/201908.npz",
+     "sha256": "abcbee0a9020baf7ffd64294aefdf52495aa49a05743bdd09c430b8f8419a771",
+     "bytes": 4666140
+    },
+    {
+     "name": "data/raw/era5/t2m/201909.npz",
+     "sha256": "d7b842fc3782830a5e542f639cf2acfb54fb4485a3b09af34dba8ce294fc8ee6",
+     "bytes": 4521434
+    },
+    {
+     "name": "data/raw/era5/t2m/201911.npz",
+     "sha256": "960aa916a3334c78a8746442ef70f99f925853dce9230765c5ef31aae1b360e4",
+     "bytes": 5436996
+    },
+    {
+     "name": "data/raw/era5/t2m/201912.npz",
+     "sha256": "3a4f6d1d175745eb75af1efe6122fc9ce446e8d5ff8110ff33418091489ed5e0",
+     "bytes": 5756693
+    },
+    {
+     "name": "data/raw/era5/t2m/202001.npz",
+     "sha256": "5ca0c7256a8c85c2583bca7f1a69c623dbee843dbae684a03ca9d5853d6f7b96",
+     "bytes": 5755038
+    },
+    {
+     "name": "data/raw/era5/t2m/202002.npz",
+     "sha256": "d9e9d0cbc2107eafa6b7ed34d2f95fba9ddd712f5a64c2ad7b3f948364446d16",
+     "bytes": 5362776
+    },
+    {
+     "name": "data/raw/era5/t2m/202003.npz",
+     "sha256": "6ba75c3515b533031551891b93f7044334156bbac57243db45e9c8152ef5e298",
+     "bytes": 5591631
+    },
+    {
+     "name": "data/raw/era5/t2m/202004.npz",
+     "sha256": "fafa00c4933f0d1971468bc540c0d7176b5e4c5077a8fd005d236e739b2e35bc",
+     "bytes": 5193126
+    },
+    {
+     "name": "data/raw/era5/t2m/202005.npz",
+     "sha256": "83d39f048f142ee5b93dbff724f2618926f2efc82bda6271d3ec1124b8e10b1a",
+     "bytes": 4973070
+    },
+    {
+     "name": "data/raw/era5/t2m/202006.npz",
+     "sha256": "6841d9f153b5efd8fe0957759fc05b92620108bf1cb6988c859bcb3d2f4cab1d",
+     "bytes": 4552974
+    },
+    {
+     "name": "data/raw/era5/t2m/202007.npz",
+     "sha256": "f9e1d09dee676a81533a6c7ece70c9263dccbb9591fc9d3dda308f282674697b",
+     "bytes": 4706992
+    },
+    {
+     "name": "data/raw/era5/t2m/202008.npz",
+     "sha256": "05e394af6ba91435ef58ac93d679bdfbe6260734e9687c2c13bdc9ab25dee501",
+     "bytes": 4667335
+    },
+    {
+     "name": "data/raw/era5/t2m/202009.npz",
+     "sha256": "25e4127704e26caff32ffd4e356616f23467bb2d295cdc50868c167245ca4121",
+     "bytes": 4548785
+    },
+    {
+     "name": "data/raw/era5/t2m/202011.npz",
+     "sha256": "18a5836655b91e9a8215abc3faff993db4e9f8ef5b15a6b35df9bdfe404d6726",
+     "bytes": 5395473
+    },
+    {
+     "name": "data/raw/era5/t2m/202012.npz",
+     "sha256": "874d8e7c789721d5667f541e97acb7aac9492f6787b6ba44e8f54b2e6271cc77",
+     "bytes": 5776927
+    },
+    {
+     "name": "data/raw/era5/t2m/202101.npz",
+     "sha256": "1dd9ec361f318526e9b0636a8449d0b7e382fe128b2ea4fc9dd5a10cb477d968",
+     "bytes": 5812513
+    },
+    {
+     "name": "data/raw/era5/t2m/202102.npz",
+     "sha256": "2616542cbe3e95913e8823e58b88bec81f996e5d7d355186b0bce7eb926f657f",
+     "bytes": 5233967
+    },
+    {
+     "name": "data/raw/era5/t2m/202103.npz",
+     "sha256": "76564288fa13e687b83c0ef822dd12a7acb1d636a481be0a6033863fd584680a",
+     "bytes": 5610045
+    },
+    {
+     "name": "data/raw/era5/t2m/202104.npz",
+     "sha256": "b71ee31ae81cdef73474c2ee3ed9fad5c8092a8ab7bac344ed1005ea5393a44a",
+     "bytes": 5176290
+    },
+    {
+     "name": "data/raw/era5/t2m/202105.npz",
+     "sha256": "063914dac6f1cdd9648b9192be8f7b5166f582af3d6d1b0a1d85e7e089b37a7d",
+     "bytes": 4958650
+    },
+    {
+     "name": "data/raw/era5/t2m/202106.npz",
+     "sha256": "79543b80cffefd67ebc8cae105cbf3b0b7249cfc9d227419399fb1dd509c2af6",
+     "bytes": 4564386
+    },
+    {
+     "name": "data/raw/era5/t2m/202107.npz",
+     "sha256": "7254db9f72b3719a82fef25c6b42275b580d9eddf590ed40d2d86ddc0f760471",
+     "bytes": 4703825
+    },
+    {
+     "name": "data/raw/era5/t2m/202108.npz",
+     "sha256": "f86aae3d2568d2c15b0642d44eab660104c50b7cf099f032c6e5fa71b49c5c3d",
+     "bytes": 4657652
+    },
+    {
+     "name": "data/raw/era5/t2m/202109.npz",
+     "sha256": "216ba4956621f90d5dd3e10636f738671f8a31a39fb697939445b8d88fa88d0d",
+     "bytes": 4544266
+    },
+    {
+     "name": "data/raw/era5/t2m/202111.npz",
+     "sha256": "704973ab5f67419ad3a9d012272aae83dddd8fc5240fc70cf13c59a201d4fa63",
+     "bytes": 5389388
+    },
+    {
+     "name": "data/raw/era5/t2m/202112.npz",
+     "sha256": "b0a92638b0d536dfd91d9af2150245a905e2fba66fd9351bf47dbc12efd0c3e0",
+     "bytes": 5787561
+    },
+    {
+     "name": "data/raw/era5/t2m/202201.npz",
+     "sha256": "c7f1e6321457b337cf9a12249451a5c1163ffa7e282b0b83469b1bd9e4e2572f",
+     "bytes": 5804159
+    },
+    {
+     "name": "data/raw/era5/t2m/202202.npz",
+     "sha256": "365dab0695106b5c6758947a217d43cafb409ea412b70d180b604e480fdac5b2",
+     "bytes": 5204061
+    },
+    {
+     "name": "data/raw/era5/t2m/202203.npz",
+     "sha256": "a0a83b01e9e51623462f82103f76663eb60c5191e118d1d37717db43c50157fc",
+     "bytes": 5600805
+    },
+    {
+     "name": "data/raw/era5/t2m/202204.npz",
+     "sha256": "ace19f2e080f4cc32077612e01ceb327705331c77e0df11deadd0d65a6181218",
+     "bytes": 5199924
+    },
+    {
+     "name": "data/raw/era5/t2m/202205.npz",
+     "sha256": "6f4be3a47c7c3f56abc03a14d10e2b1f32df56534e01de39e6eed580c0a2cc8c",
+     "bytes": 4953712
+    },
+    {
+     "name": "data/raw/era5/t2m/202206.npz",
+     "sha256": "9c4496fb07f9bcf5918c99287bc9e617ef837106c125696778c4e0a91436502d",
+     "bytes": 4558333
+    },
+    {
+     "name": "data/raw/era5/t2m/202207.npz",
+     "sha256": "af08716a5d14ac4558f42c5397475f047f39423f68c424a2f65fdbbf39c283c5",
+     "bytes": 4718486
+    },
+    {
+     "name": "data/raw/era5/t2m/202208.npz",
+     "sha256": "28afda018b4bc7d925730d4b17d3e6c2ed189607e18f4679d6b3445f606d0592",
+     "bytes": 4690334
+    },
+    {
+     "name": "data/raw/era5/t2m/202209.npz",
+     "sha256": "8296a5e0e57407e2849befbef8c3f89b0ea18951d71ba9f2427f2ecfa3f217c0",
+     "bytes": 4520177
+    },
+    {
+     "name": "data/raw/era5/t2m/202211.npz",
+     "sha256": "ef7a0fda95d21d4186e386238d84842d2b2c91eae1baa7f75cf8410e0ada21ca",
+     "bytes": 5456591
+    },
+    {
+     "name": "data/raw/era5/t2m/202212.npz",
+     "sha256": "897661b42ae2c7d52df88758cab9914f009c486de3b94cbb9cfadb1475035147",
+     "bytes": 5793706
+    },
+    {
+     "name": "data/raw/era5/t2m/202301.npz",
+     "sha256": "968ab50a37dc328a977bda68df642381e85f2f3b826a343e37b49ebdcb3af316",
+     "bytes": 5824406
+    },
+    {
+     "name": "data/raw/era5/t2m/202302.npz",
+     "sha256": "f04c9b5d44c8b423c001a84701561b2548826b7c5b500362aeaa39112d696715",
+     "bytes": 5241338
+    },
+    {
+     "name": "data/raw/era5/t2m/202303.npz",
+     "sha256": "6156814310a19ba718a83c715f5ffd88bbd10087964565024de91178e332274a",
+     "bytes": 5600358
+    },
+    {
+     "name": "data/raw/era5/t2m/202304.npz",
+     "sha256": "f54d54494a2910d3704668b2a0e8f8c0d326a9736c969ebcb801d0ac6e79adc1",
+     "bytes": 5218386
+    },
+    {
+     "name": "data/raw/era5/t2m/202305.npz",
+     "sha256": "e6a3ee32dbc7de3f87746efa9c39d2a052301d4d066d04687cd858dc9bcfda7a",
+     "bytes": 4990311
+    },
+    {
+     "name": "data/raw/era5/t2m/202306.npz",
+     "sha256": "70adbb5870c254fa1dfc9dee0ced9bc2e41697d1f7f791dd0553c247e3b1c292",
+     "bytes": 4563127
+    },
+    {
+     "name": "data/raw/era5/t2m/202307.npz",
+     "sha256": "26f97ecdc62044718056aa01301641165683fb70f464e94fd7f0a79685470c76",
+     "bytes": 4707877
+    },
+    {
+     "name": "data/raw/era5/t2m/202308.npz",
+     "sha256": "651479c4bce2c2b1a6ffc3e979a735aaa21763560d1bc6ba216e36f87030e3ca",
+     "bytes": 4670377
+    },
+    {
+     "name": "data/raw/era5/t2m/202309.npz",
+     "sha256": "d7aea12a9d7324c384d0aa5678ee8de734123416c343be7434218979fbb870de",
+     "bytes": 4544666
+    },
+    {
+     "name": "data/raw/era5/t2m/202311.npz",
+     "sha256": "5c8c0aa13b7e901130c9c86a6464ed87cf6044130e79a3624a06705ccfdf17a9",
+     "bytes": 5387224
+    },
+    {
+     "name": "data/raw/era5/t2m/202312.npz",
+     "sha256": "2fcfe7767d706018e78da3ea73c1fa827ae6bfe8a565b46912534329344b5532",
+     "bytes": 5724705
+    },
+    {
+     "name": "data/raw/era5/t2m/202401.npz",
+     "sha256": "391ba49555018e7f4469cc3abf64dcfa550fc5c11bc37ce29a5d34a58aebff22",
+     "bytes": 5817112
+    },
+    {
+     "name": "data/raw/era5/t2m/202402.npz",
+     "sha256": "d1cdaf19053190bf8e21b4dede9541276736666c03360b40264e90ebcf05db68",
+     "bytes": 5401487
+    },
+    {
+     "name": "data/raw/era5/t2m/202403.npz",
+     "sha256": "44ded226012547a3d484678e4055e2655cc861e3fb71d2d6d86d6d5139545017",
+     "bytes": 5600823
+    },
+    {
+     "name": "data/raw/era5/t2m/202404.npz",
+     "sha256": "3120836065f03d6cc8ee285284bea759027fb7d19869d2b682bfd9f23d563168",
+     "bytes": 5187324
+    },
+    {
+     "name": "data/raw/era5/t2m/202405.npz",
+     "sha256": "8bc6e497c09b0855491ff00866f2f23e2d8bb7af1d2f869509bd722f7ec2ad9d",
+     "bytes": 4959692
+    },
+    {
+     "name": "data/raw/era5/t2m/202406.npz",
+     "sha256": "245fae08ef3ddf57c4f8ad37db1958a61d0639e5875039be84746c2ad2e9cc0c",
+     "bytes": 4556703
+    },
+    {
+     "name": "data/raw/era5/t2m/202407.npz",
+     "sha256": "2758d1ad58805cea37be1b31ad935ab01a1c2b644e83966c8e7cd9510f8d28fd",
+     "bytes": 4707116
+    },
+    {
+     "name": "data/raw/era5/t2m/202408.npz",
+     "sha256": "56019b0b263fba22ebf3ec1d0c3203ae03c8a112bcba5fb0fc37cd6e632491b6",
+     "bytes": 4676460
+    },
+    {
+     "name": "data/raw/era5/t2m/202409.npz",
+     "sha256": "1a86e0cb13f696ea58e20286c8f6006b80291ab8ba52e9b0ef68e12008c34567",
+     "bytes": 4548430
+    },
+    {
+     "name": "data/raw/era5/t2m/202411.npz",
+     "sha256": "62888caa7b651c65d99e8760fd7694c70c6ab755e35495ee62720e11819fb961",
+     "bytes": 5371706
+    },
+    {
+     "name": "data/raw/era5/t2m/202412.npz",
+     "sha256": "2c9076f9a7712e877accb39e1ddd05c3c8ee32649426c081d489b9ddc2422ded",
+     "bytes": 5717521
+    },
+    {
+     "name": "data/raw/era5/t2m/202501.npz",
+     "sha256": "827b26a9983578dbd6c4385589826c6c412479e7255f2c00abd2f12df268266c",
+     "bytes": 5772013
+    },
+    {
+     "name": "data/raw/era5/t2m/202502.npz",
+     "sha256": "5c05ed055c8fdf3a4d510ace26a17c0ca957a84af7686dc4cd260d9d5fed0278",
+     "bytes": 5202962
+    },
+    {
+     "name": "data/raw/era5/t2m/202503.npz",
+     "sha256": "41ff177cb8f781f5cf790fcfca1b556af6fe040c609ed9b5c81f2cffa02fba47",
+     "bytes": 5626979
+    },
+    {
+     "name": "data/raw/era5/t2m/202504.npz",
+     "sha256": "ac306b296f4a3a2b14a2a14fcbbdc63c7dc701ef8129cbe78f32195c377d8e97",
+     "bytes": 5179531
+    },
+    {
+     "name": "data/raw/era5/t2m/202505.npz",
+     "sha256": "1b058322d35cc12ae2be3373c6d543680b6e7e6a30ee5524959d3a66ebe924b3",
+     "bytes": 5194214
+    },
+    {
+     "name": "data/raw/era5/t2m/202506.npz",
+     "sha256": "687d322186a7430c38baef0185154635bbde52a6ec8434428cebe0031a15591f",
+     "bytes": 4956238
+    },
+    {
+     "name": "data/raw/era5/t2m/202507.npz",
+     "sha256": "74fd0d18e66b78c3c65b060521b77f49812ea7f75c75c8ef6bd03385df9b5d09",
+     "bytes": 5121150
+    },
+    {
+     "name": "data/raw/era5/t2m/202508.npz",
+     "sha256": "5ce96231172d2167e321f4b9ce94c44a261435fbddf7e2999e7ed95032246092",
+     "bytes": 5089035
+    },
+    {
+     "name": "data/raw/era5/t2m/202509.npz",
+     "sha256": "562e39a237c77b80d596a67803b8550f558fdc9c2069733c363a363017edd00c",
+     "bytes": 4953674
+    },
+    {
+     "name": "data/raw/era5/t2m/202511.npz",
+     "sha256": "ec631d4fce6e0e01c315a3f93c5661f18549c47083bdb76b9953611f4c3b6d4a",
+     "bytes": 5390085
+    },
+    {
+     "name": "data/raw/era5/t2m/202512.npz",
+     "sha256": "691e88a61a7fc5b948fa1dd268da927f6c505220215975e48bea5a1cbe5c252f",
+     "bytes": 5797863
+    },
+    {
+     "name": "data/raw/era5/t2m/202601.npz",
+     "sha256": "4d10dfdf98a70af9c4c6d321d8b17d46034581f04c2860004b159e979addc48f",
+     "bytes": 5822093
+    },
+    {
+     "name": "data/raw/era5/t2m/202602.npz",
+     "sha256": "112b97ec99b403f0f37c8d98bc00b4025ad1ca0bab0fba7b42ac8dc2471f15a7",
+     "bytes": 5227560
+    },
+    {
+     "name": "data/raw/era5/t2m/202603.npz",
+     "sha256": "5db65354be86970fa0d47e2b0fdb7a6ce0f5564ad33f7fd60521859a58df42c7",
+     "bytes": 5674162
+    },
+    {
+     "name": "data/raw/era5/t2m/202604.npz",
+     "sha256": "4f77c3d99012b5e2cee055a7171538507c7bb8f6e22ecad13e862dac75ffdcb7",
+     "bytes": 5233719
+    },
+    {
+     "name": "data/raw/era5/t2m/202605.npz",
+     "sha256": "fd220159ae8621ba6b893a0aa18f72c40bbd901886554efee6ac942936fb4c4d",
+     "bytes": 4976848
+    },
+    {
+     "name": "data/raw/era5/t2m/202606.npz",
+     "sha256": "12868034125073899a55bc44b237cebce1d70fea9d6c4144de4761d669f17fbc",
+     "bytes": 4586540
+    },
+    {
+     "name": "data/raw/era5/t2m/202607.npz",
+     "sha256": "b3e798d859b5c43f65cbda9454c520159bc54c095051b6e19228af3463ad26c9",
+     "bytes": 4718964
+    },
+    {
+     "name": "data/raw/era5/t2m/202608.npz",
+     "sha256": "0c05ccb3d7dc783153db28984b61b828fa0ec319b943b8146014118174343dba",
+     "bytes": 7650106
+    },
+    {
+     "name": "data/raw/era5/t2m/202609.npz",
+     "sha256": "77566b6e1e8dd74653fdd547c4c172f08d9709a1b1071a59701465035ec05e04",
+     "bytes": 4559169
+    }
+   ],
+   "notes": "Partial HTTP range reads of blosc block 0 of the co/ N320 stores (points north of 45N), lowest mantissa byte set to midpoint (max error 0.0033 K). T2m: daily mean of 00+12 UTC analyses 1 Nov-15 May; 16 May-15 Sep one analysis/day alternating 00/12 UTC (winter 2024 summer at 2/day). co t2m chunks for Aug 2026 were missing (store attrs claim ERA5T to 2026-10-31); those 31 hours and 1-17 Nov 2026 came from ar/full_37-1h-0p25deg-chunk-1.zarr-v3 (rows 90-45N, bilinear). Snowfall: 1-h accumulations; daily = 24 x one hourly value with the valid hour rotating through 24 h. Total ERA5 transfer about 1.38 GB (all runs incl. checks) over ~60k range requests, single thread, identified UA. ERA5T preliminary after 2026-06-30. Known: ERA5 2 m temperature warm bias over sea ice in cold conditions (Wang et al. 2019, The Cryosphere 13, 1661-1679).",
+   "access_date": "2026-11-25"
+  },
+  "gebco": {
+   "dataset": "GEBCO_2026 Grid (15 arc-second), subset via GEBCO subsetting app",
+   "url": "https://download.gebco.net/ (api/queue, grid gebco_2026_global, NetCDF)",
+   "doi": "10.5285/4f68d5c7-45eb-f999-e063-7086abc036fa (GEBCO Compilation Group (2026) GEBCO 2026 Grid)",
+   "licence": "Public domain (file metadata: 'The GEBCO Grid is placed in the public domain and may be used free of charge'); conditions of use at gebco.net ask for acknowledgement and state it is not for navigation.",
+   "files": [
+    {
+     "name": "data/raw/gebco/gebco_2026_cambridge_bay.zip",
+     "sha256": "58f7b96a178ea39e91f23eb73a112f2c4ca2da6a1382a106cd80e2b845a21b92",
+     "bytes": 770844
+    }
+   ],
+   "notes": "GEBCO_2026 15-arcsec subset {'left': -106.5, 'right': -103.5, 'top': 69.6, 'bottom': 68.6}; depth at approx. site 69.05N 105.10W within 2 km: median 9 m (range -2..35 m)",
+   "access_date": "2026-11-25"
+  },
+  "naturalearth": {
+   "dataset": "Natural Earth 50m land; Natural Earth 10m populated places (v5.x)",
+   "url": "https://naciscdn.org/naturalearth/50m/physical/ne_50m_land.zip ; https://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places.zip",
+   "doi": null,
+   "licence": "Public domain (Natural Earth terms of use: 'All versions of Natural Earth raster + vector map data found on this website are in the public domain').",
+   "files": [
+    {
+     "name": "data/raw/naturalearth/ne_50m_land.zip",
+     "sha256": "0b8e670cf80dce9cbebe2a193bc44ba5602758c22e1fa603980553646d7ff162",
+     "bytes": 457183
+    },
+    {
+     "name": "data/raw/naturalearth/ne_10m_populated_places.zip",
+     "sha256": "cd149186f03d2603e0410da399b980a4357d0ac32d3a2305a49ed3dffcc41d7b",
+     "bytes": 2811199
+    }
+   ],
+   "notes": "land: >50% of 25 km cell; settlements: 645 places north of 55N, 50 km buffer; web land.json clipped >=45N, simplify 0.05 deg (188 KB)",
+   "access_date": "2026-11-25"
+  },
+  "osisaf_drift": {
+   "dataset": "EUMETSAT OSI SAF sea-ice drift: OSI-455 CDR v1.0 (to 2020-12-31), OSI-435 ICDR v0.1 demonstrational (2021-01..2025-12), OSI-405-d NRT LR v3.1 (2026)",
+   "url": [
+    "https://thredds.met.no/thredds/dodsC/osisaf/met.no/reprocessed/ice/drift_455m_nh_agg",
+    "https://thredds.met.no/thredds/catalog/osisaf/met.no/ice/drift/435/catalog.html",
+    "https://thredds.met.no/thredds/catalog/osisaf/met.no/ice/drift_lr/merged/catalog.html"
+   ],
+   "doi": "10.15770/EUM_SAF_OSI_0012 (OSI-455); OSI-435 and OSI-405 have no DOI in file metadata",
+   "licence": "OSI-455/OSI-435: EUMETSAT OSI SAF terms (file attribute 'license'): free of charge to every user; 'Copyright EUMETSAT' must be displayed under each product shown; no warranty. OSI-405-d: CC BY 4.0 (file attribute 'license').",
+   "files": [
+    {
+     "name": "osisaf/drift455_MANIFEST.json",
+     "sha256": "e817f6e965c69c658b2de1e0b0ff129d0b015b4a429a4ec5a3caa4346797dd91",
+     "bytes": 1571,
+     "n_files": 10,
+     "total_bytes": 34892381
+    },
+    {
+     "name": "osisaf/drift435_MANIFEST.json",
+     "sha256": "968aa242de4d9091dcc6747e294d2b0e6adf963992838134156dbbf0356c9c8f",
+     "bytes": 232288,
+     "n_files": 1591,
+     "total_bytes": 50412113
+    },
+    {
+     "name": "osisaf/drift405_MANIFEST.json",
+     "sha256": "af1e43392885c8bee8809766a6aeee838de62dc53c059fe176ea90a57cbf8a83",
+     "bytes": 37232,
+     "n_files": 255,
+     "total_bytes": 10394120
+    }
+   ],
+   "notes": "dX, dY, status_flag only. OSI-455/435 cropped to 75 km cells 24..119 (+/-3600 km, EASE2). OSI-405 full 62.5 km polar-stereographic field. Per-file sha256 in the *_MANIFEST.json files.",
+   "transfer_mb": 425.42,
+   "access_date": "2026-11-25"
+  },
+  "osisaf_sic": {
+   "dataset": "EUMETSAT OSI SAF sea-ice concentration: OSI-450-a1 CDR v3.1 (2011-2020), OSI-430-a ICDR v3.0 (2021-01..2025-09), OSI-438 ICDR v3.0 AMSR2 (2025-10..2026-09); EASE2-N 25 km",
+   "url": [
+    "https://thredds.met.no/thredds/catalog/osisaf/met.no/reprocessed/ice/conc_450a1_files/catalog.html",
+    "https://thredds.met.no/thredds/catalog/osisaf/met.no/reprocessed/ice/conc_cra_files/catalog.html",
+    "https://thredds.met.no/thredds/catalog/osisaf/met.no/reprocessed/ice/conc_438_files/catalog.html"
+   ],
+   "doi": "10.15770/EUM_SAF_OSI_0023 (OSI-450-a1); OSI-430-a / OSI-438 ICDRs: see osi-saf.eumetsat.int",
+   "licence": "CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/, file attribute 'license'); credit 'EUMETSAT OSI SAF'.",
+   "files": [
+    {
+     "name": "osisaf/sic_daily/sic_20111101.nc",
+     "sha256": "53afbfd50bfddad57a8b1ef3eac2efd9879052be666368a72b8188bf1765ed2a",
+     "bytes": 75292
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20120915.nc",
+     "sha256": "f57976f803d1d6193d8e72e6d43b9c444b2f23bb6838f3d44bdb72810d3c12a4",
+     "bytes": 53497
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20121101.nc",
+     "sha256": "94aa40df40d7c12d172d99cd59a87701e800666e890e1753de29b7dfcb125d08",
+     "bytes": 71615
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20130915.nc",
+     "sha256": "031d1c47d413128cef56a2e10975ef3d8d5fca7b186d297d0fb5ab1cea989d59",
+     "bytes": 58703
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20131101.nc",
+     "sha256": "18e2be565bba48876a125964728e32882acd0bfd71614d7be240f7cb7c1811bd",
+     "bytes": 71407
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20140915.nc",
+     "sha256": "7cf3f121cfa03867f4797d9a600ecfed38b0fd3d1d69d51c14fc69cb462db835",
+     "bytes": 61127
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20141101.nc",
+     "sha256": "72307fa0d2682c2a55639efeb97249af52fe3c1fcf96deda9691aa8e3f2bf8a4",
+     "bytes": 73778
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20150915.nc",
+     "sha256": "7c934ed83194ce397b20e31b9f889602cfde19af9c413704a6c48be2956b4961",
+     "bytes": 56870
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20151101.nc",
+     "sha256": "914f86c7dbe2aed748dfc02caa17ea0fa8a3a9de03eb970414073752829ed682",
+     "bytes": 71522
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20160915.nc",
+     "sha256": "e3c4d8874d41cee209e7e753d70c0034b2966da9ce7877f85eca511030b06afa",
+     "bytes": 57050
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20161101.nc",
+     "sha256": "810d40332662ad57a423d084ec257f45e1cb5a2800375455dcb9910a5c594e79",
+     "bytes": 70896
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20170915.nc",
+     "sha256": "3fbc6892f588d4735349829d7348fd60b918fdfe008b14a253e3168861e88963",
+     "bytes": 59373
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20171101.nc",
+     "sha256": "c2e1b6906157b073bc25cb45ff980833165258f67a54286d3d7d4f52c2ce44e2",
+     "bytes": 69121
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20180915.nc",
+     "sha256": "da07e731b6ebc86660f8864b77603fc2c316e9406bef1851392e7da0f5bbf03e",
+     "bytes": 57681
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20181101.nc",
+     "sha256": "8640c0a0d10337a0967f3366cd5cbcb9e704f08f2375e5b186fd02f7af42dd18",
+     "bytes": 74941
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20190915.nc",
+     "sha256": "021019908860193aac9a055693ba5f75c4969600bf7dd959b63b15091a83cb6c",
+     "bytes": 56533
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20191101.nc",
+     "sha256": "c01429cf7f8bf488c1648537c40647f86b6f37b5c31df850534cbf67f0b38134",
+     "bytes": 71996
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20200915.nc",
+     "sha256": "75289c67130f7f4e2d36f2c8f88703f7fdfa903cff2d3a869ea9752e4fb13417",
+     "bytes": 55212
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20201101.nc",
+     "sha256": "c54338f0bbcf898eb378ed0aa5046c42ba407ef242e1c8edbad89ae400529e8b",
+     "bytes": 68980
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20210915.nc",
+     "sha256": "8b118d142cf1fb89320d55b50726a5af793fa0691193dbdc403d2e289a72a525",
+     "bytes": 60066
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20211101.nc",
+     "sha256": "d387d7a0ee00609997ddcc05fc8add9daa96d1a4a5960f08c9d50bdaa11db613",
+     "bytes": 69136
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20220915.nc",
+     "sha256": "50af053d03a38551ae851d4e3b353bff6a56ff85efa54de334bbe4ff3d0ff0cc",
+     "bytes": 59109
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20221101.nc",
+     "sha256": "f74911591f6db7b5de2347f4e238d32ef2aee20789ffdd3539af9ef3e8a7e869",
+     "bytes": 72678
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20230915.nc",
+     "sha256": "1a8df95e331b28dc545f329f09617467f5fbfbd2062ea2c5d8642492c5c8c2c0",
+     "bytes": 58234
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20231101.nc",
+     "sha256": "72f1306e3397f676ad601a1362de16fb521e0d7671aba6d113574f23b541e9b6",
+     "bytes": 71942
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20240918.nc",
+     "sha256": "c3a7f83c16444ee38352632b804745bc6a708e270dcd5a2ac2286ea48dfe0fb9",
+     "bytes": 56906
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20241101.nc",
+     "sha256": "26d6b02121f12fd0ae2563232a54a65900e21c93e11877acfffed93448ba9ec3",
+     "bytes": 71661
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250901.nc",
+     "sha256": "ff35366f1e11a15bdece9fa6e04be7a1dfc3591c643dea6a5e8c175e4a0e4cc0",
+     "bytes": 58778
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250902.nc",
+     "sha256": "b7c6cab9fa79f8fa812fe8ae3a73e3ed389d02f0b41d7d2f5e893e6d7d7247c9",
+     "bytes": 59269
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250903.nc",
+     "sha256": "f2ec427cb28f4c74ef365c5709a159d84b8935f146da70fa2542e4309b324c19",
+     "bytes": 59063
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250904.nc",
+     "sha256": "c4904103b24354421694555abb43709d32a3ea61d9b175890fd138f512f0edc7",
+     "bytes": 59174
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250905.nc",
+     "sha256": "b80540ead166862bac8e290c4588ad0cbf594277ab216306686f69a5f302bc21",
+     "bytes": 59308
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250906.nc",
+     "sha256": "e3a55fe4cff8d4c9cfcd083bc19b57eb7a22fc5c460baff662f0da5d630cfe3c",
+     "bytes": 59093
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250907.nc",
+     "sha256": "58990d37986d315da1eeb07982c13fd7a78a2cb6c4f572b9ffc8ff0482e3af3d",
+     "bytes": 59058
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250908.nc",
+     "sha256": "231655a5ea265fd7b78ddc75e98b7f1e0571667f8dbd277eabd90df322a8369b",
+     "bytes": 59444
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250909.nc",
+     "sha256": "f9b1e7cfb2fe7d131f507e613366b0f4f37b25c3b1f63253916d86d7ec79d123",
+     "bytes": 59597
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250910.nc",
+     "sha256": "283a85212a064c38f476cef40a15e3f02a7051d2a8296ada0b570fdb11616441",
+     "bytes": 59481
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250911.nc",
+     "sha256": "5c2e498218cc2d5c76e8c9020b2abdc3935dd35454fb040d76d33e4329d3249b",
+     "bytes": 59915
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250912.nc",
+     "sha256": "99b15b473ae66894df7a155db87d4f5743fa13de25792cbbead6441b39995998",
+     "bytes": 60490
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250913.nc",
+     "sha256": "d69654eb407a6b60ac852eddd71af498d344bcec1e86d626b5bd4f674faff1f4",
+     "bytes": 60736
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250914.nc",
+     "sha256": "d5b37709f36312a61ba8ed4f9fbb306d2b861f71f376779b091420eafbcd0916",
+     "bytes": 60083
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250915.nc",
+     "sha256": "f6dfcd2f9b3ad6af72cbdaa6f86a6c03ef4212f30feba1979e46b0713dbf8915",
+     "bytes": 60350
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250915_438.nc",
+     "sha256": "5a9bc1a6a3101214a10ab9e302b93f81a98b3c51330b5a3bb4441d948ded80bb",
+     "bytes": 54699
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250916.nc",
+     "sha256": "8b8490ea9949512e8c7d9a3a9c28cee61641f9488040cdaee2b3bb0a88333f8d",
+     "bytes": 59924
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250917.nc",
+     "sha256": "e70c86ad87a15d871a6546c99d07e7dcbca5a80f6e390afe69a61aedf4996435",
+     "bytes": 59612
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250918.nc",
+     "sha256": "837028cafb269a5dd8cfff35140e89213e0c33ea72a76184f4127286f1977d4c",
+     "bytes": 59442
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250919.nc",
+     "sha256": "c516660a9ece29d096a1e3b41dcfaeb409cc4dd02a9f64cc53f52cc409a4c6eb",
+     "bytes": 59032
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250920.nc",
+     "sha256": "046331386be218d378a24f08a3cf30312474671e2e3950740ae430a3b6286583",
+     "bytes": 59147
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250921.nc",
+     "sha256": "02f7b555409e813004f9a0b656ba752b42352fb3e25f3db56580b4ee2a0624f0",
+     "bytes": 59160
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250922.nc",
+     "sha256": "870001f7fb5480f8dd0591a830216215b2162c2d25ca75c60ee9ee67113279be",
+     "bytes": 58938
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250923.nc",
+     "sha256": "604a9583c827be48082375266a72a3d15092c152f5c74c2a79292d6f7163ea7e",
+     "bytes": 58887
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250924.nc",
+     "sha256": "e89561448882321751cade3c73f5d0bbd05217e8340808f9dc8e74a96db65aea",
+     "bytes": 58889
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250929.nc",
+     "sha256": "7f53c4b4bdceea862c678d824868904e5cc5179eb9e8c0848e676d2b4714ec93",
+     "bytes": 61055
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20250930.nc",
+     "sha256": "97a4f04d1e040432750a13660f2b0a0aa1d9450744b6a9e40b942f800524f81f",
+     "bytes": 60036
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20251101.nc",
+     "sha256": "8eb0702d0e2188e4fd7e7a5dce0d346a152529232fae86caca436901e4967b19",
+     "bytes": 64911
+    },
+    {
+     "name": "osisaf/sic_daily/sic_20260915.nc",
+     "sha256": "0e8c5078328f665043bb834ff1ca9a441ccfc094c955ac6a432c4054698c174d",
+     "bytes": 54310
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_201109.nc",
+     "sha256": "01a2c02bcb88709ba461e575904dbb0d36610a327c67d1ea78d8a01e08715ddc",
+     "bytes": 58357
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_201209.nc",
+     "sha256": "cf39cf0d165dedbbecb31a466b73e21e812652b377e783b0a0d5fb980699da96",
+     "bytes": 53599
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_201309.nc",
+     "sha256": "0ba5c849d4d46b762cadbbb626293c3e41a7d90c4a2cda1514586041e569d8cc",
+     "bytes": 60636
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_201409.nc",
+     "sha256": "4f834c7600f5abf9e839f274c819b477c848ed148fd2a281dc6c30c368504a04",
+     "bytes": 61417
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_201509.nc",
+     "sha256": "f4769dfd39fbc746adafd3c30d785d570ac9bb6370612c9d0f354871d758c9ab",
+     "bytes": 59436
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_201609.nc",
+     "sha256": "2fa408690a031b8cf33f1d789ee3da223414dfbf7cca2fdc973da6b00986ce19",
+     "bytes": 59938
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_201709.nc",
+     "sha256": "dab1b88ab8cf51c8ee117e53b4a536ed837f89600463367ee1cb4a56229450bb",
+     "bytes": 59416
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_201809.nc",
+     "sha256": "cd7014c4d1b3bdeb0a1f37ded3356baa89be4d4c3aad15417101c2d514762cc8",
+     "bytes": 59002
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_201909.nc",
+     "sha256": "9f7101967aee2bc975f13b1da33673efb2d45ef8842eba15899b282c6ed135b7",
+     "bytes": 56668
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_202009.nc",
+     "sha256": "27fe7946494a0cfa865942fee7e5388f85e9e0de2888b506c2bb0832111bd9a0",
+     "bytes": 55576
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_202109.nc",
+     "sha256": "383469e0fe726235020d5c8639e84181676430723bb59bc3159f14fe622bcea8",
+     "bytes": 61112
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_202209.nc",
+     "sha256": "b81bfd83b3aaf3ec8d6fffadb5c8f15567ff2469f8bdb29a7d2da725cdd6a146",
+     "bytes": 60402
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_202309.nc",
+     "sha256": "5e4abc4d33e04c164ba22f6499b334b694d9284663d8a996f344210666170fd8",
+     "bytes": 58496
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_202409.nc",
+     "sha256": "39c2833ec0ccd9f4b1ffa71164c9286f30e55462c58659ee125877c6a95150a9",
+     "bytes": 56990
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_202509.nc",
+     "sha256": "f85ebc7985c7181d1e7bb18e00566ab2c884644791c0c21787ec0efb762dd691",
+     "bytes": 67219
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_202509_438.nc",
+     "sha256": "55fdb28dbb6aa72dbd0fa5175f5827eea24f82b4c7620893e50895f0857c3910",
+     "bytes": 56294
+    },
+    {
+     "name": "osisaf/sic_monthly/sic_202609.nc",
+     "sha256": "c399eb9b0889c13e6d02b47a85684b17d84b991dcd7f77f089ba64c54498e631",
+     "bytes": 56760
+    }
+   ],
+   "notes": "OPeNDAP subsets of ice_conc cropped [36:396,36:396] to the atlas grid (exact cell match, asserted). Monthly means are OSI SAF monthly files. Daily = 12 UTC fields on 1 Nov and 15 Sep.",
+   "transfer_mb": 38.36,
+   "access_date": "2026-11-25"
+  },
+  "piomas": {
+   "dataset": "PIOMAS v2.1 monthly sea-ice thickness (heff) and snow depth",
+   "url": "https://pscfiles.apl.uw.edu/zhang/PIOMAS/data/v2.1/heff/ and https://pscfiles.apl.uw.edu/zhang/PIOMAS/data/v2.1/other/ ; grid https://pscfiles.apl.uw.edu/zhang/PIOMAS/utilities/grid.dat",
+   "doi": "Zhang, J. & Rothrock, D.A. (2003) Mon. Wea. Rev. 131, 845-861, doi:10.1175/1520-0493(2003)131<0845:MGSIWA>2.0.CO;2; Schweiger et al. (2011) JGR 116, C00D06, doi:10.1029/2011JC007084",
+   "licence": "Freely available from the Polar Science Center (APL, University of Washington) for research use with citation of Zhang & Rothrock (2003) and Schweiger et al. (2011); no formal open licence stated on the data page.",
+   "files": [
+    {
+     "name": "data/raw/piomas/heff.H2011.gz",
+     "sha256": "5a50a8e1c9a88b7ebce4243ee34ecf60c7cc4e03a0f2de0bcaabeb38990d53e5",
+     "bytes": 657594
+    },
+    {
+     "name": "data/raw/piomas/heff.H2012.gz",
+     "sha256": "92c86be61b83e26bd1963e634eccc7456ebc3c8eb72e7d48d0dccc0c1d967793",
+     "bytes": 648085
+    },
+    {
+     "name": "data/raw/piomas/snow.H2012.gz",
+     "sha256": "fc188b03eda33941216cf0a2d71697076c941a58735b36f441a3eb945383a0eb",
+     "bytes": 626650
+    },
+    {
+     "name": "data/raw/piomas/heff.H2013.gz",
+     "sha256": "bbb7bd03a56d86af1574d1d08d2079da2b7a35d31ca63466364b9adeb6cd5e55",
+     "bytes": 658630
+    },
+    {
+     "name": "data/raw/piomas/snow.H2013.gz",
+     "sha256": "6a79d31f0bb6a068557a4ddd40e63c8b1438c7ada1a4e694d139eb47c46f3a42",
+     "bytes": 649533
+    },
+    {
+     "name": "data/raw/piomas/heff.H2014.gz",
+     "sha256": "ff299f0837b5ca76a0a877d644bb669ec1d70dc16d87401b16a2531efade96b6",
+     "bytes": 659651
+    },
+    {
+     "name": "data/raw/piomas/snow.H2014.gz",
+     "sha256": "0a80df4492d81594f837f2bfcee7b0d43ce8cf786fa95abb74fbf388ec70bec5",
+     "bytes": 659038
+    },
+    {
+     "name": "data/raw/piomas/heff.H2015.gz",
+     "sha256": "d1d5d19959fbfd118e8427b5887e249205b13ee1a96e7f4811ca558d2dae0b8a",
+     "bytes": 660371
+    },
+    {
+     "name": "data/raw/piomas/snow.H2015.gz",
+     "sha256": "a2a9fc0d13177cf921aab5fd510448ed4cbc8f1099d5a1e75cb8407e60b214dd",
+     "bytes": 643890
+    },
+    {
+     "name": "data/raw/piomas/heff.H2016.gz",
+     "sha256": "d0f94c78d64490fcafd265bf50bb27a681643b816d300007e3ede83e52a7a3f7",
+     "bytes": 650776
+    },
+    {
+     "name": "data/raw/piomas/snow.H2016.gz",
+     "sha256": "60410bdd039bf6b8ee2a784110d2fbade5a7fef5f1e7935695fb5d86765bdce2",
+     "bytes": 629284
+    },
+    {
+     "name": "data/raw/piomas/heff.H2017.gz",
+     "sha256": "871bde7f3e56b5e6299f7d77c00afd09cda6fb33a383eaa877cac3246b4451ba",
+     "bytes": 642691
+    },
+    {
+     "name": "data/raw/piomas/snow.H2017.gz",
+     "sha256": "e7d428c42f5144b643a256d40a7856819721693056714531d5f9314a0e574217",
+     "bytes": 634953
+    },
+    {
+     "name": "data/raw/piomas/heff.H2018.gz",
+     "sha256": "2fcb138e7a7d9edc46b5b262a076708832de6a50ba66cfcebd16274f62bf0363",
+     "bytes": 637963
+    },
+    {
+     "name": "data/raw/piomas/snow.H2018.gz",
+     "sha256": "4214533e9aedc2fcf2dd16f9200e5307e1d7abc3259e024c6ea4584cc62805b5",
+     "bytes": 631743
+    },
+    {
+     "name": "data/raw/piomas/heff.H2019.gz",
+     "sha256": "b64660567787eac191f0f9ddc918c5086c1a181cea0fac0b800b64dbfdef46fe",
+     "bytes": 632778
+    },
+    {
+     "name": "data/raw/piomas/snow.H2019.gz",
+     "sha256": "1d2fee9eafcb60b19ba0a4d5d63695f1032079ba32d59f15fb9a5124b2b22f0c",
+     "bytes": 613090
+    },
+    {
+     "name": "data/raw/piomas/heff.H2020.gz",
+     "sha256": "fe2f9e2ca397858e32f30874be95cec01d157eee98acbee929d3c78b546d5fa3",
+     "bytes": 640720
+    },
+    {
+     "name": "data/raw/piomas/snow.H2020.gz",
+     "sha256": "61feed7abf29cc03fb0d6facc2f3b040d97a44d17088c457d42aac9f68016b83",
+     "bytes": 614985
+    },
+    {
+     "name": "data/raw/piomas/heff.H2021.gz",
+     "sha256": "aad34758c4194db892b78e3765555d52a3bec4d9b00a7ef69934d69aa9d789b0",
+     "bytes": 641368
+    },
+    {
+     "name": "data/raw/piomas/snow.H2021.gz",
+     "sha256": "d2a7c3154a5562de0767e6c124054394c83ec1017975e6b4d0928df424dee6ab",
+     "bytes": 620208
+    },
+    {
+     "name": "data/raw/piomas/heff.H2022.gz",
+     "sha256": "ef5b379e87939ddd40df4fe4bfbc8162ce925c7d31b9535d9f38ef5a181ca781",
+     "bytes": 653789
+    },
+    {
+     "name": "data/raw/piomas/snow.H2022.gz",
+     "sha256": "2cf17d7b7760422c69ca6a2bc87e06cc16c0b5485a604fda4a4605ccd6a06672",
+     "bytes": 630470
+    },
+    {
+     "name": "data/raw/piomas/heff.H2023.gz",
+     "sha256": "abb60cc34a0610b4c5104c6ba596457b8ef051536404488e3351881724f5c164",
+     "bytes": 651642
+    },
+    {
+     "name": "data/raw/piomas/snow.H2023.gz",
+     "sha256": "c1b4e6345ba2585a5c134722c62a02473c29d384444a2ef7ebdc6dae16529dc3",
+     "bytes": 637725
+    },
+    {
+     "name": "data/raw/piomas/heff.H2024.gz",
+     "sha256": "d3fcaa7c16d85c2118a1eaf034bef680eb4b2cb41b95d5e5d9fa25bc3cf5661c",
+     "bytes": 645905
+    },
+    {
+     "name": "data/raw/piomas/snow.H2024.gz",
+     "sha256": "3a631e2b98d6e614678b9edd6d3d084e7d95eb00667696c8e2888be7817ca1ee",
+     "bytes": 640713
+    },
+    {
+     "name": "data/raw/piomas/heff.H2025.gz",
+     "sha256": "d8e5e44beccbe959285371b4580af4c5f7b39003a368bb51dded160efb17df79",
+     "bytes": 637908
+    },
+    {
+     "name": "data/raw/piomas/snow.H2025.gz",
+     "sha256": "71e39196629b6958cd7be3a8cf7ddf02b694762e1ecd4287d8f7a77c0c7ed19d",
+     "bytes": 624192
+    },
+    {
+     "name": "data/raw/piomas/grid.dat",
+     "sha256": "7ecdf20b70ca1a5650e1ebbf7173f5de381ddaf851b621c508f8beb990ac7f3c",
+     "bytes": 699840
+    }
+   ],
+   "notes": "Model output, not observation. Version 2.1. H2026 holds only Jan-Feb 2026 at access, so W=2025 April fields unavailable.",
+   "access_date": "2026-11-25"
+  },
+  "shipping_corridors_hand": {
+   "dataset": "Hand-curated approximate shipping corridors (NWP southern route, NSR)",
+   "url": "data/hand_curated/shipping_corridors.geojson",
+   "doi": null,
+   "licence": "Own work (project), CC0",
+   "files": [
+    {
+     "name": "data/hand_curated/shipping_corridors.geojson",
+     "sha256": "8cad045a814dd54e19b6fbac34c7f20175980d5909419eb32a3ad76f2e27e9a8",
+     "bytes": 2778
+    }
+   ],
+   "notes": "hand-curated, approximate, not ASTD; 50 km buffer",
+   "access_date": "2026-11-25"
+  },
+  "thickness_awi": {
+   "dataset": "AWI CryoSat-2/SMOS merged sea ice thickness (CS2SMOS), weekly L4, Northern Hemisphere",
+   "url": "https://spaces.awi.de/display/CS2SMOS",
+   "doi": null,
+   "licence": "Not read: AWI data pages unreachable from this environment. ESA catalogue page (https://earth.esa.int/eogateway/catalog/smos-cryosat-l4-sea-ice-thickness) links the ESA data T&C: https://earth.esa.int/eogateway/documents/20142/1564626/Terms-and-Conditions-for-the-use-of-ESA-Data.pdf",
+   "status": "unavailable",
+   "files": [],
+   "probe_log": [
+    "https://ftp.awi.de/sea_ice/product/cryosat2_smos/: ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+    "https://ftp.awi.de/sea_ice/: ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+    "ftp://ftp.awi.de/sea_ice/product/cryosat2_smos/: skipped (only HTTPS is carried by this environment's proxy)"
+   ],
+   "notes": "No CS2SMOS data fetched. ftp.awi.de serves FTP only (TLS reset on 443); the proxy carries HTTPS only. ESA route needs EO Sign-In (FTPS, smos-diss.eo.esa.int, not allow-listed). thick_awi_W.nc is therefore NOT produced; the 2026/27 current-season thickness is missing.",
+   "access_date": "2026-11-25"
+  },
+  "thickness_cpom": {
+   "dataset": "CPOM CryoSat-2 Arctic sea ice thickness, NTC (Non-Time-Critical) monthly, 5 km sparse grid, v001",
+   "url": "https://www.cpom.ucl.ac.uk/seaice/download.php?region=Arctic",
+   "doi": null,
+   "licence": "No licence stated on the CPOM sea-ice portal pages (download.php, methodology.php, contacts.php) or in the NetCDF global attributes (checked 2026-11-25). Treat as 'credit CPOM / UCL, ESA CryoSat-2'; confirm terms with CPOM before redistribution.",
+   "institution": "Centre for Polar Observation and Modelling (CPOM), UCL; ESA CryoSat-2",
+   "files": [
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201111_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2011%2Fcpom_ntc_arco_sea_ice_thickness_201111_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "57b7f4f1843df9df8f7b445c19ac2dfb026f40ad26d4f5362423aa655ba63cab",
+     "bytes": 9318501
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201204_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2012%2Fcpom_ntc_arco_sea_ice_thickness_201204_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "9c427c9f6edd840cf3f3ea46f02ddfd845d7232c143e0ce3a2342bed43210829",
+     "bytes": 12081538
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201211_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2012%2Fcpom_ntc_arco_sea_ice_thickness_201211_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "22201a1c484a0272c03442cb111bc98c3414a55aeb1acfc0a96838c076df386a",
+     "bytes": 8973564
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201304_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2013%2Fcpom_ntc_arco_sea_ice_thickness_201304_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "4ea5ba3d6c2a38e00d0e0083d1a04d73bcdd842e7bfd0f7ba8734993024134a5",
+     "bytes": 12262710
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201311_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2013%2Fcpom_ntc_arco_sea_ice_thickness_201311_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "4725ae920d9e857b209086fad76b32c3b8fd7eddc574c54b095228ff62d3ed18",
+     "bytes": 9580799
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201404_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2014%2Fcpom_ntc_arco_sea_ice_thickness_201404_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "d6374ac192bd64442606bf63fc7c12fab4b5f3518b205e37e9f2e895bc833a5f",
+     "bytes": 11959990
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201411_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2014%2Fcpom_ntc_arco_sea_ice_thickness_201411_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "415766fcd51fbe30b004dc0ce59ef4fb8daddd512d06d91695fef697ac58ac05",
+     "bytes": 9724452
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201504_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2015%2Fcpom_ntc_arco_sea_ice_thickness_201504_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "480a984a6c1d9c37aed7170d8d92622b83a75b6a1380fa28489cef56b5665a82",
+     "bytes": 11760403
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201511_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2015%2Fcpom_ntc_arco_sea_ice_thickness_201511_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "706e2f60cf82d8bdcc4883f4d555ab2ce7ec68d32acc8061dda749d249d86f46",
+     "bytes": 9877347
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201604_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2016%2Fcpom_ntc_arco_sea_ice_thickness_201604_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "16bda6f7f86193ff6cd57774f52450eb707b0cf8a5d2bb71f3923db183a2cb35",
+     "bytes": 11915817
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201611_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2016%2Fcpom_ntc_arco_sea_ice_thickness_201611_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "b11956d6203a81e41f4e7c638d891d1ab41a783217a1605e33f2d7be71058f2a",
+     "bytes": 8740069
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201704_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2017%2Fcpom_ntc_arco_sea_ice_thickness_201704_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "76982d30d8e800064db2968513e901c3eb494cb6ed3c67fbd75424c0b4a579b6",
+     "bytes": 12189043
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201711_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2017%2Fcpom_ntc_arco_sea_ice_thickness_201711_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "b47660ff9545e7a03a976c7b353c6c61910ced9997bf8c9f543b8d9c2319d7bd",
+     "bytes": 9509614
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201804_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2018%2Fcpom_ntc_arco_sea_ice_thickness_201804_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "6fcb4d758256c123c56349d0d25099950d48b27386f65119e3e2ca9aa0c30b04",
+     "bytes": 12107763
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201811_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2018%2Fcpom_ntc_arco_sea_ice_thickness_201811_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "01b23d90e34b260ad433790b1346e3cd7706c2da14afadb41d0f3487f72a71d9",
+     "bytes": 9675837
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201904_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2019%2Fcpom_ntc_arco_sea_ice_thickness_201904_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "fe28c33962d303d390999b72a72cc2a6ab5850c07a05bc21dc8d0ee769c1509d",
+     "bytes": 12087865
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_201911_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2019%2Fcpom_ntc_arco_sea_ice_thickness_201911_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "5105c014007cb31f1a58b40aed5264c26c7a18bf66cf2a5b9dacefc079fa4e0a",
+     "bytes": 9625563
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202004_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2020%2Fcpom_ntc_arco_sea_ice_thickness_202004_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "3b156a87c30b43a6b9fcb8eda4a6379283d3a1d08dcc1c8353ca1b2a6ffd6de6",
+     "bytes": 12600537
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202011_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2020%2Fcpom_ntc_arco_sea_ice_thickness_202011_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "b29d40cad7a2ca55e10de2eb9eb535fe156e9897fad44f9b01d8a0638b44e66a",
+     "bytes": 8920968
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202104_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2021%2Fcpom_ntc_arco_sea_ice_thickness_202104_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "391c826da52933e954837dc5b6b89a19f65d73043148285635ebd117a50763b0",
+     "bytes": 12019430
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202111_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2021%2Fcpom_ntc_arco_sea_ice_thickness_202111_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "1456660e1f968d9c3d2413ffce0bd2a798e04e8f465226c3f5e79f94b70ff5a0",
+     "bytes": 10101180
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202204_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2022%2Fcpom_ntc_arco_sea_ice_thickness_202204_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "ac4f1afe4625a9cabf6937fbd7b32472f9c189826416b94f048226d5c9333a68",
+     "bytes": 12422725
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202211_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2022%2Fcpom_ntc_arco_sea_ice_thickness_202211_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "ebdff4dc46c514231395e0bff762956b8141b0e504708b40a7f416b4c4f22e31",
+     "bytes": 9847524
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202304_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2023%2Fcpom_ntc_arco_sea_ice_thickness_202304_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "bd3dc58351aa986f88627f519b109e9688c47d2e3f03b9398bedb11e26bb446d",
+     "bytes": 12753691
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202311_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2023%2Fcpom_ntc_arco_sea_ice_thickness_202311_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "c9d57d4e4f482e99ad43dd1a195313cca4c4855ca38e3d4c72c2f24250428c92",
+     "bytes": 9837434
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202404_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2024%2Fcpom_ntc_arco_sea_ice_thickness_202404_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "08ec7c77ca73a86ef38fc3ad3457efca0151c677f6d33e7987eba2a65eb925b6",
+     "bytes": 5049358
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202411_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2024%2Fcpom_ntc_arco_sea_ice_thickness_202411_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "43405d4aee72481a5d83b0243ae75b9ebba0e272ba24617353b14787cd5fb123",
+     "bytes": 9066420
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202504_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2025%2Fcpom_ntc_arco_sea_ice_thickness_202504_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "29599b810ff792dfe0474d12d353562eb1c80245563c067ab9477ce39e012271",
+     "bytes": 12469450
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202511_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2025%2Fcpom_ntc_arco_sea_ice_thickness_202511_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "5ef505ca47ef0cf130521dd097f6239f0183732118567e8bef44fd9f7852b8ac",
+     "bytes": 8948683
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_202604_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2026%2Fcpom_ntc_arco_sea_ice_thickness_202604_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+     "sha256": "9b00e9e85d2765d4cd7b3f792bbbfb42740461234faad1d8572f613d23999a35",
+     "bytes": 12469749
+    },
+    {
+     "name": "cpom_nrt_arco_sea_ice_thickness_14days_02112026_15112026_5km_sparse_grid_v001.nc",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=cpom_nrt_arco_sea_ice_thickness_14days_02112026_15112026_5km_sparse_grid_v001.nc&region=arco",
+     "sha256": "f2d9d867440d0a867e478c581404eda2fc8314bf9acd624ffbe670197697d35a",
+     "bytes": 2616344
+    },
+    {
+     "name": "cpom_ntc_arco_sea_ice_thickness_2026_5km_sparse_grid.tar.gz",
+     "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2026%2Fcpom_ntc_arco_sea_ice_thickness_2026_5km_sparse_grid.tar.gz&type=ntc&region=arco",
+     "sha256": "54da11ff3b7971576b449247bc28f5d2ffcd9fdb5aa18a2d5194f0b505cc7ba3",
+     "bytes": 54019693
+    }
+   ],
+   "missing": [],
+   "notes": "Brief's EOCIS URL pattern https://www.cpom.ucl.ac.uk/eocis/seaice/data/EOCIS-SEAICE-L3C-SITHICK-CS2-5KM-YYYYMM-fv1.0.nc returns 404; /eocis/ tree absent. Cryo-TEMPO page redirects to cryosat.mssl.ucl.ac.uk (not allow-listed). Used CPOM seaice portal NTC monthly files (Warren-99 snow climatology, halved on FYI). Winter 2026 (current, partial): NRT 14-day product 2-15 Nov 2026 (initial orbits, not final quality).",
+   "access_date": "2026-11-25"
+  },
+  "thickness_petty": {
+   "dataset": "IS2SMGPSIT-V1: Daily 25 km Arctic sea ice thickness and volume from fused ICESat-2 and SMOS/SMAP observations, 2018\u20132025 (v0.1)",
+   "url": "https://zenodo.org/records/22147361",
+   "doi": "10.5281/zenodo.22147361",
+   "licence": "cc-by-4.0",
+   "licence_source": "Zenodo record metadata 'license' field",
+   "authors": "Alek Petty, Cardinale, Tsamados, Gregory, Cabaj (author list per brief; Zenodo creator: Petty, Alek). ESSD preprint essd-2026-700.",
+   "publication_date": "2026-08-28",
+   "files": [
+    {
+     "name": "GPSat_multivar_201811.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_201811.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:bbd8cdf74c33bc93765d6733ae6532af",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_201904.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_201904.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:5b39d5314662b5415452fef49cb5c171",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_201911.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_201911.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:c06d0602537c53c637bf9ce854525c99",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202004.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202004.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:325f73113a448d4ee22f5002957f5a98",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202011.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202011.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:5b8af269f5d95d80f9a3d12300edd279",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202104.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202104.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:621abb51e05cc3eaf74339f17a9f4afd",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202111.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202111.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:9518301ba8fa5cae8ad40ff1d72b8334",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202204.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202204.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:3c72d1788776d97de98cbc38265de1bf",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202211.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202211.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:9b80a854be6a3a8f7b57485dcae128e6",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202304.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202304.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:c1fd433e21156690e031b7f5c505373a",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202311.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202311.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:7b21f53cf20e34574a776b685907c929",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202404.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202404.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:ca18f1978083a499b606c91a7523759e",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202411.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202411.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:972cf9507c5d87abfe8921e44850febf",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    },
+    {
+     "name": "GPSat_multivar_202504.nc",
+     "url": "https://zenodo.org/api/records/22147361/files/GPSat_multivar_202504.nc/content",
+     "bytes": 149034682,
+     "zenodo_checksum": "md5:d7d5f2456d639bd05caa7da9c8efa35f",
+     "bytes_read_by_range": 21757952,
+     "sha256": null,
+     "sha256_note": "file read partially via HTTP Range; full-file checksum is the Zenodo md5"
+    }
+   ],
+   "missing": [],
+   "variables_read": [
+    "ice_thickness",
+    "ice_thickness_unc",
+    "ice_volume_per_grid_cell_area"
+   ],
+   "notes": "Only the listed variables were read via HTTP Range requests, every 3rd day of each month (days 1,4,...,28); no full-file downloads. Monthly mean = mean of those days.",
+   "access_date": "2026-11-25"
+  }
+ },
+ "ensemble_n": 1000,
+ "hindcast_diagnosis": {
+  "model": 0.843,
+  "thermo_margin": 0.931,
+  "R_clim": 0.786,
+  "thin": 0.862,
+  "edge": 0.918,
+  "sept_clim_loo": 0.956,
+  "share_thermo_margin_positive": 0.677
+ },
+ "cards": {
+  "h0": {
+   "meaning": "Satellite ice thickness in November, averaged across the products available that winter.",
+   "why": "Thin start-of-winter ice needs more growth, or help, to reach a thickness that lasts the summer.",
+   "not_proof_of": "Exact thickness: radar thickness depends on assumed snow depth and density, and early-winter retrievals are biased.",
+   "example": "November 2024: median 0.85 m in the Beaufort vs 1.96 m north of Greenland (products: cpom, petty)."
+  },
+  "disagree": {
+   "meaning": "Mean absolute difference between thickness products in the same cell and month.",
+   "why": "Where products disagree, every downstream number is less certain; the spread feeds the ensemble.",
+   "not_proof_of": "Which product is right. Disagreement only shows where to distrust them all.",
+   "example": "Median disagreement across overlapping winters: 0.51 m."
+  },
+  "fdd": {
+   "meaning": "Freezing degree days, 1 Nov - 15 May: how cold and how long the winter is (ERA5 climatology).",
+   "why": "Cold drives natural growth and the extra growth flooding unlocks.",
+   "not_proof_of": "Growth itself. ERA5 is warm-biased over sea ice in cold conditions (Wang et al. 2019), so FDD is likely low.",
+   "example": "Central Arctic (>85N) median 3,425 K day; near Cambridge Bay 3,794 K day."
+  },
+  "hs": {
+   "meaning": "Thickness needed by mid-May to last the melt season: melt rate x melt days (van Dijke et al. 2022 regimes).",
+   "why": "The finish line every cell is measured against.",
+   "not_proof_of": "A measured threshold. It blends two regional melt regimes by latitude; the weakest assumption in the atlas.",
+   "example": "Beaufort median 1.48 m vs central Arctic 0.79 m."
+  },
+  "R": {
+   "meaning": "Share of ice seeded in a cell on 1 November still in ice-covered water on 15 September (OSI SAF drift).",
+   "why": "Thickened ice that drifts out of the Arctic is lost, however thick it is.",
+   "not_proof_of": "Multi-year retention. Summer drift is partly model-filled; 75 km drift vs 25 km cells.",
+   "example": "Fram Strait 0.00 vs north of Greenland 0.93 (mean over years)."
+  },
+  "gap": {
+   "meaning": "Cells where thickening raises the survival probability by at least the threshold (default 0.2).",
+   "why": "This is where thickening could change the outcome, not where ice survives anyway or is hopeless.",
+   "not_proof_of": "A place to deploy. No ecology, community consent or logistics are included.",
+   "example": "2024/25: band 11,250 km2 (1% of Real Ice's 1,000,000 km2/yr target)."
+  },
+  "sept_freq": {
+   "meaning": "Fraction of Septembers 2012-2025 with ice (concentration >= 15%) in the cell (OSI SAF).",
+   "why": "Cells that flip between years are where a nudge could matter; the hindcast tests the band against them.",
+   "not_proof_of": "That ice in that cell came from that cell: ice moves.",
+   "example": "22% of ice-capable cells were ice-covered in 20-80% of Septembers."
+  },
+  "excluded": {
+   "meaning": "Cells within 50 km of a settlement or a hand-drawn shipping corridor (approximate, not ASTD).",
+   "why": "Operations near people and ships need consent and coordination.",
+   "not_proof_of": "Safety elsewhere. Indigenous use areas and ringed seal habitat are not in open data: community consent required.",
+   "example": "988,750 km2 flagged; 2,500 km2 of the 2024/25 band falls inside."
+  },
+  "uplift": {
+   "meaning": "P(survive with thickening) minus P(survive without), from 1,000 Monte Carlo draws per cell.",
+   "why": "Ranks cells by what thickening changes, not by how thin they are.",
+   "not_proof_of": "That thickening works at scale: the gain prior comes from one 1 km site, 2024/25.",
+   "example": "Gain prior: triangular 0 / 0.32 / 0.70 m, scaled by cold."
+  },
+  "p_without": {
+   "meaning": "Probability the cell's ice is thick enough by mid-May to last the summer and stays in the Arctic, with no intervention.",
+   "why": "The baseline every thickening scenario is measured against; this is what the hindcast tests.",
+   "not_proof_of": "A forecast for one summer: it uses climatological weather, not the coming season's.",
+   "example": "2024/25: median over ice-covered cells 0.24."
+  },
+  "p_with": {
+   "meaning": "The same probability with a flooding gain added wherever start ice is at least 0.6 m.",
+   "why": "Its gap to P(without) is the uplift that defines the band.",
+   "not_proof_of": "That the gain is achievable everywhere: it is extrapolated from one site by how cold each cell is.",
+   "example": "2024/25: median over ice-covered cells 0.28."
+  },
+  "calibration": {
+   "meaning": "Two-stage growth model at Cambridge Bay, scaled by one factor alpha to the 2024/25 field result.",
+   "why": "Ties the growth physics to the only published thickening experiment.",
+   "not_proof_of": "Accuracy at 25 km: one 1 km site, one winter, approximate coordinates.",
+   "example": "Uncalibrated difference 26 cm vs paper 32 cm; alpha = 1.00."
+  },
+  "hindcast": {
+   "meaning": "Does P(survive without) predict where ice is present the next September, 2012-2025?",
+   "why": "A band drawn from a model that cannot hindcast would be decoration.",
+   "not_proof_of": "Skill for thickened ice: no thickened ice exists at this scale to test against.",
+   "example": "AUC model 0.843 vs thin-ice 0.862 vs ice-edge distance 0.918; growth-only component 0.931 (post hoc)."
+  },
+  "sensitivity": {
+   "meaning": "Band area recomputed with each input pushed low and high, one at a time.",
+   "why": "Shows which assumption the answer leans on.",
+   "not_proof_of": "Interactions between inputs; one-at-a-time misses them.",
+   "example": "Start-of-winter thickness: band 3,125 to 70,000 km2 (2024/25)."
+  },
+  "scale": {
+   "meaning": "Band area against Real Ice's scale plan: energy at 8 MWh/km2, fleet from an assumed drone throughput.",
+   "why": "Tests whether the plan's 1,000,000 km2/yr fits where thickening matters.",
+   "not_proof_of": "Feasibility. Drone throughput is not public: the fleet number is an assumption.",
+   "example": "2024/25 band x 8 MWh/km2 = 0.09 TWh."
+  }
+ }
+}

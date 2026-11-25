@@ -1,7 +1,7 @@
 {
   "built": "2026-11-25",
   "command": "python -m eval.hindcast",
-  "n_draws": 100,
+  "n_draws": 400,
   "winters": [
     2011,
     2012,
@@ -21,100 +21,100 @@
   "cell_years": 189265,
   "cells": 13336,
   "auc_cell_year": {
-    "model": 0.8436000041676082,
+    "model": 0.8429799028719505,
     "baseline_thin_ice": 0.8619309645567015,
     "baseline_edge_distance": 0.9176327386707938
   },
   "auc_diff_ci95_bootstrap_winters": {
     "model_minus_baseline_thin_ice": [
-      -0.049133091731741026,
-      0.014442794796746154
+      -0.05063120203153375,
+      0.015285918373498426
     ],
     "model_minus_baseline_edge_distance": [
-      -0.10308283341161656,
-      -0.03777053901876081
+      -0.10535176399292556,
+      -0.0375233203822375
     ]
   },
   "spearman_vs_presence": {
-    "model": 0.7068189406905332,
+    "model": 0.7012663317409752,
     "baseline_thin_ice": 0.8890521458558149,
     "baseline_edge_distance": 0.9169108381737185
   },
   "band_overlap_with_marginal": {
-    "model_band": 0.06451612903225806,
+    "model_band": 0.06666666666666667,
     "base_rate": 0.2671715656868626,
-    "n_band_cells": 31,
-    "baseline_thin_ice_same_k": 0.6451612903225806,
-    "baseline_edge_distance_same_k": 0.9032258064516129
+    "n_band_cells": 15,
+    "baseline_thin_ice_same_k": 0.8,
+    "baseline_edge_distance_same_k": 0.9333333333333333
   },
   "per_winter_auc": {
     "2011": {
-      "model": 0.7897200697422893,
+      "model": 0.782986560429849,
       "thin": 0.8900008468891263,
       "edge": 0.9526134287308321
     },
     "2012": {
-      "model": 0.8728717590321188,
+      "model": 0.8715521381861261,
       "thin": 0.8099652347599847,
       "edge": 0.8104128322411634
     },
     "2013": {
-      "model": 0.7897545085960247,
+      "model": 0.7868418126911316,
       "thin": 0.8718617366045578,
       "edge": 0.932608938163784
     },
     "2014": {
-      "model": 0.8406194361810061,
+      "model": 0.8387363981706646,
       "thin": 0.8493897988639567,
       "edge": 0.9224377962054586
     },
     "2015": {
-      "model": 0.8663089648409328,
+      "model": 0.8654499591189574,
       "thin": 0.8596612806435542,
       "edge": 0.9467050194376901
     },
     "2016": {
-      "model": 0.8686544783490352,
+      "model": 0.8696462273755,
       "thin": 0.8704949826049371,
       "edge": 0.9553918892093587
     },
     "2017": {
-      "model": 0.8022029860193687,
+      "model": 0.7979353949930857,
       "thin": 0.8646715715032431,
       "edge": 0.927232842904813
     },
     "2018": {
-      "model": 0.8437314544795143,
+      "model": 0.8419273952470326,
       "thin": 0.9097076126913732,
       "edge": 0.9651275200254525
     },
     "2019": {
-      "model": 0.8027032898599296,
+      "model": 0.799656186938013,
       "thin": 0.8945076904427441,
       "edge": 0.9243298179060984
     },
     "2020": {
-      "model": 0.8873374692279913,
+      "model": 0.8906666230994608,
       "thin": 0.8293541417997229,
       "edge": 0.9002305004184801
     },
     "2021": {
-      "model": 0.8542930547650197,
+      "model": 0.8594811975866683,
       "thin": 0.9053861333479459,
       "edge": 0.8971069451580835
     },
     "2022": {
-      "model": 0.8242898868484343,
+      "model": 0.8263382795472423,
       "thin": 0.8902578627026249,
       "edge": 0.9361235564073106
     },
     "2023": {
-      "model": 0.8962277186836425,
+      "model": 0.8955609175972352,
       "thin": 0.8660351733206912,
       "edge": 0.9305286791269517
     },
     "2024": {
-      "model": 0.8870561195706795,
+      "model": 0.8883660226385636,
       "thin": 0.8694459687206667,
       "edge": 0.9494947073705702
     }
@@ -126,91 +126,91 @@
         "id": 1,
         "place": "North of Ellesmere Island (Last Ice Area core)",
         "label": "likely-survives-anyway",
-        "p_without": 0.8791071428571428,
+        "p_without": 0.8762946428571429,
         "R": 0.8833333333333333
       },
       {
         "id": 2,
         "place": "North of Greenland",
         "label": "likely-survives-anyway",
-        "p_without": 0.8255357142857144,
+        "p_without": 0.8273214285714285,
         "R": 0.8333333333333334
       },
       {
         "id": 3,
         "place": "Lincoln Sea",
         "label": "likely-survives-anyway",
-        "p_without": 0.9242857142857143,
+        "p_without": 0.9310714285714285,
         "R": 0.9333333333333333
       },
       {
         "id": 4,
         "place": "Central Arctic near the North Pole",
         "label": "likely-survives-anyway",
-        "p_without": 0.13,
+        "p_without": 0.13714285714285715,
         "R": 0.13333333333333333
       },
       {
         "id": 5,
         "place": "Canada Basin north of 80N",
         "label": "likely-survives-anyway",
-        "p_without": 0.9978571428571429,
+        "p_without": 1.0,
         "R": 1.0
       },
       {
         "id": 6,
         "place": "Queen Elizabeth Islands channels",
         "label": "likely-survives-anyway",
-        "p_without": 0.9245000000000001,
+        "p_without": 0.930625,
         "R": 0.9666666666666667
       },
       {
         "id": 7,
         "place": "Beaufort Gyre interior",
         "label": "marginal",
-        "p_without": 0.48714285714285716,
+        "p_without": 0.5501785714285714,
         "R": 0.5666666666666667
       },
       {
         "id": 8,
         "place": "Chukchi Borderland",
         "label": "marginal",
-        "p_without": 0.7889972527472527,
+        "p_without": 0.8481559065934066,
         "R": 0.9107142857142857
       },
       {
         "id": 9,
         "place": "Outer East Siberian Sea",
         "label": "marginal",
-        "p_without": 0.7952197802197803,
+        "p_without": 0.7182486263736264,
         "R": 0.8928571428571429
       },
       {
         "id": 10,
         "place": "Northern Laptev Sea / Eurasian Basin edge",
         "label": "marginal",
-        "p_without": 0.902142857142857,
+        "p_without": 0.9408035714285715,
         "R": 0.9666666666666667
       },
       {
         "id": 11,
         "place": "Eurasian sector of the Transpolar Drift",
         "label": "marginal",
-        "p_without": 0.5080357142857143,
+        "p_without": 0.5367857142857143,
         "R": 0.5666666666666667
       },
       {
         "id": 12,
         "place": "Viscount Melville Sound (Northwest Passage)",
         "label": "marginal",
-        "p_without": 0.2553571428571429,
+        "p_without": 0.32705357142857144,
         "R": 0.5666666666666667
       },
       {
         "id": 13,
         "place": "Cambridge Bay / Dease Strait",
         "label": "likely-melts-out",
-        "p_without": 0.1285714285714286,
+        "p_without": 0.2275,
         "R": 1.0
       },
       {
@@ -238,7 +238,7 @@
         "id": 17,
         "place": "Kara Sea",
         "label": "likely-melts-out",
-        "p_without": 0.0011875000000000002,
+        "p_without": 0.0015781249999999999,
         "R": 0.05
       },
       {
@@ -252,7 +252,7 @@
         "id": 19,
         "place": "Southern Laptev shelf",
         "label": "likely-melts-out",
-        "p_without": 0.018269230769230767,
+        "p_without": 0.023269230769230768,
         "R": 0.5166666666666667
       },
       {
@@ -287,14 +287,14 @@
         "id": 24,
         "place": "Nares Strait",
         "label": "export-zone",
-        "p_without": 0.8461538461538461,
+        "p_without": 0.8457692307692307,
         "R": 0.8666666666666667
       },
       {
         "id": 25,
         "place": "Transpolar Drift approach to Fram Strait",
         "label": "export-zone",
-        "p_without": 0.0626923076923077,
+        "p_without": 0.06221153846153846,
         "R": 0.06666666666666667
       }
     ],
@@ -304,15 +304,15 @@
         "R": 0.233
       },
       "likely-melts-out": {
-        "p_without": 0.019,
+        "p_without": 0.032,
         "R": 0.392
       },
       "likely-survives-anyway": {
-        "p_without": 0.78,
+        "p_without": 0.784,
         "R": 0.792
       },
       "marginal": {
-        "p_without": 0.623,
+        "p_without": 0.654,
         "R": 0.745
       }
     }

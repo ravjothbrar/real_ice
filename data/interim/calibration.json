@@ -1,0 +1,259 @@
+{
+  "site": "Cambridge Bay, approx. 69.05N 105.10W (exact site not public)",
+  "winter": "2024/25",
+  "fdd_K_day": 3843.5,
+  "fdd_from_jan": 2829.7,
+  "snowfall_m_we": 0.075,
+  "uncalibrated": {
+    "control_m": 1.548050437561927,
+    "flooded_m": 1.806500018602709,
+    "diff_m": 0.25844958104078186
+  },
+  "alpha_scan": {
+    "0.5": {
+      "control_m": 0.9895851831051732,
+      "diff_m": 0.2307379541686836
+    },
+    "0.75": {
+      "control_m": 1.288776761670976,
+      "diff_m": 0.24757907328858875
+    },
+    "1.0": {
+      "control_m": 1.548050437561927,
+      "diff_m": 0.25844958104078186
+    },
+    "1.25": {
+      "control_m": 1.7800823279710714,
+      "diff_m": 0.26621683236289595
+    },
+    "1.5": {
+      "control_m": 1.9919922252041538,
+      "diff_m": 0.2721268116597182
+    },
+    "2.0": {
+      "control_m": 2.371888540768141,
+      "diff_m": 0.28066643853192197
+    },
+    "3.0": {
+      "control_m": 3.016125592904346,
+      "diff_m": 0.291146705153261
+    },
+    "6.0": {
+      "control_m": 4.486851280186716,
+      "diff_m": 0.30532723492618885
+    }
+  },
+  "alpha_for_32cm": null,
+  "alpha_for_16cm": 0.10634652937221586,
+  "alpha": 1.0,
+  "alpha_sd": 0.25,
+  "fit": "not reachable: difference saturates below 32 cm; alpha kept at 1.0",
+  "calibrated": {
+    "control_m": 1.548050437561927,
+    "flooded_m": 1.806500018602709,
+    "diff_m": 0.25844958104078186
+  },
+  "gap_to_paper_m": 0.061550418959218145,
+  "paper_diff_m": 0.32,
+  "paper": "Real Ice et al. (2026) Earth's Future, doi:10.1029/2025EF007894",
+  "piomas_crosscheck": {
+    "h_apr_m": 0.22912099957466125,
+    "radius_km": 25,
+    "note": "PIOMAS does not resolve Dease Strait; nearest cells with ice"
+  },
+  "fdd_ref_cambridge_bay_2024": 3843.5,
+  "series": [
+    {
+      "winter": 2011,
+      "label": "2011/12",
+      "fdd": 4461.5,
+      "fdd_jan": 3081.0,
+      "fdd_mar": 2554.1,
+      "melt_days": 104.0,
+      "snowfall": 0.0751,
+      "partial": 0,
+      "last_day": "2012-09-30",
+      "fdd_days": 197
+    },
+    {
+      "winter": 2012,
+      "label": "2012/13",
+      "fdd": 4744.4,
+      "fdd_jan": 3342.0,
+      "fdd_mar": 2638.1,
+      "melt_days": 97.0,
+      "snowfall": 0.0578,
+      "partial": 0,
+      "last_day": "2013-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2013,
+      "label": "2013/14",
+      "fdd": 4666.2,
+      "fdd_jan": 3223.3,
+      "fdd_mar": 2534.6,
+      "melt_days": 92.0,
+      "snowfall": 0.0498,
+      "partial": 0,
+      "last_day": "2014-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2014,
+      "label": "2014/15",
+      "fdd": 4599.9,
+      "fdd_jan": 3194.0,
+      "fdd_mar": 2560.5,
+      "melt_days": 104.0,
+      "snowfall": 0.0723,
+      "partial": 0,
+      "last_day": "2015-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2015,
+      "label": "2015/16",
+      "fdd": 4592.7,
+      "fdd_jan": 3172.0,
+      "fdd_mar": 2526.3,
+      "melt_days": 102.0,
+      "snowfall": 0.0486,
+      "partial": 0,
+      "last_day": "2016-09-30",
+      "fdd_days": 197
+    },
+    {
+      "winter": 2016,
+      "label": "2016/17",
+      "fdd": 4379.4,
+      "fdd_jan": 3177.5,
+      "fdd_mar": 2514.2,
+      "melt_days": 112.0,
+      "snowfall": 0.0917,
+      "partial": 0,
+      "last_day": "2017-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2017,
+      "label": "2017/18",
+      "fdd": 4475.7,
+      "fdd_jan": 3129.9,
+      "fdd_mar": 2464.0,
+      "melt_days": 94.0,
+      "snowfall": 0.0595,
+      "partial": 0,
+      "last_day": "2018-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2018,
+      "label": "2018/19",
+      "fdd": 4586.7,
+      "fdd_jan": 3161.5,
+      "fdd_mar": 2464.2,
+      "melt_days": 102.0,
+      "snowfall": 0.0509,
+      "partial": 0,
+      "last_day": "2019-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2019,
+      "label": "2019/20",
+      "fdd": 4685.3,
+      "fdd_jan": 3286.6,
+      "fdd_mar": 2631.4,
+      "melt_days": 96.0,
+      "snowfall": 0.0506,
+      "partial": 0,
+      "last_day": "2020-09-30",
+      "fdd_days": 197
+    },
+    {
+      "winter": 2020,
+      "label": "2020/21",
+      "fdd": 4577.5,
+      "fdd_jan": 3240.3,
+      "fdd_mar": 2572.5,
+      "melt_days": 95.0,
+      "snowfall": 0.1,
+      "partial": 0,
+      "last_day": "2021-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2021,
+      "label": "2021/22",
+      "fdd": 4407.2,
+      "fdd_jan": 3135.4,
+      "fdd_mar": 2477.6,
+      "melt_days": 102.0,
+      "snowfall": 0.0457,
+      "partial": 0,
+      "last_day": "2022-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2022,
+      "label": "2022/23",
+      "fdd": 4633.6,
+      "fdd_jan": 3162.2,
+      "fdd_mar": 2697.9,
+      "melt_days": 112.0,
+      "snowfall": 0.0868,
+      "partial": 0,
+      "last_day": "2023-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2023,
+      "label": "2023/24",
+      "fdd": 3851.3,
+      "fdd_jan": 2839.8,
+      "fdd_mar": 2371.7,
+      "melt_days": 110.0,
+      "snowfall": 0.0748,
+      "partial": 0,
+      "last_day": "2024-09-30",
+      "fdd_days": 197
+    },
+    {
+      "winter": 2024,
+      "label": "2024/25",
+      "fdd": 3843.5,
+      "fdd_jan": 2829.7,
+      "fdd_mar": 2232.8,
+      "melt_days": 117.0,
+      "snowfall": 0.075,
+      "partial": 0,
+      "last_day": "2025-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2025,
+      "label": "2025/26",
+      "fdd": 4561.3,
+      "fdd_jan": 3419.9,
+      "fdd_mar": 2728.0,
+      "melt_days": 112.0,
+      "snowfall": 0.0669,
+      "partial": 0,
+      "last_day": "2026-09-30",
+      "fdd_days": 196
+    },
+    {
+      "winter": 2026,
+      "label": "2026/27",
+      "fdd": 169.7,
+      "fdd_jan": NaN,
+      "fdd_mar": NaN,
+      "melt_days": NaN,
+      "snowfall": NaN,
+      "partial": 1,
+      "last_day": "2026-11-17",
+      "fdd_days": 17
+    }
+  ]
+}

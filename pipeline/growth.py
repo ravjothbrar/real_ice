@@ -45,29 +45,54 @@ def calibrate(row, target=PAPER_DIFF_M):
     return brentq(f, lo, hi)
 
 
+def piomas_near(lat=69.05, lon=-105.10, w=2024):
+    """PIOMAS April thickness at the nearest ocean cell with data (model cross-check, brief 6.2)."""
+    import xarray as xr
+    from . import grid
+    f = ROOT / "data" / "interim" / f"piomas_{w}.nc"
+    if not f.exists():
+        return None
+    h = xr.open_dataset(f)["h_apr"].values
+    i, j = (int(round(v)) for v in grid.lonlat_to_ij(lon, lat))
+    for rad in range(0, 6):
+        sub = h[max(i - rad, 0):i + rad + 1, max(j - rad, 0):j + rad + 1]
+        sub = np.where(sub > 0.05, sub, np.nan)   # PIOMAS writes 0 where it does not resolve channels
+        if np.isfinite(sub).any():
+            return {"h_apr_m": float(np.nanmean(sub)), "radius_km": rad * 25,
+                    "note": "PIOMAS does not resolve Dease Strait; nearest cells with ice"}
+    return None
+
+
 def main():
     if not CSV.exists():
         raise SystemExit("No Cambridge Bay forcing. Run the climate fetcher first (make fetch).")
     df = pd.read_csv(CSV, comment="#")
     r = df[df.winter == 2024].iloc[0]
-    c1, f1 = site_model(r.fdd, r.fdd_jan, r.snowfall, 1.0)
+    scan = {a: site_model(r.fdd, r.fdd_jan, r.snowfall, a) for a in (0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 3.0, 6.0)}
     a32 = calibrate(r, PAPER_DIFF_M)
     a16 = calibrate(r, PAPER_DIFF_M / 2)
+    # The flooded-control difference saturates below 32 cm (it tends to the snow-ice layer as alpha grows),
+    # so alpha cannot be fitted to 32 cm. Keep the textbook value and carry +/-0.25 as uncertainty.
     alpha = a32 if a32 is not None else 1.0
     c, fl = site_model(r.fdd, r.fdd_jan, r.snowfall, alpha)
+    pio = piomas_near()
     out = {
         "site": "Cambridge Bay, approx. 69.05N 105.10W (exact site not public)",
         "winter": "2024/25", "fdd_K_day": float(r.fdd), "fdd_from_jan": float(r.fdd_jan), "snowfall_m_we": float(r.snowfall),
-        "uncalibrated": {"control_m": c1, "flooded_m": f1, "diff_m": f1 - c1},
+        "uncalibrated": {"control_m": scan[1.0][0], "flooded_m": scan[1.0][1], "diff_m": scan[1.0][1] - scan[1.0][0]},
+        "alpha_scan": {str(a): {"control_m": v[0], "diff_m": v[1] - v[0]} for a, v in scan.items()},
         "alpha_for_32cm": a32, "alpha_for_16cm": a16,
-        "alpha": alpha, "alpha_sd": abs(alpha - a16) / 2 if (a32 and a16) else 0.25,
+        "alpha": alpha, "alpha_sd": 0.25,
+        "fit": "not reachable: difference saturates below 32 cm; alpha kept at 1.0" if a32 is None else "fitted to 32 cm",
         "calibrated": {"control_m": c, "flooded_m": fl, "diff_m": fl - c},
+        "gap_to_paper_m": PAPER_DIFF_M - (fl - c),
         "paper_diff_m": PAPER_DIFF_M, "paper": "Real Ice et al. (2026) Earth's Future, doi:10.1029/2025EF007894",
+        "piomas_crosscheck": pio,
         "fdd_ref_cambridge_bay_2024": float(r.fdd),
         "series": df.to_dict(orient="records"),
     }
     (ROOT / "data" / "interim" / "calibration.json").write_text(json.dumps(out, indent=2, default=float))
-    print(json.dumps({k: out[k] for k in ("uncalibrated", "alpha_for_32cm", "alpha_for_16cm", "calibrated")}, indent=2, default=float))
+    print(json.dumps({k: out[k] for k in ("uncalibrated", "alpha", "fit", "gap_to_paper_m", "piomas_crosscheck")}, indent=2, default=float))
     return out
 
 

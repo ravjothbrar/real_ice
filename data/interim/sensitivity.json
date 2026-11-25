@@ -1,0 +1,112 @@
+{
+  "winter": 2024,
+  "n_draws": 1000,
+  "base_band_km2": 11250.0,
+  "method": "one-at-a-time, common random numbers",
+  "factors": [
+    {
+      "factor": "h0_shift",
+      "label": "Start-of-winter thickness",
+      "low": {
+        "h0_shift": -0.2
+      },
+      "high": {
+        "h0_shift": 0.2
+      },
+      "band_km2_low": 3125.0,
+      "band_km2_high": 70000.0,
+      "swing_km2": 66875.0
+    },
+    {
+      "factor": "gain_scale",
+      "label": "Flooding gain G",
+      "low": {
+        "gain_scale": 0.5
+      },
+      "high": {
+        "gain_scale": 1.5
+      },
+      "band_km2_low": 0.0,
+      "band_km2_high": 48750.0,
+      "swing_km2": 48750.0
+    },
+    {
+      "factor": "threshold",
+      "label": "Uplift threshold",
+      "low": {
+        "threshold": 0.15
+      },
+      "high": {
+        "threshold": 0.25
+      },
+      "band_km2_low": 45625.0,
+      "band_km2_high": 3750.0,
+      "swing_km2": 41875.0
+    },
+    {
+      "factor": "guard",
+      "label": "Thin-ice guard (0.6 m)",
+      "low": {
+        "guard": 0.5
+      },
+      "high": {
+        "guard": 0.7
+      },
+      "band_km2_low": 32500.0,
+      "band_km2_high": 4375.0,
+      "swing_km2": 28125.0
+    },
+    {
+      "factor": "hs_scale",
+      "label": "Survival thickness (melt rate x melt days)",
+      "low": {
+        "hs_scale": 0.8
+      },
+      "high": {
+        "hs_scale": 1.2
+      },
+      "band_km2_low": 5625.0,
+      "band_km2_high": 21250.0,
+      "swing_km2": 15625.0
+    },
+    {
+      "factor": "snow_scale",
+      "label": "Snow insulation",
+      "low": {
+        "snow_scale": 0.5
+      },
+      "high": {
+        "snow_scale": 1.5
+      },
+      "band_km2_low": 7500.0,
+      "band_km2_high": 14375.0,
+      "swing_km2": 6875.0
+    },
+    {
+      "factor": "R_shift",
+      "label": "Retention (drift export)",
+      "low": {
+        "R_shift": -0.15
+      },
+      "high": {
+        "R_shift": 0.15
+      },
+      "band_km2_low": 5625.0,
+      "band_km2_high": 11875.0,
+      "swing_km2": 6250.0
+    },
+    {
+      "factor": "fdd_scale",
+      "label": "Freezing degree days (ERA5)",
+      "low": {
+        "fdd_scale": 0.9
+      },
+      "high": {
+        "fdd_scale": 1.1
+      },
+      "band_km2_low": 8750.0,
+      "band_km2_high": 10625.0,
+      "swing_km2": 1875.0
+    }
+  ]
+}

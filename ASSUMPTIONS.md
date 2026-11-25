@@ -96,3 +96,11 @@ Every guess, constant and threshold, with where it came from. Newest at the bott
 - web/public/data/land.json: Natural Earth 50m land clipped to >= 45N, simplified with a 0.05 deg tolerance (topology preserved), coordinates rounded to 0.001 deg.
 - Transfer: ERA5 about 1.38 GB in total (all runs and checks), single thread, identified UA, about 60k HTTP range requests. PIOMAS about 19 MB, Natural Earth about 3 MB, GEBCO 0.8 MB.
 - Cambridge Bay, winters 2023 and 2024 are the two warmest in 2011-2025 (FDD about 3,850 K day against 4,380-4,740 for the others). The 2024/25 paper winter was therefore a warm winter for this site.
+
+## Calibration and evaluation decisions (lead, 25 Nov 2026)
+- Cambridge Bay two-stage model: ice on 1 Nov 0.10 m; 40% of winter snowfall before 1 Jan; flooding on 1 Jan converts the existing snow layer into an equal thickness of snow-ice (phi = 1) and that layer stops insulating; later snow still insulates. Result in RESULTS.md. alpha could not reach 32 cm, so it stays at 1.0 with sd 0.25.
+- G is scaled by FDD_cell / 3,843 K day (ERA5 Cambridge Bay 2024/25 point).
+- Pole hole: cells north of 86.5N without thickness take the median of 84.5-86.5N for that winter.
+- Ice-capable cells: ocean cells with a November thickness retrieval in any winter or September ice in any year (17,736 cells).
+- The hindcast ran once with all inputs before any change (run 1, data/interim/hindcast_run1.json). Changes after run 1: none to physics or thresholds. Added: strict-JSON export, a diagnosis script, alignment of sensitivity settings with the export (same seeds, alpha sd).
+- Initial map view is the latest complete winter (2025/26). 2026/27 uses CPOM near-real-time thickness for 2-15 Nov 2026 only and is labelled partial.

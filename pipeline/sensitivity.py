@@ -20,24 +20,24 @@ FACTORS = {   # name: (label, low override, high override)
 }
 
 
-def band_area(at, w, ov, alpha, n, seed=7):
+def band_area(at, w, ov, alpha, n, seed=None, alpha_sd=0.0):
     g0 = survival.GUARD_M
     if "guard" in ov:
         survival.GUARD_M = ov["guard"]
     try:
-        r = at.run(w, n=n, seed=seed, alpha=alpha, ov=ov)
+        r = at.run(w, n=n, seed=w if seed is None else seed, alpha=alpha, alpha_sd=alpha_sd, ov=ov)
     finally:
         survival.GUARD_M = g0
     return float((r["cls"] == survival.BAND).sum() * grid.CELL_AREA_KM2)
 
 
-def main(w=None, n=300, alpha=1.0, at=None):
+def main(w=None, n=1000, alpha=1.0, at=None, alpha_sd=0.0):
     at = at or A.Atlas()
     w = w or max(k for k in at.thick if k <= 2024)
-    base = band_area(at, w, {}, alpha, n)
+    base = band_area(at, w, {}, alpha, n, alpha_sd=alpha_sd)
     rows = []
     for k, (label, lo, hi) in FACTORS.items():
-        a_lo, a_hi = band_area(at, w, lo, alpha, n), band_area(at, w, hi, alpha, n)
+        a_lo, a_hi = band_area(at, w, lo, alpha, n, alpha_sd=alpha_sd), band_area(at, w, hi, alpha, n, alpha_sd=alpha_sd)
         rows.append({"factor": k, "label": label, "low": lo, "high": hi,
                      "band_km2_low": a_lo, "band_km2_high": a_hi, "swing_km2": abs(a_hi - a_lo)})
         print(f"{label:45s} {a_lo:>12,.0f} {a_hi:>12,.0f}", flush=True)
@@ -47,6 +47,8 @@ def main(w=None, n=300, alpha=1.0, at=None):
 
 
 if __name__ == "__main__":
-    out = main(int(sys.argv[1]) if len(sys.argv) > 1 else None)
+    cal = json.loads((pathlib.Path(__file__).resolve().parents[1] / "data" / "interim" / "calibration.json").read_text())
+    at = A.Atlas(); at.fdd_ref = cal["fdd_ref_cambridge_bay_2024"]
+    out = main(int(sys.argv[1]) if len(sys.argv) > 1 else None, at=at, alpha=cal["alpha"], alpha_sd=cal["alpha_sd"])
     p = pathlib.Path(__file__).resolve().parents[1] / "data" / "interim" / "sensitivity.json"
     p.write_text(json.dumps(out, indent=2))

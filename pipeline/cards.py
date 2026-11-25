@@ -106,7 +106,8 @@ def build(at, runs, st, summary):
         add("hindcast", "Does P(survive without) predict where ice is present the next September, 2012-2025?",
             "A band drawn from a model that cannot hindcast would be decoration.",
             "Skill for thickened ice: no thickened ice exists at this scale to test against.",
-            f"AUC model {a['model']:.3f} vs thin-ice {a['baseline_thin_ice']:.3f} vs ice-edge distance {a['baseline_edge_distance']:.3f}.")
+            f"AUC model {a['model']:.3f} vs thin-ice {a['baseline_thin_ice']:.3f} vs ice-edge distance {a['baseline_edge_distance']:.3f}"
+            + (f"; growth-only component {summary['hindcast_diagnosis']['thermo_margin']:.3f} (post hoc)." if summary.get("hindcast_diagnosis") else "."))
     s = summary.get("sensitivity")
     if s and s.get("factors"):
         top = s["factors"][0]

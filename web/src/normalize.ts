@@ -142,6 +142,7 @@ export function normalizeSummary(s: Any, m: Manifest): Summary {
       metrics,
       beats_both: h.beats_both,
       beats_label: 'AUC and Spearman ρ',
+      verdict: typeof h.verdict === 'string' ? h.verdict : undefined,
     };
     if (!metrics.length) delete out.hindcast;
   }
