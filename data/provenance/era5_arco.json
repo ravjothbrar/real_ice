@@ -10,6 +10,6 @@
       "bytes": null
     }
   ],
-  "notes": "Partial HTTP range reads of blosc block 0 (lat>=45N), low mantissa byte dropped (midpoint). T2m daily mean = mean of 00+12 UTC for 1 Nov-15 May, one analysis/day alternating 00/12 UTC for 16 May-15 Sep (winter 2024 Jun-Sep cached earlier at 2/day); snowfall = 24 x one 1-h accumulation per day, valid hour rotating through 24 h (Nov 2024 also at 4/day for a sampling check). Transfer 36 MB this run in 1318 requests. ERA5T (preliminary) after valid_time_stop. Warm bias over sea ice in cold conditions (Wang et al. 2019).",
+  "notes": "Partial HTTP range reads of blosc block 0 (lat>=45N), low mantissa byte dropped (midpoint). T2m daily mean = mean of 00+12 UTC for 1 Nov-15 May, one analysis/day alternating 00/12 UTC for 16 May-15 Sep (winter 2024 Jun-Sep cached earlier at 2/day); snowfall = 24 x one 1-h accumulation per day, valid hour rotating through 24 h (Nov 2024 also at 4/day for a sampling check). Transfer 37 MB this run in 1446 requests. ERA5T (preliminary) after valid_time_stop. Warm bias over sea ice in cold conditions (Wang et al. 2019).",
   "access_date": "2026-11-25"
 }
