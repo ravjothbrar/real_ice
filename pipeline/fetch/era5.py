@@ -176,11 +176,32 @@ def t2m_daily(day, n):
     used only for melt_days): ONE analysis per day, alternating 00 / 12 UTC on odd / even days, to stay
     inside the transfer budget. Returns (values, n_samples)."""
     h = int((dt.datetime(day.year, day.month, day.day) - T0).total_seconds() // 3600)
-    if (day.month, day.day) >= (5, 16) and day.month <= 10:
-        hh = h + (12 if day.toordinal() % 2 == 0 else 0)
-        return read_north(f"{CO_T2M}/{hh}.0", n), 1
-    a = read_north(f"{CO_T2M}/{h}.0", n); b = read_north(f"{CO_T2M}/{h + 12}.0", n)
-    return 0.5 * (a + b), 2
+    hours = [h + (12 if day.toordinal() % 2 == 0 else 0)] if (day.month, day.day) >= (5, 16) and day.month <= 10 else [h, h + 12]
+    vals = [_t2m_hour(hh, n) for hh in hours]
+    return sum(vals) / len(vals), len(vals)
+
+
+def _t2m_hour(hh, n):
+    """co store first; if the hour is missing there (co t2m ends 2026-07-31 although its attrs say
+    2026-10-31), read the 0.25 deg AR store rows 90-45N and interpolate bilinearly to the native points."""
+    try:
+        return read_north(f"{CO_T2M}/{hh}.0", n)
+    except FileNotFoundError:
+        FALLBACK_HOURS.append(hh)
+        return _ar_to_native(ar_north_rows(f"{AR}/2m_temperature/{hh}.0.0"), n)
+
+
+FALLBACK_HOURS = []
+
+
+def _ar_to_native(rows, n):
+    from scipy.interpolate import RegularGridInterpolator
+    lat, lon, _ = north_index()
+    la = (90 - 0.25 * np.arange(rows.shape[0]))[::-1]
+    lo = np.r_[0.25 * np.arange(1440), 360.0]
+    a = np.concatenate([rows, rows[:, :1]], 1)[::-1]
+    f = RegularGridInterpolator((la, lo), a, bounds_error=False, fill_value=np.nan)
+    return f(np.c_[lat[:n], np.mod(lon[:n], 360)]).astype(np.float32)
 
 
 def sf_daily(day, n):
@@ -305,7 +326,8 @@ def fetch(winters=range(2011, 2027), log=print):
     if stop and stop >= tail0 and tail0 >= dt.date(2026, 11, 1):
         p = ar_tail(tail0, stop)
         log(f"AR tail {tail0}..{stop} -> {p.name}  total {STATS['bytes'] / 1e6:.1f} MB")
-    (OUT / "transfer_log.json").write_text(json.dumps({**STATS, "co_stop": str(co_stop), "ar_stop": str(stop)}))
+    log(f"AR fallback hours used for co gaps: {len(FALLBACK_HOURS)}")
+    (OUT / "transfer_log.json").write_text(json.dumps({**STATS, "co_stop": str(co_stop), "ar_stop": str(stop), "ar_fallback_hours": len(FALLBACK_HOURS)}))
     http.record("era5_arco",
                 dataset="ERA5 hourly reanalysis (2 m temperature analysis; snowfall 1-h accumulations from 06/18 UTC forecasts), ARCO-ERA5 copy",
                 url="https://storage.googleapis.com/gcp-public-data-arco-era5/co/ (single-level-reanalysis.zarr-v2 t2m, single-level-forecast.zarr-v2 sf); ar/full_37-1h-0p25deg-chunk-1.zarr-v3 for the ERA5T tail",
