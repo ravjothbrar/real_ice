@@ -48,7 +48,7 @@ def calibrate(row, target=PAPER_DIFF_M):
 def main():
     if not CSV.exists():
         raise SystemExit("No Cambridge Bay forcing. Run the climate fetcher first (make fetch).")
-    df = pd.read_csv(CSV)
+    df = pd.read_csv(CSV, comment="#")
     r = df[df.winter == 2024].iloc[0]
     c1, f1 = site_model(r.fdd, r.fdd_jan, r.snowfall, 1.0)
     a32 = calibrate(r, PAPER_DIFF_M)

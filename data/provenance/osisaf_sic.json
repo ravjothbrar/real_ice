@@ -1,0 +1,380 @@
+{
+  "dataset": "EUMETSAT OSI SAF sea-ice concentration: OSI-450-a1 CDR v3.1 (2011-2020), OSI-430-a ICDR v3.0 (2021-01..2025-09), OSI-438 ICDR v3.0 AMSR2 (2025-10..2026-09); EASE2-N 25 km",
+  "url": [
+    "https://thredds.met.no/thredds/catalog/osisaf/met.no/reprocessed/ice/conc_450a1_files/catalog.html",
+    "https://thredds.met.no/thredds/catalog/osisaf/met.no/reprocessed/ice/conc_cra_files/catalog.html",
+    "https://thredds.met.no/thredds/catalog/osisaf/met.no/reprocessed/ice/conc_438_files/catalog.html"
+  ],
+  "doi": "10.15770/EUM_SAF_OSI_0023 (OSI-450-a1); OSI-430-a / OSI-438 ICDRs: see osi-saf.eumetsat.int",
+  "licence": "CC BY 4.0 (http://creativecommons.org/licenses/by/4.0/, file attribute 'license'); credit 'EUMETSAT OSI SAF'.",
+  "files": [
+    {
+      "name": "osisaf/sic_daily/sic_20111101.nc",
+      "sha256": "53afbfd50bfddad57a8b1ef3eac2efd9879052be666368a72b8188bf1765ed2a",
+      "bytes": 75292
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20120915.nc",
+      "sha256": "f57976f803d1d6193d8e72e6d43b9c444b2f23bb6838f3d44bdb72810d3c12a4",
+      "bytes": 53497
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20121101.nc",
+      "sha256": "94aa40df40d7c12d172d99cd59a87701e800666e890e1753de29b7dfcb125d08",
+      "bytes": 71615
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20130915.nc",
+      "sha256": "031d1c47d413128cef56a2e10975ef3d8d5fca7b186d297d0fb5ab1cea989d59",
+      "bytes": 58703
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20131101.nc",
+      "sha256": "18e2be565bba48876a125964728e32882acd0bfd71614d7be240f7cb7c1811bd",
+      "bytes": 71407
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20140915.nc",
+      "sha256": "7cf3f121cfa03867f4797d9a600ecfed38b0fd3d1d69d51c14fc69cb462db835",
+      "bytes": 61127
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20141101.nc",
+      "sha256": "72307fa0d2682c2a55639efeb97249af52fe3c1fcf96deda9691aa8e3f2bf8a4",
+      "bytes": 73778
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20150915.nc",
+      "sha256": "7c934ed83194ce397b20e31b9f889602cfde19af9c413704a6c48be2956b4961",
+      "bytes": 56870
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20151101.nc",
+      "sha256": "914f86c7dbe2aed748dfc02caa17ea0fa8a3a9de03eb970414073752829ed682",
+      "bytes": 71522
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20160915.nc",
+      "sha256": "e3c4d8874d41cee209e7e753d70c0034b2966da9ce7877f85eca511030b06afa",
+      "bytes": 57050
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20161101.nc",
+      "sha256": "810d40332662ad57a423d084ec257f45e1cb5a2800375455dcb9910a5c594e79",
+      "bytes": 70896
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20170915.nc",
+      "sha256": "3fbc6892f588d4735349829d7348fd60b918fdfe008b14a253e3168861e88963",
+      "bytes": 59373
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20171101.nc",
+      "sha256": "c2e1b6906157b073bc25cb45ff980833165258f67a54286d3d7d4f52c2ce44e2",
+      "bytes": 69121
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20180915.nc",
+      "sha256": "da07e731b6ebc86660f8864b77603fc2c316e9406bef1851392e7da0f5bbf03e",
+      "bytes": 57681
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20181101.nc",
+      "sha256": "8640c0a0d10337a0967f3366cd5cbcb9e704f08f2375e5b186fd02f7af42dd18",
+      "bytes": 74941
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20190915.nc",
+      "sha256": "021019908860193aac9a055693ba5f75c4969600bf7dd959b63b15091a83cb6c",
+      "bytes": 56533
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20191101.nc",
+      "sha256": "c01429cf7f8bf488c1648537c40647f86b6f37b5c31df850534cbf67f0b38134",
+      "bytes": 71996
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20200915.nc",
+      "sha256": "75289c67130f7f4e2d36f2c8f88703f7fdfa903cff2d3a869ea9752e4fb13417",
+      "bytes": 55212
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20201101.nc",
+      "sha256": "c54338f0bbcf898eb378ed0aa5046c42ba407ef242e1c8edbad89ae400529e8b",
+      "bytes": 68980
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20210915.nc",
+      "sha256": "8b118d142cf1fb89320d55b50726a5af793fa0691193dbdc403d2e289a72a525",
+      "bytes": 60066
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20211101.nc",
+      "sha256": "d387d7a0ee00609997ddcc05fc8add9daa96d1a4a5960f08c9d50bdaa11db613",
+      "bytes": 69136
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20220915.nc",
+      "sha256": "50af053d03a38551ae851d4e3b353bff6a56ff85efa54de334bbe4ff3d0ff0cc",
+      "bytes": 59109
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20221101.nc",
+      "sha256": "f74911591f6db7b5de2347f4e238d32ef2aee20789ffdd3539af9ef3e8a7e869",
+      "bytes": 72678
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20230915.nc",
+      "sha256": "1a8df95e331b28dc545f329f09617467f5fbfbd2062ea2c5d8642492c5c8c2c0",
+      "bytes": 58234
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20231101.nc",
+      "sha256": "72f1306e3397f676ad601a1362de16fb521e0d7671aba6d113574f23b541e9b6",
+      "bytes": 71942
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20240918.nc",
+      "sha256": "c3a7f83c16444ee38352632b804745bc6a708e270dcd5a2ac2286ea48dfe0fb9",
+      "bytes": 56906
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20241101.nc",
+      "sha256": "26d6b02121f12fd0ae2563232a54a65900e21c93e11877acfffed93448ba9ec3",
+      "bytes": 71661
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250901.nc",
+      "sha256": "ff35366f1e11a15bdece9fa6e04be7a1dfc3591c643dea6a5e8c175e4a0e4cc0",
+      "bytes": 58778
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250902.nc",
+      "sha256": "b7c6cab9fa79f8fa812fe8ae3a73e3ed389d02f0b41d7d2f5e893e6d7d7247c9",
+      "bytes": 59269
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250903.nc",
+      "sha256": "f2ec427cb28f4c74ef365c5709a159d84b8935f146da70fa2542e4309b324c19",
+      "bytes": 59063
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250904.nc",
+      "sha256": "c4904103b24354421694555abb43709d32a3ea61d9b175890fd138f512f0edc7",
+      "bytes": 59174
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250905.nc",
+      "sha256": "b80540ead166862bac8e290c4588ad0cbf594277ab216306686f69a5f302bc21",
+      "bytes": 59308
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250906.nc",
+      "sha256": "e3a55fe4cff8d4c9cfcd083bc19b57eb7a22fc5c460baff662f0da5d630cfe3c",
+      "bytes": 59093
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250907.nc",
+      "sha256": "58990d37986d315da1eeb07982c13fd7a78a2cb6c4f572b9ffc8ff0482e3af3d",
+      "bytes": 59058
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250908.nc",
+      "sha256": "231655a5ea265fd7b78ddc75e98b7f1e0571667f8dbd277eabd90df322a8369b",
+      "bytes": 59444
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250909.nc",
+      "sha256": "f9b1e7cfb2fe7d131f507e613366b0f4f37b25c3b1f63253916d86d7ec79d123",
+      "bytes": 59597
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250910.nc",
+      "sha256": "283a85212a064c38f476cef40a15e3f02a7051d2a8296ada0b570fdb11616441",
+      "bytes": 59481
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250911.nc",
+      "sha256": "5c2e498218cc2d5c76e8c9020b2abdc3935dd35454fb040d76d33e4329d3249b",
+      "bytes": 59915
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250912.nc",
+      "sha256": "99b15b473ae66894df7a155db87d4f5743fa13de25792cbbead6441b39995998",
+      "bytes": 60490
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250913.nc",
+      "sha256": "d69654eb407a6b60ac852eddd71af498d344bcec1e86d626b5bd4f674faff1f4",
+      "bytes": 60736
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250914.nc",
+      "sha256": "d5b37709f36312a61ba8ed4f9fbb306d2b861f71f376779b091420eafbcd0916",
+      "bytes": 60083
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250915.nc",
+      "sha256": "f6dfcd2f9b3ad6af72cbdaa6f86a6c03ef4212f30feba1979e46b0713dbf8915",
+      "bytes": 60350
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250915_438.nc",
+      "sha256": "5a9bc1a6a3101214a10ab9e302b93f81a98b3c51330b5a3bb4441d948ded80bb",
+      "bytes": 54699
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250916.nc",
+      "sha256": "8b8490ea9949512e8c7d9a3a9c28cee61641f9488040cdaee2b3bb0a88333f8d",
+      "bytes": 59924
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250917.nc",
+      "sha256": "e70c86ad87a15d871a6546c99d07e7dcbca5a80f6e390afe69a61aedf4996435",
+      "bytes": 59612
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250918.nc",
+      "sha256": "837028cafb269a5dd8cfff35140e89213e0c33ea72a76184f4127286f1977d4c",
+      "bytes": 59442
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250919.nc",
+      "sha256": "c516660a9ece29d096a1e3b41dcfaeb409cc4dd02a9f64cc53f52cc409a4c6eb",
+      "bytes": 59032
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250920.nc",
+      "sha256": "046331386be218d378a24f08a3cf30312474671e2e3950740ae430a3b6286583",
+      "bytes": 59147
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250921.nc",
+      "sha256": "02f7b555409e813004f9a0b656ba752b42352fb3e25f3db56580b4ee2a0624f0",
+      "bytes": 59160
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250922.nc",
+      "sha256": "870001f7fb5480f8dd0591a830216215b2162c2d25ca75c60ee9ee67113279be",
+      "bytes": 58938
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250923.nc",
+      "sha256": "604a9583c827be48082375266a72a3d15092c152f5c74c2a79292d6f7163ea7e",
+      "bytes": 58887
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250924.nc",
+      "sha256": "e89561448882321751cade3c73f5d0bbd05217e8340808f9dc8e74a96db65aea",
+      "bytes": 58889
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250929.nc",
+      "sha256": "7f53c4b4bdceea862c678d824868904e5cc5179eb9e8c0848e676d2b4714ec93",
+      "bytes": 61055
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20250930.nc",
+      "sha256": "97a4f04d1e040432750a13660f2b0a0aa1d9450744b6a9e40b942f800524f81f",
+      "bytes": 60036
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20251101.nc",
+      "sha256": "8eb0702d0e2188e4fd7e7a5dce0d346a152529232fae86caca436901e4967b19",
+      "bytes": 64911
+    },
+    {
+      "name": "osisaf/sic_daily/sic_20260915.nc",
+      "sha256": "0e8c5078328f665043bb834ff1ca9a441ccfc094c955ac6a432c4054698c174d",
+      "bytes": 54310
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_201109.nc",
+      "sha256": "01a2c02bcb88709ba461e575904dbb0d36610a327c67d1ea78d8a01e08715ddc",
+      "bytes": 58357
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_201209.nc",
+      "sha256": "cf39cf0d165dedbbecb31a466b73e21e812652b377e783b0a0d5fb980699da96",
+      "bytes": 53599
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_201309.nc",
+      "sha256": "0ba5c849d4d46b762cadbbb626293c3e41a7d90c4a2cda1514586041e569d8cc",
+      "bytes": 60636
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_201409.nc",
+      "sha256": "4f834c7600f5abf9e839f274c819b477c848ed148fd2a281dc6c30c368504a04",
+      "bytes": 61417
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_201509.nc",
+      "sha256": "f4769dfd39fbc746adafd3c30d785d570ac9bb6370612c9d0f354871d758c9ab",
+      "bytes": 59436
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_201609.nc",
+      "sha256": "2fa408690a031b8cf33f1d789ee3da223414dfbf7cca2fdc973da6b00986ce19",
+      "bytes": 59938
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_201709.nc",
+      "sha256": "dab1b88ab8cf51c8ee117e53b4a536ed837f89600463367ee1cb4a56229450bb",
+      "bytes": 59416
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_201809.nc",
+      "sha256": "cd7014c4d1b3bdeb0a1f37ded3356baa89be4d4c3aad15417101c2d514762cc8",
+      "bytes": 59002
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_201909.nc",
+      "sha256": "9f7101967aee2bc975f13b1da33673efb2d45ef8842eba15899b282c6ed135b7",
+      "bytes": 56668
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_202009.nc",
+      "sha256": "27fe7946494a0cfa865942fee7e5388f85e9e0de2888b506c2bb0832111bd9a0",
+      "bytes": 55576
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_202109.nc",
+      "sha256": "383469e0fe726235020d5c8639e84181676430723bb59bc3159f14fe622bcea8",
+      "bytes": 61112
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_202209.nc",
+      "sha256": "b81bfd83b3aaf3ec8d6fffadb5c8f15567ff2469f8bdb29a7d2da725cdd6a146",
+      "bytes": 60402
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_202309.nc",
+      "sha256": "5e4abc4d33e04c164ba22f6499b334b694d9284663d8a996f344210666170fd8",
+      "bytes": 58496
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_202409.nc",
+      "sha256": "39c2833ec0ccd9f4b1ffa71164c9286f30e55462c58659ee125877c6a95150a9",
+      "bytes": 56990
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_202509.nc",
+      "sha256": "f85ebc7985c7181d1e7bb18e00566ab2c884644791c0c21787ec0efb762dd691",
+      "bytes": 67219
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_202509_438.nc",
+      "sha256": "55fdb28dbb6aa72dbd0fa5175f5827eea24f82b4c7620893e50895f0857c3910",
+      "bytes": 56294
+    },
+    {
+      "name": "osisaf/sic_monthly/sic_202609.nc",
+      "sha256": "c399eb9b0889c13e6d02b47a85684b17d84b991dcd7f77f089ba64c54498e631",
+      "bytes": 56760
+    }
+  ],
+  "notes": "OPeNDAP subsets of ice_conc cropped [36:396,36:396] to the atlas grid (exact cell match, asserted). Monthly means are OSI SAF monthly files. Daily = 12 UTC fields on 1 Nov and 15 Sep.",
+  "transfer_mb": 38.36,
+  "access_date": "2026-11-25"
+}
