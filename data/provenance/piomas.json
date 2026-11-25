@@ -1,0 +1,160 @@
+{
+  "dataset": "PIOMAS v2.1 monthly sea-ice thickness (heff) and snow depth",
+  "url": "https://pscfiles.apl.uw.edu/zhang/PIOMAS/data/v2.1/heff/ and https://pscfiles.apl.uw.edu/zhang/PIOMAS/data/v2.1/other/ ; grid https://pscfiles.apl.uw.edu/zhang/PIOMAS/utilities/grid.dat",
+  "doi": "Zhang, J. & Rothrock, D.A. (2003) Mon. Wea. Rev. 131, 845-861, doi:10.1175/1520-0493(2003)131<0845:MGSIWA>2.0.CO;2; Schweiger et al. (2011) JGR 116, C00D06, doi:10.1029/2011JC007084",
+  "licence": "Freely available from the Polar Science Center (APL, University of Washington) for research use with citation of Zhang & Rothrock (2003) and Schweiger et al. (2011); no formal open licence stated on the data page.",
+  "files": [
+    {
+      "name": "data/raw/piomas/heff.H2011.gz",
+      "sha256": "5a50a8e1c9a88b7ebce4243ee34ecf60c7cc4e03a0f2de0bcaabeb38990d53e5",
+      "bytes": 657594
+    },
+    {
+      "name": "data/raw/piomas/heff.H2012.gz",
+      "sha256": "92c86be61b83e26bd1963e634eccc7456ebc3c8eb72e7d48d0dccc0c1d967793",
+      "bytes": 648085
+    },
+    {
+      "name": "data/raw/piomas/snow.H2012.gz",
+      "sha256": "fc188b03eda33941216cf0a2d71697076c941a58735b36f441a3eb945383a0eb",
+      "bytes": 626650
+    },
+    {
+      "name": "data/raw/piomas/heff.H2013.gz",
+      "sha256": "bbb7bd03a56d86af1574d1d08d2079da2b7a35d31ca63466364b9adeb6cd5e55",
+      "bytes": 658630
+    },
+    {
+      "name": "data/raw/piomas/snow.H2013.gz",
+      "sha256": "6a79d31f0bb6a068557a4ddd40e63c8b1438c7ada1a4e694d139eb47c46f3a42",
+      "bytes": 649533
+    },
+    {
+      "name": "data/raw/piomas/heff.H2014.gz",
+      "sha256": "ff299f0837b5ca76a0a877d644bb669ec1d70dc16d87401b16a2531efade96b6",
+      "bytes": 659651
+    },
+    {
+      "name": "data/raw/piomas/snow.H2014.gz",
+      "sha256": "0a80df4492d81594f837f2bfcee7b0d43ce8cf786fa95abb74fbf388ec70bec5",
+      "bytes": 659038
+    },
+    {
+      "name": "data/raw/piomas/heff.H2015.gz",
+      "sha256": "d1d5d19959fbfd118e8427b5887e249205b13ee1a96e7f4811ca558d2dae0b8a",
+      "bytes": 660371
+    },
+    {
+      "name": "data/raw/piomas/snow.H2015.gz",
+      "sha256": "a2a9fc0d13177cf921aab5fd510448ed4cbc8f1099d5a1e75cb8407e60b214dd",
+      "bytes": 643890
+    },
+    {
+      "name": "data/raw/piomas/heff.H2016.gz",
+      "sha256": "d0f94c78d64490fcafd265bf50bb27a681643b816d300007e3ede83e52a7a3f7",
+      "bytes": 650776
+    },
+    {
+      "name": "data/raw/piomas/snow.H2016.gz",
+      "sha256": "60410bdd039bf6b8ee2a784110d2fbade5a7fef5f1e7935695fb5d86765bdce2",
+      "bytes": 629284
+    },
+    {
+      "name": "data/raw/piomas/heff.H2017.gz",
+      "sha256": "871bde7f3e56b5e6299f7d77c00afd09cda6fb33a383eaa877cac3246b4451ba",
+      "bytes": 642691
+    },
+    {
+      "name": "data/raw/piomas/snow.H2017.gz",
+      "sha256": "e7d428c42f5144b643a256d40a7856819721693056714531d5f9314a0e574217",
+      "bytes": 634953
+    },
+    {
+      "name": "data/raw/piomas/heff.H2018.gz",
+      "sha256": "2fcb138e7a7d9edc46b5b262a076708832de6a50ba66cfcebd16274f62bf0363",
+      "bytes": 637963
+    },
+    {
+      "name": "data/raw/piomas/snow.H2018.gz",
+      "sha256": "4214533e9aedc2fcf2dd16f9200e5307e1d7abc3259e024c6ea4584cc62805b5",
+      "bytes": 631743
+    },
+    {
+      "name": "data/raw/piomas/heff.H2019.gz",
+      "sha256": "b64660567787eac191f0f9ddc918c5086c1a181cea0fac0b800b64dbfdef46fe",
+      "bytes": 632778
+    },
+    {
+      "name": "data/raw/piomas/snow.H2019.gz",
+      "sha256": "1d2fee9eafcb60b19ba0a4d5d63695f1032079ba32d59f15fb9a5124b2b22f0c",
+      "bytes": 613090
+    },
+    {
+      "name": "data/raw/piomas/heff.H2020.gz",
+      "sha256": "fe2f9e2ca397858e32f30874be95cec01d157eee98acbee929d3c78b546d5fa3",
+      "bytes": 640720
+    },
+    {
+      "name": "data/raw/piomas/snow.H2020.gz",
+      "sha256": "61feed7abf29cc03fb0d6facc2f3b040d97a44d17088c457d42aac9f68016b83",
+      "bytes": 614985
+    },
+    {
+      "name": "data/raw/piomas/heff.H2021.gz",
+      "sha256": "aad34758c4194db892b78e3765555d52a3bec4d9b00a7ef69934d69aa9d789b0",
+      "bytes": 641368
+    },
+    {
+      "name": "data/raw/piomas/snow.H2021.gz",
+      "sha256": "d2a7c3154a5562de0767e6c124054394c83ec1017975e6b4d0928df424dee6ab",
+      "bytes": 620208
+    },
+    {
+      "name": "data/raw/piomas/heff.H2022.gz",
+      "sha256": "ef5b379e87939ddd40df4fe4bfbc8162ce925c7d31b9535d9f38ef5a181ca781",
+      "bytes": 653789
+    },
+    {
+      "name": "data/raw/piomas/snow.H2022.gz",
+      "sha256": "2cf17d7b7760422c69ca6a2bc87e06cc16c0b5485a604fda4a4605ccd6a06672",
+      "bytes": 630470
+    },
+    {
+      "name": "data/raw/piomas/heff.H2023.gz",
+      "sha256": "abb60cc34a0610b4c5104c6ba596457b8ef051536404488e3351881724f5c164",
+      "bytes": 651642
+    },
+    {
+      "name": "data/raw/piomas/snow.H2023.gz",
+      "sha256": "c1b4e6345ba2585a5c134722c62a02473c29d384444a2ef7ebdc6dae16529dc3",
+      "bytes": 637725
+    },
+    {
+      "name": "data/raw/piomas/heff.H2024.gz",
+      "sha256": "d3fcaa7c16d85c2118a1eaf034bef680eb4b2cb41b95d5e5d9fa25bc3cf5661c",
+      "bytes": 645905
+    },
+    {
+      "name": "data/raw/piomas/snow.H2024.gz",
+      "sha256": "3a631e2b98d6e614678b9edd6d3d084e7d95eb00667696c8e2888be7817ca1ee",
+      "bytes": 640713
+    },
+    {
+      "name": "data/raw/piomas/heff.H2025.gz",
+      "sha256": "d8e5e44beccbe959285371b4580af4c5f7b39003a368bb51dded160efb17df79",
+      "bytes": 637908
+    },
+    {
+      "name": "data/raw/piomas/snow.H2025.gz",
+      "sha256": "71e39196629b6958cd7be3a8cf7ddf02b694762e1ecd4287d8f7a77c0c7ed19d",
+      "bytes": 624192
+    },
+    {
+      "name": "data/raw/piomas/grid.dat",
+      "sha256": "7ecdf20b70ca1a5650e1ebbf7173f5de381ddaf851b621c508f8beb990ac7f3c",
+      "bytes": 699840
+    }
+  ],
+  "notes": "Model output, not observation. Version 2.1. H2026 holds only Jan-Feb 2026 at access, so W=2025 April fields unavailable.",
+  "access_date": "2026-11-25"
+}
