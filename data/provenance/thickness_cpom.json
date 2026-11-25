@@ -1,0 +1,198 @@
+{
+  "dataset": "CPOM CryoSat-2 Arctic sea ice thickness, NTC (Non-Time-Critical) monthly, 5 km sparse grid, v001",
+  "url": "https://www.cpom.ucl.ac.uk/seaice/download.php?region=Arctic",
+  "doi": null,
+  "licence": "No licence stated on the CPOM sea-ice portal pages (download.php, methodology.php, contacts.php) or in the NetCDF global attributes (checked 2026-11-25). Treat as 'credit CPOM / UCL, ESA CryoSat-2'; confirm terms with CPOM before redistribution.",
+  "institution": "Centre for Polar Observation and Modelling (CPOM), UCL; ESA CryoSat-2",
+  "files": [
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201111_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2011%2Fcpom_ntc_arco_sea_ice_thickness_201111_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "57b7f4f1843df9df8f7b445c19ac2dfb026f40ad26d4f5362423aa655ba63cab",
+      "bytes": 9318501
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201204_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2012%2Fcpom_ntc_arco_sea_ice_thickness_201204_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "9c427c9f6edd840cf3f3ea46f02ddfd845d7232c143e0ce3a2342bed43210829",
+      "bytes": 12081538
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201211_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2012%2Fcpom_ntc_arco_sea_ice_thickness_201211_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "22201a1c484a0272c03442cb111bc98c3414a55aeb1acfc0a96838c076df386a",
+      "bytes": 8973564
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201304_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2013%2Fcpom_ntc_arco_sea_ice_thickness_201304_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "4ea5ba3d6c2a38e00d0e0083d1a04d73bcdd842e7bfd0f7ba8734993024134a5",
+      "bytes": 12262710
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201311_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2013%2Fcpom_ntc_arco_sea_ice_thickness_201311_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "4725ae920d9e857b209086fad76b32c3b8fd7eddc574c54b095228ff62d3ed18",
+      "bytes": 9580799
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201404_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2014%2Fcpom_ntc_arco_sea_ice_thickness_201404_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "d6374ac192bd64442606bf63fc7c12fab4b5f3518b205e37e9f2e895bc833a5f",
+      "bytes": 11959990
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201411_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2014%2Fcpom_ntc_arco_sea_ice_thickness_201411_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "415766fcd51fbe30b004dc0ce59ef4fb8daddd512d06d91695fef697ac58ac05",
+      "bytes": 9724452
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201504_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2015%2Fcpom_ntc_arco_sea_ice_thickness_201504_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "480a984a6c1d9c37aed7170d8d92622b83a75b6a1380fa28489cef56b5665a82",
+      "bytes": 11760403
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201511_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2015%2Fcpom_ntc_arco_sea_ice_thickness_201511_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "706e2f60cf82d8bdcc4883f4d555ab2ce7ec68d32acc8061dda749d249d86f46",
+      "bytes": 9877347
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201604_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2016%2Fcpom_ntc_arco_sea_ice_thickness_201604_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "16bda6f7f86193ff6cd57774f52450eb707b0cf8a5d2bb71f3923db183a2cb35",
+      "bytes": 11915817
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201611_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2016%2Fcpom_ntc_arco_sea_ice_thickness_201611_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "b11956d6203a81e41f4e7c638d891d1ab41a783217a1605e33f2d7be71058f2a",
+      "bytes": 8740069
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201704_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2017%2Fcpom_ntc_arco_sea_ice_thickness_201704_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "76982d30d8e800064db2968513e901c3eb494cb6ed3c67fbd75424c0b4a579b6",
+      "bytes": 12189043
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201711_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2017%2Fcpom_ntc_arco_sea_ice_thickness_201711_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "b47660ff9545e7a03a976c7b353c6c61910ced9997bf8c9f543b8d9c2319d7bd",
+      "bytes": 9509614
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201804_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2018%2Fcpom_ntc_arco_sea_ice_thickness_201804_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "6fcb4d758256c123c56349d0d25099950d48b27386f65119e3e2ca9aa0c30b04",
+      "bytes": 12107763
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201811_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2018%2Fcpom_ntc_arco_sea_ice_thickness_201811_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "01b23d90e34b260ad433790b1346e3cd7706c2da14afadb41d0f3487f72a71d9",
+      "bytes": 9675837
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201904_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2019%2Fcpom_ntc_arco_sea_ice_thickness_201904_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "fe28c33962d303d390999b72a72cc2a6ab5850c07a05bc21dc8d0ee769c1509d",
+      "bytes": 12087865
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_201911_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2019%2Fcpom_ntc_arco_sea_ice_thickness_201911_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "5105c014007cb31f1a58b40aed5264c26c7a18bf66cf2a5b9dacefc079fa4e0a",
+      "bytes": 9625563
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202004_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2020%2Fcpom_ntc_arco_sea_ice_thickness_202004_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "3b156a87c30b43a6b9fcb8eda4a6379283d3a1d08dcc1c8353ca1b2a6ffd6de6",
+      "bytes": 12600537
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202011_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2020%2Fcpom_ntc_arco_sea_ice_thickness_202011_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "b29d40cad7a2ca55e10de2eb9eb535fe156e9897fad44f9b01d8a0638b44e66a",
+      "bytes": 8920968
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202104_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2021%2Fcpom_ntc_arco_sea_ice_thickness_202104_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "391c826da52933e954837dc5b6b89a19f65d73043148285635ebd117a50763b0",
+      "bytes": 12019430
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202111_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2021%2Fcpom_ntc_arco_sea_ice_thickness_202111_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "1456660e1f968d9c3d2413ffce0bd2a798e04e8f465226c3f5e79f94b70ff5a0",
+      "bytes": 10101180
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202204_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2022%2Fcpom_ntc_arco_sea_ice_thickness_202204_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "ac4f1afe4625a9cabf6937fbd7b32472f9c189826416b94f048226d5c9333a68",
+      "bytes": 12422725
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202211_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2022%2Fcpom_ntc_arco_sea_ice_thickness_202211_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "ebdff4dc46c514231395e0bff762956b8141b0e504708b40a7f416b4c4f22e31",
+      "bytes": 9847524
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202304_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2023%2Fcpom_ntc_arco_sea_ice_thickness_202304_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "bd3dc58351aa986f88627f519b109e9688c47d2e3f03b9398bedb11e26bb446d",
+      "bytes": 12753691
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202311_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2023%2Fcpom_ntc_arco_sea_ice_thickness_202311_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "c9d57d4e4f482e99ad43dd1a195313cca4c4855ca38e3d4c72c2f24250428c92",
+      "bytes": 9837434
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202404_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2024%2Fcpom_ntc_arco_sea_ice_thickness_202404_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "08ec7c77ca73a86ef38fc3ad3457efca0151c677f6d33e7987eba2a65eb925b6",
+      "bytes": 5049358
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202411_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2024%2Fcpom_ntc_arco_sea_ice_thickness_202411_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "43405d4aee72481a5d83b0243ae75b9ebba0e272ba24617353b14787cd5fb123",
+      "bytes": 9066420
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202504_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2025%2Fcpom_ntc_arco_sea_ice_thickness_202504_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "29599b810ff792dfe0474d12d353562eb1c80245563c067ab9477ce39e012271",
+      "bytes": 12469450
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202511_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2025%2Fcpom_ntc_arco_sea_ice_thickness_202511_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "5ef505ca47ef0cf130521dd097f6239f0183732118567e8bef44fd9f7852b8ac",
+      "bytes": 8948683
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_202604_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2026%2Fcpom_ntc_arco_sea_ice_thickness_202604_5km_sparse_grid_v001.nc&type=ntc&region=arco",
+      "sha256": "9b00e9e85d2765d4cd7b3f792bbbfb42740461234faad1d8572f613d23999a35",
+      "bytes": 12469749
+    },
+    {
+      "name": "cpom_ntc_arco_sea_ice_thickness_2026_5km_sparse_grid.tar.gz",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2026%2Fcpom_ntc_arco_sea_ice_thickness_2026_5km_sparse_grid.tar.gz&type=ntc&region=arco",
+      "sha256": "54da11ff3b7971576b449247bc28f5d2ffcd9fdb5aa18a2d5194f0b505cc7ba3",
+      "bytes": 54019693
+    }
+  ],
+  "missing": [],
+  "notes": "Brief's EOCIS URL pattern https://www.cpom.ucl.ac.uk/eocis/seaice/data/EOCIS-SEAICE-L3C-SITHICK-CS2-5KM-YYYYMM-fv1.0.nc returns 404; /eocis/ tree absent. Cryo-TEMPO page redirects to cryosat.mssl.ucl.ac.uk (not allow-listed). Used CPOM seaice portal NTC monthly files (Warren-99 snow climatology, halved on FYI).",
+  "access_date": "2026-11-25"
+}
