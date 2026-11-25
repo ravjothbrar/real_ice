@@ -9,14 +9,8 @@ function cmdBlock(lines: string[], cls = ''): string {
     <button type="button" class="copy" data-copy="${esc(lines.join('\n'))}">COPY</button></div>`;
 }
 
-function winterRange(a: Atlas | null): string {
-  const ws = a?.manifest.winters ?? [];
-  if (!ws.length) return '';
-  return `${ws[0].w}–${ws[ws.length - 1].w}`;
-}
 
 export function heroHTML(a: Atlas | null): string {
-  const range = winterRange(a);
   return `
   <nav class="topnav" aria-label="Sections">
     <a class="mark" href="#top">SURVIVAL GAP ATLAS</a>
@@ -25,10 +19,9 @@ export function heroHTML(a: Atlas | null): string {
   <section class="hero" id="top">
     <h1 class="statement">Where thickening changes whether the ice survives.</h1>
     <div class="hero-row">
-    <p class="mono-sub">An open map of Arctic sea ice${a ? ` · ${fmtInt(a.n)} cells of 25 km` : ''}${range ? ` · <span class="nw">winters ${range}</span>` : ''} · every layer shows its weakness</p>
+    <p class="hero-sub">Pumping seawater onto winter sea ice makes it thicker. This map shows where that extra ice would decide whether it lasts the summer, and where it wouldn’t. Built on 15 years of satellite data, every weakness shown.</p>
     <div class="hero-actions">
       <a class="pill" href="#instrument">OPEN THE INSTRUMENT ↓</a>
-      ${cmdBlock([CLI[0]], 'cmd-hero')}
     </div>
     </div>
   </section>`;
