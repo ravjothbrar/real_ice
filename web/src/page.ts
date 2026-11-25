@@ -14,7 +14,7 @@ export function heroHTML(a: Atlas | null): string {
   return `
   <nav class="topnav" aria-label="Sections">
     <a class="mark" href="#top">SURVIVAL GAP ATLAS</a>
-    <a class="maker" href="https://ravjothbrar.com" target="_blank" rel="noopener">CREATED BY <b>RAVJOTH BRAR</b> ↗</a>
+    <a class="maker" href="https://ravjothbrar.com" target="_blank" rel="noopener"><span>CREATED BY</span><b>RAVJOTH BRAR</b><span aria-hidden="true">↗</span></a>
     <div class="navlinks"><a href="#instrument">&gt; instrument</a><a href="#method">&gt; method</a><a href="#evidence">&gt; evidence</a><a href="#limits">&gt; limits</a><a href="#spec">&gt; spec</a></div>
   </nav>
   <section class="hero" id="top">

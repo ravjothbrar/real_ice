@@ -54,7 +54,7 @@ button { font: inherit; color: inherit; }
 }
 .maker {
   position: absolute; left: 50%; transform: translateX(-50%);
-  display: inline-block; height: 32px; line-height: 30px; padding: 0 16px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 0.75em; height: 32px; padding: 0 16px; border-radius: 999px; box-sizing: border-box;
   background: #F1EAFE; color: #6D28D9; border: 1px solid #CDB8F6; text-decoration: none;
   font: 500 11px/1 var(--mono); letter-spacing: 0.14em; white-space: nowrap;
 }
@@ -395,7 +395,7 @@ input[type='range']::-moz-range-thumb { width: 12px; height: 12px; background: v
   :root { --gut: 20px; }
   body { font-size: 17px; }
   .topnav { padding: 20px var(--gut); flex-direction: column-reverse; align-items: center; gap: 14px; }
-  .maker { position: static; transform: none; height: 30px; line-height: 28px; padding: 0 12px; font-size: 10px; }
+  .maker { position: static; transform: none; height: 30px; padding: 0 12px; font-size: 10px; }
   .navlinks { display: none; }
   .hero { padding: 20px var(--gut) 32px; }
   .statement { font-size: clamp(34px, 10vw, 48px); white-space: normal; }
