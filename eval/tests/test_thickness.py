@@ -24,7 +24,7 @@ def test_contract_shape_and_vars(path):
         assert "lat" in ds.coords and "lon" in ds.coords
         assert ds.h0.dtype == np.float32
         assert "h0_choice" in ds.attrs and "November" in ds.attrs["h0_choice"]
-        if "_awi_" not in path.name:
+        if "_awi_" not in path.name and not ds.attrs.get("partial"):
             assert "h_apr" in ds and ds.h_apr.shape == (360, 360)
 
 
@@ -39,7 +39,7 @@ def test_h0_physically_plausible(path):
         assert 0.3 < np.median(v) < 3.0  # November Arctic mean thickness is O(1 m)
         u = ds.h0_unc.values
         assert np.nanmin(u) >= 0
-        if "h_apr" in ds:
+        if "h_apr" in ds and np.isfinite(ds.h_apr.values).any():
             a = ds.h_apr.values
             assert np.nanmin(a) >= 0 and np.nanmax(a) <= 8
             # growth season: April median exceeds November median
@@ -53,7 +53,8 @@ def test_ice_where_expected():
     i, j = (int(round(float(k))) for k in grid.lonlat_to_ij(-60.0, 85.0))
     for p in FILES:
         with xr.open_dataset(p) as ds:
-            assert ds.h0.values[i - 2:i + 3, j - 2:j + 3].mean() > 0.5, p.name
+            box = ds.h0.values[i - 3:i + 4, j - 3:j + 4]  # NRT 14-day fields have orbit gaps
+            assert np.isfinite(box).sum() >= 5 and np.nanmean(box) > 0.5, p.name
 
 
 def test_disagreement_nonnegative():

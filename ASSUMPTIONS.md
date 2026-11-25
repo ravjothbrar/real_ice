@@ -30,3 +30,12 @@ Every guess, constant and threshold, with where it came from. Newest at the bott
 
 ## Scale (pipeline/scale.py)
 - 1,000,000 km2/yr target, 8 MWh/km2, ~$6bn/yr at scale: Ocean Visions roadmap page. Ice-safe window 90 days (January-March, ARIA PDF). Drone throughput is not public: a user slider labelled ASSUMPTION.
+
+## Thickness
+- h0 (start-of-winter thickness) = November mean of winter W; h_apr = April mean of W+1. October not used (thin-ice retrievals biased thin, brief section 4). Stored in each file's `h0_choice` attr.
+- CPOM: the brief's EOCIS URL (www.cpom.ucl.ac.uk/eocis/...) is 404; used the CPOM sea-ice portal NTC monthly CryoSat-2 product (5 km sparse points, EPSG:3411, v001, Warren-99 snow halved on FYI), https://www.cpom.ucl.ac.uk/seaice/download.php?region=Arctic. Regrid: bin mean of 5 km points per 25 km cell, cells with < 3 points dropped. No licence stated on the portal or in the files: confirm with CPOM before redistribution.
+- CPOM has no retrieval-uncertainty variable: `h0_unc` = mean of `thk_stdev` (spread of measurements per 5 km point), a variability proxy that excludes systematic snow error.
+- Petty IS2SMGPSIT-V1 (CC-BY-4.0): h0 uses `ice_volume_per_grid_cell_area` (= cell-mean ice_thickness / SIC, masked SIC < 0.15), i.e. ice-only thickness comparable with CPOM, not the cell-mean `ice_thickness`. `h0_unc` = GP s.d. scaled by 1/SIC. Read via HTTP Range, every 3rd day (days 1,4,...,28) to stay under the 1 GB rule; monthly mean = mean of those days (NaN if < 50% valid). Nearest neighbour EPSG:3411 25 km -> EASE2 25 km.
+- QC (both products): negative 25 km means clipped to 0; means > 8 m set NaN as coast/land artefacts (counts in `qc_*` attrs; CPOM 0-5 cells per month).
+- AWI CS2SMOS not fetched: ftp.awi.de resets TLS on 443 (FTP-only server), the proxy carries HTTPS only, spaces.awi.de is refused (403), ESA route needs EO Sign-In on smos-diss.eo.esa.int (not allow-listed). Substitute for the current season: thick_cpom_2026.nc from CPOM's NRT 14-day product (2-15 Nov 2026; initial orbits, not final quality; attr partial=1; h_apr all NaN). Being 14 days, it has CryoSat-2 orbit gaps (~9,300 valid cells vs ~11,000-12,000 for a full November).
+- DTU thickness skipped by owner decision.

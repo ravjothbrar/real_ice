@@ -88,12 +88,21 @@ def build_cpom():
     from pipeline.fetch import thickness_cpom as fc
     fc.fetch()
     out = []
-    for w in fc.WINTERS:
-        pn, pa = fc.path_for(f"{w}11"), fc.path_for(f"{w + 1}04")
+    nrt = fc.http.RAW / "cpom" / fc.NRT_2026
+    for w in list(fc.WINTERS) + [2026]:
+        partial = w == 2026
+        pn = nrt if partial else fc.path_for(f"{w}11")
+        pa = fc.path_for(f"{w + 1}04")
         if not pn.exists():
             continue
         h0, u0, c0 = _cpom_month(pn)
         ha = _cpom_month(pa)[0] if pa.exists() else np.full_like(h0, np.nan)
+        extra = {}
+        if partial:
+            extra = dict(partial=1, h0_month="2026-11-02..2026-11-15 (NRT 14-day product)", h_apr_month="not yet observed",
+                         source="CPOM CryoSat-2 Arctic sea ice thickness, NRT 14-day 5 km sparse grid v001 (initial orbit, "
+                                "not final quality; UCL/CPOM, ESA)",
+                         nrt_file=fc.NRT_2026)
         attrs = dict(
             source="CPOM CryoSat-2 Arctic sea ice thickness, NTC monthly, 5 km sparse grid v001 (UCL/CPOM, ESA)",
             source_url="https://www.cpom.ucl.ac.uk/seaice/download.php?region=Arctic",
@@ -101,7 +110,9 @@ def build_cpom():
             regrid=f"bin mean of 5 km points per 25 km cell, cells with < {MIN_PTS_CPOM} points set NaN; "
                    "negative cell means clipped to 0 (see qc_* attrs)",
             snow="Warren-99 climatology (halved on first-year ice), as in the CPOM product",
-            caveats="CryoSat-2 pole hole north of ~88N is NaN; radar thickness over thin/young ice is noisy in November")
+            caveats="CryoSat-2 pole hole north of ~88N is NaN; radar thickness over thin/young ice is noisy in November",
+            partial=0)
+        attrs.update(extra)
         va = dict(h0=dict(units="m", long_name="start-of-winter sea ice thickness (November mean)"),
                   h0_unc=dict(units="m", long_name="mean within-cell standard deviation of thickness (CPOM thk_stdev)",
                               comment="CPOM provides no retrieval-uncertainty variable; thk_stdev is the spread of "
@@ -279,7 +290,12 @@ def figures(cpom_w, petty_w):
     if cpom_w:
         w = max(cpom_w)
         with xr.open_dataset(INTERIM / f"thick_cpom_{w}.nc") as ds:
-            _plot(ds.h0.values, f"CPOM CryoSat-2 NTC: h0 = Nov {w} mean thickness\n(accessed {TODAY})",
+            kind = "NRT 14-day, partial season" if ds.attrs.get("partial") else "NTC monthly"
+            _plot(ds.h0.values, f"CPOM CryoSat-2 {kind}: h0 = {ds.attrs['h0_month']} mean thickness\n"
+                                f"(accessed {TODAY})", FIGS / f"thick_cpom_{w}.png")
+        w = max(x for x in cpom_w if x < 2026)
+        with xr.open_dataset(INTERIM / f"thick_cpom_{w}.nc") as ds:
+            _plot(ds.h0.values, f"CPOM CryoSat-2 NTC monthly: h0 = Nov {w} mean thickness\n(accessed {TODAY})",
                   FIGS / "thick_cpom.png")
     if petty_w:
         w = max(petty_w)

@@ -186,6 +186,12 @@
       "bytes": 12469749
     },
     {
+      "name": "cpom_nrt_arco_sea_ice_thickness_14days_02112026_15112026_5km_sparse_grid_v001.nc",
+      "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=cpom_nrt_arco_sea_ice_thickness_14days_02112026_15112026_5km_sparse_grid_v001.nc&region=arco",
+      "sha256": "f2d9d867440d0a867e478c581404eda2fc8314bf9acd624ffbe670197697d35a",
+      "bytes": 2616344
+    },
+    {
       "name": "cpom_ntc_arco_sea_ice_thickness_2026_5km_sparse_grid.tar.gz",
       "url": "https://www.cpom.ucl.ac.uk/seaice/download_handler.php?file=2026%2Fcpom_ntc_arco_sea_ice_thickness_2026_5km_sparse_grid.tar.gz&type=ntc&region=arco",
       "sha256": "54da11ff3b7971576b449247bc28f5d2ffcd9fdb5aa18a2d5194f0b505cc7ba3",
@@ -193,6 +199,6 @@
     }
   ],
   "missing": [],
-  "notes": "Brief's EOCIS URL pattern https://www.cpom.ucl.ac.uk/eocis/seaice/data/EOCIS-SEAICE-L3C-SITHICK-CS2-5KM-YYYYMM-fv1.0.nc returns 404; /eocis/ tree absent. Cryo-TEMPO page redirects to cryosat.mssl.ucl.ac.uk (not allow-listed). Used CPOM seaice portal NTC monthly files (Warren-99 snow climatology, halved on FYI).",
+  "notes": "Brief's EOCIS URL pattern https://www.cpom.ucl.ac.uk/eocis/seaice/data/EOCIS-SEAICE-L3C-SITHICK-CS2-5KM-YYYYMM-fv1.0.nc returns 404; /eocis/ tree absent. Cryo-TEMPO page redirects to cryosat.mssl.ucl.ac.uk (not allow-listed). Used CPOM seaice portal NTC monthly files (Warren-99 snow climatology, halved on FYI). Winter 2026 (current, partial): NRT 14-day product 2-15 Nov 2026 (initial orbits, not final quality).",
   "access_date": "2026-11-25"
 }

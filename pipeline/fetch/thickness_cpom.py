@@ -20,6 +20,16 @@ WINTERS = range(2011, 2026)  # W = 2011..2025
 TAR_2026 = "cpom_ntc_arco_sea_ice_thickness_2026_5km_sparse_grid.tar.gz"
 
 
+# Current season (W = 2026): NRT 14-day product covering 2-15 Nov 2026 (latest listed on the portal 25 Nov 2026).
+NRT_2026 = "cpom_nrt_arco_sea_ice_thickness_14days_02112026_15112026_5km_sparse_grid_v001.nc"
+
+
+def fetch_nrt():
+    url = f"{BASE}?file={NRT_2026}&region=arco"
+    p = http.get(url, f"cpom/{NRT_2026}")
+    return p, {"name": p.name, "url": url, "sha256": http.sha256(p), "bytes": p.stat().st_size}
+
+
 def url_for(ym):
     return f"{BASE}?file={quote(ym[:4] + '/' + NAME.format(ym=ym), safe='')}&type=ntc&region=arco"
 
@@ -52,6 +62,10 @@ def fetch():
                 missing.append(f"{ym}: {e}")
                 continue
         files.append({"name": p.name, "url": url_for(ym), "sha256": http.sha256(p), "bytes": p.stat().st_size})
+    try:
+        files.append(fetch_nrt()[1])
+    except Exception as e:
+        missing.append(f"NRT 2026: {e}")
     tp = http.RAW / "cpom" / TAR_2026
     if tp.exists():
         files.append({"name": tp.name, "url": f"{BASE}?file=2026%2F{TAR_2026}&type=ntc&region=arco",
@@ -69,7 +83,8 @@ def fetch():
         missing=missing,
         notes=("Brief's EOCIS URL pattern https://www.cpom.ucl.ac.uk/eocis/seaice/data/EOCIS-SEAICE-L3C-SITHICK-CS2-5KM-YYYYMM-fv1.0.nc "
                "returns 404; /eocis/ tree absent. Cryo-TEMPO page redirects to cryosat.mssl.ucl.ac.uk (not allow-listed). "
-               "Used CPOM seaice portal NTC monthly files (Warren-99 snow climatology, halved on FYI)."),
+               "Used CPOM seaice portal NTC monthly files (Warren-99 snow climatology, halved on FYI). "
+               "Winter 2026 (current, partial): NRT 14-day product 2-15 Nov 2026 (initial orbits, not final quality)."),
     )
     return files, missing
 
